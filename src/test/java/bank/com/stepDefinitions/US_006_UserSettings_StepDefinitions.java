@@ -68,7 +68,7 @@ public class US_006_UserSettings_StepDefinitions {
     public void user_can_update_firstname() throws InterruptedException {
         pageus6.firstNameBoxClick.clear();
         String firstnamefaker = faker.name().firstName();
-       System.out.println("updatefirstnamefaker = " + firstnamefaker); //updatefirstnamefaker = Rudy
+       System.out.println("updatefirstnamefaker = " + firstnamefaker); //updatefirstnamefaker = Vena
         pageus6.firstNameBoxClick.sendKeys(firstnamefaker);
         Thread.sleep(1000);
 
@@ -78,7 +78,7 @@ public class US_006_UserSettings_StepDefinitions {
     public void user_can_update_lastname() throws InterruptedException {
         pageus6.lastNameBoxClick.clear();
         String lastnamefaker =faker.name().lastName();
-        System.out.println("updatelastnamefaker = " + lastnamefaker); //updatelastnamefaker = Flatley
+        System.out.println("updatelastnamefaker = " + lastnamefaker); //updatelastnamefaker =  O'Hara
         pageus6.lastNameBoxClick.sendKeys(lastnamefaker);
         Thread.sleep(1000);
 
@@ -88,7 +88,7 @@ public class US_006_UserSettings_StepDefinitions {
     public void user_can_update_email() throws InterruptedException {
         pageus6.emailBoxClick.clear();
         String emailfaker = faker.internet().emailAddress();
-        System.out.println("updateemailfaker = " + emailfaker); //updateemailfaker = clemente.corwin@yahoo.com
+        System.out.println("updateemailfaker = " + emailfaker); //updateemailfaker = raphael.botsford@gmail.com
         pageus6.emailBoxClick.sendKeys(emailfaker);
         Thread.sleep(1000);
 
@@ -106,8 +106,4 @@ public class US_006_UserSettings_StepDefinitions {
 
     }
 
-    @Then("User close page")
-    public void userClosePage() {
-        Driver.closeDriver();
-    }
 }
