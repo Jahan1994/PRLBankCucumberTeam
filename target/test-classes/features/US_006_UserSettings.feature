@@ -13,7 +13,7 @@ Feature: US_006_User info segment (User Settings) should be editable on Homepage
     Then User click userIcon
     Then User can see own info
     Then User is on the user settings page
-    
+
   Scenario: TC_0602 There should be 2 languages available "English and Turkish"
     Given User on the home page "homepage_url"
     And User click menu icon

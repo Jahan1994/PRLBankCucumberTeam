@@ -1,17 +1,17 @@
 package bank.com.pages;
 
-import bank.com.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import bank.com.utilities.Driver;
 
-import static org.openqa.selenium.support.PageFactory.initElements;
+public class RegistrationPage{
 
-public class RegistrationPage {
 
     //static olan metodlari cagirdik
     public RegistrationPage(){
-
-        initElements(Driver.getDriver(), this);
+        PageFactory.initElements(Driver.getDriver(), this);
+       // initElements(Driver.getDriver(), this);
     }
 
     @FindBy(id ="ssn")
@@ -47,8 +47,16 @@ public class RegistrationPage {
     @FindBy(xpath = "//*[text()='Registration saved!']")
     public WebElement successfulRegisterMessage;
 
-    @FindBy(xpath = "//*[text()='Registration saved!']")
+    @FindBy(xpath = "//*[text()='Failed to sign in!']")
     public WebElement wrongSuccesRegisterMessage;
 
+    @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]")
+    public WebElement invalidSsnFeedbackText;
+
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[5]/div")
+    public WebElement invalidMobilePhoneNumberfeedbackText;
+
+    @FindBy(css = "#register-form > div:nth-child(7) > div")
+    public WebElement invalidEmailFeedbackText;
 
 }
