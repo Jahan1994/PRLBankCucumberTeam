@@ -16,7 +16,7 @@ import bank.com.pojos.Customer;
 
 import java.util.List;
 
-public class US_001_Registration_StepDefinitions {
+public class    US_001_Registration_StepDefinitions {
 
     HomePage homePage = new HomePage();
     RegistrationPage registrationPage= new RegistrationPage();

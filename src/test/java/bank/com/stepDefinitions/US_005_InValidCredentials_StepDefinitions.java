@@ -19,11 +19,23 @@ public class US_005_InValidCredentials_StepDefinitions {
     public void user_click_menu_icon() {
         homepage.iconMenu.click();
     }
+
     @Then("User click signIn Option")
     public void user_click_sign_in_option() throws InterruptedException {
         homepage.signInButton.click();
         Thread.sleep(1000);
     }
+    @Then("user provides username {string}")
+    public void userProvidesUsername(String userName)  throws InterruptedException{
+        pagelogin.loginPageUsernameTextBox.sendKeys(userName);
+        Thread.sleep(2000);
+    }
+
+    @Then("user provides password {string}")
+    public void userProvidesPassword(String passWord) {
+        pagelogin.loginPagePasswordTextBox.sendKeys(passWord);
+    }
+
     @Then("user provides username and password")
     public void userProvidesUsernameAndPassword(DataTable dataTable) throws InterruptedException {
         List<String> datalar= dataTable.row(1);

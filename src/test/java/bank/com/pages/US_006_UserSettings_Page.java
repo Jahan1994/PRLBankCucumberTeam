@@ -30,7 +30,7 @@ import bank.com.utilities.Driver;
         @FindBy (xpath = "(//*[@class='dropdown-item'])[3]")
         public WebElement userInfoClick;    //  (//span[.='User Info']
                                             //  (xpath = "//*[@id=\"account-menu\"]/div/a[1]/span")
-                                            // @FindBy (css = "#account-menu > div > a.dropdown-item.active > span")
+                                            //  (css = "#account-menu > div > a.dropdown-item.active > span")
 
 
        @FindBy (css = "#account-menu > div > a:nth-child(1) > span")

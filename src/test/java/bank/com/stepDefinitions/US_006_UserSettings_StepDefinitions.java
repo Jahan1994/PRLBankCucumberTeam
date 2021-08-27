@@ -2,6 +2,7 @@ package bank.com.stepDefinitions;
 
 import bank.com.utilities.ReusableMethods;
 import com.github.javafaker.Faker;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
@@ -68,7 +69,7 @@ public class US_006_UserSettings_StepDefinitions {
     public void user_can_update_firstname() throws InterruptedException {
         pageus6.firstNameBoxClick.clear();
         String firstnamefaker = faker.name().firstName();
-       System.out.println("updatefirstnamefaker = " + firstnamefaker); //updatefirstnamefaker = Vena
+       System.out.println("updatefirstnamefaker = " + firstnamefaker); //updatefirstnamefaker = Juliette
         pageus6.firstNameBoxClick.sendKeys(firstnamefaker);
         Thread.sleep(1000);
 
@@ -78,7 +79,7 @@ public class US_006_UserSettings_StepDefinitions {
     public void user_can_update_lastname() throws InterruptedException {
         pageus6.lastNameBoxClick.clear();
         String lastnamefaker =faker.name().lastName();
-        System.out.println("updatelastnamefaker = " + lastnamefaker); //updatelastnamefaker =  O'Hara
+        System.out.println("updatelastnamefaker = " + lastnamefaker); //updatelastnamefaker =  Dare
         pageus6.lastNameBoxClick.sendKeys(lastnamefaker);
         Thread.sleep(1000);
 
@@ -88,7 +89,7 @@ public class US_006_UserSettings_StepDefinitions {
     public void user_can_update_email() throws InterruptedException {
         pageus6.emailBoxClick.clear();
         String emailfaker = faker.internet().emailAddress();
-        System.out.println("updateemailfaker = " + emailfaker); //updateemailfaker = raphael.botsford@gmail.com
+        System.out.println("updateemailfaker = " + emailfaker); //updateemailfaker = rodrigo.ortiz@yahoo.com
         pageus6.emailBoxClick.sendKeys(emailfaker);
         Thread.sleep(1000);
 

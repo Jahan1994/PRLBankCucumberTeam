@@ -44,13 +44,14 @@ public class US_005_InValidCredentials_Page {
         public  WebElement registrationPage;
     }
 /*
- @FindBy(xpath = "//span/strong[.='Failed to sign in!']")
+    @FindBy(xpath = "//span/strong[.='Failed to sign in!']")
     public WebElement failedMessage;
- */
-  /*
+
+
     @FindBy(xpath = "//button[@class='btn btn-secondary']")
     public WebElement secondSignInButton;
-     */
+
+*/
 
 
 
