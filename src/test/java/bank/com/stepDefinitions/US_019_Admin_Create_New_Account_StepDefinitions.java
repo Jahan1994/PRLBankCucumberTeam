@@ -1,5 +1,6 @@
 package bank.com.stepDefinitions;
 
+import bank.com.pojos.Customer;
 import bank.com.utilities.*;
 import com.github.javafaker.Faker;
 import io.cucumber.datatable.DataTable;
@@ -29,16 +30,28 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
     RegistrationPage registrationPage= new RegistrationPage();
     ManageAccountsPage manageAccountsPage=new ManageAccountsPage();
 
-/*
-    @Then("user provides username and password")
-    public void user_provides_username_and_password(DataTable dataTable) {
-        List<String> data= dataTable.row(3);
+    Customer customer= new Customer();
+
+
+//   @Then("user provides username and password")
+//    public void user_provides_username_and_password(DataTable dataTable) {
+//List<String> data= dataTable.row(3);
+//        System.out.println(data.get(0));
+//
+//        loginPage.loginPageUsernameTextBox.sendKeys(data.get(0));
+//        loginPage.loginPagePasswordTextBox.sendKeys(data.get(1));
+//
+//    }
+
+    @Then("user provides username and password for login")
+    public void userProvidesUsernameAndPasswordForLogin(DataTable dataTable) {
+        List<String> data= dataTable.row(2);
         System.out.println(data.get(0));
 
         loginPage.loginPageUsernameTextBox.sendKeys(data.get(0));
         loginPage.loginPagePasswordTextBox.sendKeys(data.get(1));
     }
-*/
+
     @Then("user logs in")
     public void user_logs_in() {
         loginPage.loginPageSignInButtonSibel.click();
@@ -64,7 +77,9 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
 
     @Given("user types a description {string}")
     public void userTypesADescription(String description) {
+        description= customer.getSsn();
         manageAccountsPage.accountDescriptionTextBox.sendKeys(description);
+
 
     }
 
@@ -112,7 +127,7 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
 
         //Account olustugunu assert et.
         String actualSuccessMessage= manageAccountsPage.successAccountCreationMessage.getText();
-        System.out.println(actualSuccessMessage);
+       // System.out.println(actualSuccessMessage);
         String expectedSuccessMessage = "translation-not-found[gmiBankBackendApp.tPAccount.created]";
         Assert.assertEquals(expectedSuccessMessage,actualSuccessMessage);
 
@@ -124,6 +139,11 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
         //EXPLICIT WAIT
         //buarada scrollDowsn yapmasi icin bir sure beklemek gerekebilir
         ReusableMethods.waitForVisibility(manageAccountsPage.aboutUsFooterAccountPage,10);
+
+      je.executeScript("arguments[0].scrollIntoView(true);",manageAccountsPage.createNewAccountButton);
+
+       Driver.waitAndClick(manageAccountsPage.createNewAccountButton, 10);
+
 
         //burada olusturdugum hesabi verify ediyorum
         int sizeOfAccountTable= manageAccountsPage.satirlarListesi.size();
@@ -165,5 +185,7 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
         String currentTime1= DateUtil.todaysTime();
         manageAccountsPage.closedDate.sendKeys( currentDate1 + Keys.TAB + currentTime1 );
     }
+
+
 }
 
