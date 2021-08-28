@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="5" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="0.343">
+    <testcase classname="US_005_Login page should not be accessible with invalid credentials" name="TC_0501 User cannot login with invalid username validating the error message" time="0.062">
+        <failure message="The scenario has pending or undefined step(s)" type="java.lang.Exception">
+            <![CDATA[Given User on the home page "homepage_url"..................................undefined
+Then User click menu icon...................................................skipped
+And User click signIn Option................................................skipped
+Then user provides username and password....................................skipped
+And User click secondSignInButton...........................................skipped
+And User see Failed Message.................................................skipped
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="US_005_Login page should not be accessible with invalid credentials" name="TC_0502 User cannot login with invalid password validating the error message" time="0">
+        <failure message="The scenario has pending or undefined step(s)" type="java.lang.Exception">
+            <![CDATA[Given User on the home page "homepage_url"..................................undefined
+Then User click menu icon...................................................skipped
+And User click signIn Option................................................skipped
+Then user provides username and password....................................skipped
+And User click secondSignInButton...........................................skipped
+Then User see Failed Message................................................skipped
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="US_005_Login page should not be accessible with invalid credentials" name="TC_0503 User cannot login with invalid username and password validating the error message" time="0">
+        <failure message="The scenario has pending or undefined step(s)" type="java.lang.Exception">
+            <![CDATA[Given User on the home page "homepage_url"..................................undefined
+Then User click menu icon...................................................skipped
+And User click signIn Option................................................skipped
+Then user provides username and password....................................skipped
+And User click secondSignInButton...........................................skipped
+And User see Failed Message.................................................skipped
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="US_005_Login page should not be accessible with invalid credentials" name="TC_0504 User with invalid credentials should be given an option to reset their password" time="0">
+        <failure message="The scenario has pending or undefined step(s)" type="java.lang.Exception">
+            <![CDATA[Given User on the home page "homepage_url"..................................undefined
+Then User click menu icon...................................................skipped
+And User click signIn Option................................................skipped
+Then user provides username and password....................................skipped
+And User click Did you forget your password ?...............................skipped
+And Enter email that suscribed..............................................skipped
+And User click Reset password...............................................skipped
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="US_005_Login page should not be accessible with invalid credentials" name="TC_0505 User should be given the option to navigate to registration page if they did not register yet" time="0.015">
+        <failure message="The scenario has pending or undefined step(s)" type="java.lang.Exception">
+            <![CDATA[Given User on the home page "homepage_url"..................................undefined
+Then User click menu icon...................................................skipped
+And User click signIn Option................................................skipped
+Then user provides username and password....................................skipped
+And User click register option if they do not yet registered (Register a new account).skipped
+And User see registration page..............................................skipped
+]]>
+        </failure>
+    </testcase>
+</testsuite>
