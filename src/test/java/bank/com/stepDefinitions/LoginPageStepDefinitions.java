@@ -18,7 +18,6 @@ public class LoginPageStepDefinitions {
   //Ahmet bu metodu Feature sayfasinda sen yazinca ben kendi feature sayfamdan silecem. Bunu simdilik olusturdum
   @And("User navigates to Login page")
   public void userNavigatesToLoginPage() {
-
     homePage.homePageSignIn.click();
 
   }
@@ -37,10 +36,13 @@ public class LoginPageStepDefinitions {
     registrationPage.passWord.sendKeys(ConfigReader.getProperty("user_passwordd"));
   }
 
+<<<<<<< HEAD
   @Then("User clicks Sign in")
   public void userClicksSignIn() {
     registrationPage.signIn.click();
   }
+=======
+>>>>>>> main
 
   @Then("User asserts new page")
   public void userAssertsNewPage() {

@@ -14,7 +14,7 @@ import bank.com.pojos.Customer;
 
 import java.util.List;
 
-public class US_001_Registration_StepDefinitions {
+public class    US_001_Registration_StepDefinitions {
 
     RegistrationPage registerPage=new RegistrationPage();
 
@@ -214,6 +214,7 @@ public class US_001_Registration_StepDefinitions {
     }
 
 
+<<<<<<< HEAD
     @Then("User provides a valid ssn for password {string}")
     public void userProvidesAValidSsnForPassword(String ssn) {
         String ssn1=faker.idNumber().ssnValid();
@@ -277,3 +278,7 @@ public class US_001_Registration_StepDefinitions {
     }
 
 }
+=======
+
+}
+>>>>>>> main
