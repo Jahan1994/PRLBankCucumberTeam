@@ -29,7 +29,7 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
     LoginPage loginPage = new LoginPage();
     RegistrationPage registrationPage= new RegistrationPage();
     ManageAccountsPage manageAccountsPage=new ManageAccountsPage();
-
+    String fileName= ConfigReader.getProperty("fileNameOfCustomer");
     Customer customer= new Customer();
 
 
@@ -77,7 +77,9 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
 
     @Given("user types a description {string}")
     public void userTypesADescription(String description) {
-        description= customer.getSsn();
+        //toplu olarak yazdirma
+        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
+        description= list2.get(list2.size()-1).getSsn() + " nolu SSN numarali sahis icin olusturlan hesap numarasi";
         manageAccountsPage.accountDescriptionTextBox.sendKeys(description);
 
 

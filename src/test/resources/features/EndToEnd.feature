@@ -1,4 +1,6 @@
 Feature:
+
+
   @registrationwithjavafakervalues
   Scenario Outline: TC_002 Success registration with valid credentials with java faker
     Given User on the home page "homepage_url"
@@ -13,8 +15,8 @@ Feature:
     Then User provides a valid Email with javafaker as "<email>"
     Then User provides a valid Password with javafaker as "<firstpassword>"
    Then User provides a valid Password to Password confirmation textbox with javafaker as "<secondpassword>"
-    And User clicks on Register button
-#    Then User clicks on Register button and validates that with a success message as "<message>"
+#    And User clicks on Register button
+   Then User clicks on Register button and validates that with a success message as "<message>"
 #    And user close the browser
 
     Examples:
@@ -30,6 +32,7 @@ Feature:
     Then user provides username "<userName>"
     Then user provides password "<passWord>"
     And User click secondSignInButton
+#    Then user close the browser
 #    And User see Failed Message
     Examples:
       | userName   | passWord    |
@@ -94,3 +97,34 @@ Feature:
     Examples: all data
       |description|balance|accountType|accountStatusType|currentDate|currentTime|closedDate|
       |saving2 account|50000|CHECKING|ACTIVE  |            |          |           |
+
+  @loginasemployeetoassignaccounttocustomer
+  Scenario Outline:
+    Given User on the home page "homepage_url"
+    Then User click menu icon
+    And User click signIn Option
+    Then user provides username "<userName>"
+    Then user provides password "<passWord>"
+    And User click secondSignInButton
+#    Then user close the browser
+#    And User see Failed Message
+    Examples:
+      | userName   | passWord    |
+      |team53employee|Team53employee.|
+
+  @loginascustomertosendmoneybetweentwoaccounts
+  Scenario Outline:
+
+    Given User on the home page "homepage_url"
+    Then User click menu icon
+    And User click signIn Option
+    Then user provides username "<userName>"
+    Then user provides password "<passWord>"
+    And User click secondSignInButton
+#    Then user close the browser
+#    And User see Failed Message
+    Examples:
+      | userName   | passWord    |
+      |team53customer|Team53customer.|
+
+

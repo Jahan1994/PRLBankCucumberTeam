@@ -116,25 +116,26 @@ public class    US_001_Registration_StepDefinitions {
 
         //toplu olarak yazdirma
         List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
-        for (int i = 0; i < list2.size() ; i++) {
-            System.out.println("firstname =>" + list2.get(i).getFirstName());
-            System.out.println("lastname => " + list2.get(i).getLastName());
-        }
-        System.out.println("===========");
-        //tek tek firstname vs yazdirma
-        System.out.println("last element => firstname =>" + list2.get(list2.size()-1).getFirstName());
-        System.out.println("last element => last ssn =>" + list2.get(list2.size()-1).getSsn());
-        System.out.println("username "+list2.get(list2.size()-1).getUserName());
-        System.out.println("password "+list2.get(list2.size()-1).getFirstPassword());
+//        for (int i = 0; i < list2.size() ; i++) {
+//            System.out.println("firstname =>" + list2.get(i).getFirstName());
+//            System.out.println("lastname => " + list2.get(i).getLastName());
+//        }
+//        System.out.println("===========");
+//        //tek tek firstname vs yazdirma
+//        System.out.println("last element => firstname =>" + list2.get(list2.size()-1).getFirstName());
+//        System.out.println("last element => last ssn =>" + list2.get(list2.size()-1).getSsn());
+//        System.out.println("username "+list2.get(list2.size()-1).getUserName());
+//        System.out.println("password "+list2.get(list2.size()-1).getFirstPassword());
 
         Thread.sleep(3000);
-        String actualSuccessMessage = registrationPage.successfulRegisterMessage.getText();
-        System.out.println(actualSuccessMessage);
-        expectedSuccesMessage= ConfigReader.getProperty("registration_success_message");
-        System.out.println(expectedSuccesMessage);
-        // Assert.assertEquals(expectedSuccesMessage,actualSuccessMessage);
-        Assert.assertTrue("Success mesaji gorulmedi", actualSuccessMessage.contains(expectedSuccesMessage));
+//        String actualSuccessMessage = registrationPage.successfulRegisterMessage.getText();
+//        System.out.println(actualSuccessMessage);
+//        expectedSuccesMessage= ConfigReader.getProperty("registration_success_message");
+//        System.out.println(expectedSuccesMessage);
+//        // Assert.assertEquals(expectedSuccesMessage,actualSuccessMessage);
+//        Assert.assertTrue("Success mesaji gorulmedi", actualSuccessMessage.contains(expectedSuccesMessage));
     }
+
 
     @And("User validates that he registered succesfully success message as {string}")
     public void userValidatesThatHeRegisteredSuccesfullySuccessMessageAs(String expectedSuccesMessage) {
