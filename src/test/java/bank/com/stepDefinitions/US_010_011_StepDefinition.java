@@ -157,7 +157,7 @@ public class US_010_011_StepDefinition {
 
     }
 
-    @Then("User click save button")
+    @Then("User click save button to create customer")
     public void userClickSaveButton() {
         us_010_011Page.saveButton.click();
 

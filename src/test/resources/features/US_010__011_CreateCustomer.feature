@@ -74,6 +74,6 @@ Feature: US_010_011 Create Customer
 
     Scenario: User can select Zelle Enrolled optionally and save it
       And User click zelle enrolled check box
-      Then User click save button
+      Then User click save button to create customer
       And User sees success message2
 
