@@ -1,0 +1,451 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2021-08-26T09:58:14.674Z",
+        "line": 4,
+        "name": "TC_0501 User cannot login with invalid username validating the error message",
+        "description": "",
+        "id": "us-005-login-page-should-not-be-accessible-with-invalid-credentials;tc-0501-user-cannot-login-with-invalid-username-validating-the-error-message",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 5,
+            "name": "User on the home page \"homepage_url\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
+            "name": "User click menu icon",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "User click signIn Option",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 8,
+            "name": "user provides username and password",
+            "match": {},
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "password"
+                ]
+              },
+              {
+                "cells": [
+                  "xxxxxx",
+                  "Team53user."
+                ]
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 11,
+            "name": "User click secondSignInButton",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 12,
+            "name": "User see Failed Message",
+            "match": {},
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@US_005"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-26T09:58:14.768Z",
+        "line": 15,
+        "name": "TC_0502 User cannot login with invalid password validating the error message",
+        "description": "",
+        "id": "us-005-login-page-should-not-be-accessible-with-invalid-credentials;tc-0502-user-cannot-login-with-invalid-password-validating-the-error-message",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 16,
+            "name": "User on the home page \"homepage_url\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 17,
+            "name": "User click menu icon",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 18,
+            "name": "User click signIn Option",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 19,
+            "name": "user provides username and password",
+            "match": {},
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "password"
+                ]
+              },
+              {
+                "cells": [
+                  "team53user",
+                  "yyyyyy"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 22,
+            "name": "User click secondSignInButton",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 23,
+            "name": "User see Failed Message",
+            "match": {},
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@US_005"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-26T09:58:14.768Z",
+        "line": 26,
+        "name": "TC_0503 User cannot login with invalid username and password validating the error message",
+        "description": "",
+        "id": "us-005-login-page-should-not-be-accessible-with-invalid-credentials;tc-0503-user-cannot-login-with-invalid-username-and-password-validating-the-error-message",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 27,
+            "name": "User on the home page \"homepage_url\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 28,
+            "name": "User click menu icon",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 29,
+            "name": "User click signIn Option",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 30,
+            "name": "user provides username and password",
+            "match": {},
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "password"
+                ]
+              },
+              {
+                "cells": [
+                  "xxxxxx",
+                  "yyyyyy"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 33,
+            "name": "User click secondSignInButton",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 34,
+            "name": "User see Failed Message",
+            "match": {},
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@US_005"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-26T09:58:14.784Z",
+        "line": 37,
+        "name": "TC_0504 User with invalid credentials should be given an option to reset their password",
+        "description": "",
+        "id": "us-005-login-page-should-not-be-accessible-with-invalid-credentials;tc-0504-user-with-invalid-credentials-should-be-given-an-option-to-reset-their-password",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 38,
+            "name": "User on the home page \"homepage_url\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 39,
+            "name": "User click menu icon",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 40,
+            "name": "User click signIn Option",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 41,
+            "name": "user provides username and password",
+            "match": {},
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "password"
+                ]
+              },
+              {
+                "cells": [
+                  "xxxxxx",
+                  "yyyyyy"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 44,
+            "name": "User click Did you forget your password ?",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 45,
+            "name": "Enter email that suscribed",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 46,
+            "name": "User click Reset password",
+            "match": {},
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@US_005"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-08-26T09:58:14.784Z",
+        "line": 49,
+        "name": "TC_0505 User should be given the option to navigate to registration page if they did not register yet",
+        "description": "",
+        "id": "us-005-login-page-should-not-be-accessible-with-invalid-credentials;tc-0505-user-should-be-given-the-option-to-navigate-to-registration-page-if-they-did-not-register-yet",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 50,
+            "name": "User on the home page \"homepage_url\"",
+            "match": {},
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 51,
+            "name": "User click menu icon",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 52,
+            "name": "User click signIn Option",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 53,
+            "name": "user provides username and password",
+            "match": {},
+            "rows": [
+              {
+                "cells": [
+                  "username",
+                  "password"
+                ]
+              },
+              {
+                "cells": [
+                  "xxxxxx",
+                  "yyyyyy"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 56,
+            "name": "User click register option if they do not yet registered (Register a new account)",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 57,
+            "name": "User see registration page",
+            "match": {},
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@US_005"
+          }
+        ]
+      }
+    ],
+    "name": "US_005_Login page should not be accessible with invalid credentials",
+    "description": "",
+    "id": "us-005-login-page-should-not-be-accessible-with-invalid-credentials",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/US_005_InValidCredentials.feature",
+    "tags": [
+      {
+        "name": "@US_005",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

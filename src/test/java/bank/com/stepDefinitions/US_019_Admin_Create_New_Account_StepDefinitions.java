@@ -29,7 +29,7 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
     RegistrationPage registrationPage= new RegistrationPage();
     ManageAccountsPage manageAccountsPage=new ManageAccountsPage();
 
-
+/*
     @Then("user provides username and password")
     public void user_provides_username_and_password(DataTable dataTable) {
         List<String> data= dataTable.row(3);
@@ -38,7 +38,7 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
         loginPage.loginPageUsernameTextBox.sendKeys(data.get(0));
         loginPage.loginPagePasswordTextBox.sendKeys(data.get(1));
     }
-
+*/
     @Then("user logs in")
     public void user_logs_in() {
         loginPage.loginPageSignInButtonSibel.click();
