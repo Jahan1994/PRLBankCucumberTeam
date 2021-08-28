@@ -21,6 +21,10 @@ public class LoginPage{
     public WebElement loginPageCancelButton;
 
 
+    //@FindBy(partialLinkText = "Sign in")
+ //   @FindBy(xpath = "(//span[text()='Sign in'])[3]")
+
+
     // @FindBy(partialLinkText = "Sign in")
     // public WebElement loginPageSignInButton;
 
