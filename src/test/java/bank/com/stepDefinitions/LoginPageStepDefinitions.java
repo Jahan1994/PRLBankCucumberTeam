@@ -36,13 +36,12 @@ public class LoginPageStepDefinitions {
     registrationPage.passWord.sendKeys(ConfigReader.getProperty("user_passwordd"));
   }
 
-<<<<<<< HEAD
+
   @Then("User clicks Sign in")
   public void userClicksSignIn() {
     registrationPage.signIn.click();
   }
-=======
->>>>>>> main
+
 
   @Then("User asserts new page")
   public void userAssertsNewPage() {

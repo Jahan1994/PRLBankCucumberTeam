@@ -27,10 +27,10 @@ public class LoginPage{
     @FindBy(xpath = "//*[text()='Sign in']")
     public WebElement loginPageSignInButton;
 
-
-
     @FindBy(xpath = "(//*[.='Sign in'])[7]")
     public WebElement loginPageSignInButtonSibel;
+
+
 
 
     @FindBy(xpath = "(//*[.='Sign in'])[7]")
