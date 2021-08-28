@@ -5,10 +5,10 @@ Feature: US_0019 System should allow Admin to create a new Account
     Given User on the home page "homepage_url"
       Then User clicks menu icon
       Then User navigates to Login page
-      Then user provides username and password
+      Then user provides username and password for login
         |username|password|
         |admin|admin|
-        |team53admin|Team53admin.|
+        |team53manager|Team53manager.|
       Then user logs in
     And user navigates to my operations
     When user clicks on manageAccount
