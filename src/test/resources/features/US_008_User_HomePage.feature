@@ -16,7 +16,7 @@ Feature: US_008_Password segment as user Homepage should be editable
   Scenario: US_008_TC_801 old password can not be used again
     Given User enter old password as a new password
     Then User enter new old password for confirmation
-    When User click save button
+    When User click save button for password
     Then User verifies the not saved message
 
 
@@ -50,21 +50,5 @@ Feature: US_008_Password segment as user Homepage should be editable
   Scenario: US_008_TC_807 The new password should be confirmed
     Given User enter new password to change
     Then User enter new password confirmation
-    Then User click save button
+    Then User click save button for password
     Then User sees and verifies the password has changed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

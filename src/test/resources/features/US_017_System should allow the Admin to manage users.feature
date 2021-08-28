@@ -28,49 +28,49 @@ Feature: US_017_TC01701-04 System should allow the Admin to manage users
       | testadmin2 |
       | testadmin1 |
 
-#
-#  @TC01705-01708
-#  Scenario Outline: Admin can view all roles
-#
-#    Then selects "<profile>" role and clicks the view button
-#
-#    Then asserts that the user info is displayed
-#
-#
-#    Examples:
-#
-#      | profile       |
-#      | ROLE_USER     |
-#      | ROLE_EMPLOYEE |
-#      | ROLE_MANAGER  |
-#      | ROLE_ADMIN    |
-#
-#  @TC01709-01712
-#  Scenario Outline: Admin can edit all roles
-#    Then clicks "<profile>" edit button
-#    Then updates user info
-#    Then clicks save button
-#    Then asserts the updated message
-#
-#    Examples:
-#      | profile       |
-#      | ROLE_USER     |
-#      | ROLE_EMPLOYEE |
-#      | ROLE_MANAGER  |
-#      | ROLE_ADMIN    |
-#
-#
-#  @TC01713-01716
-#  Scenario Outline:
-#    Then user searches for "<userName>" to delete
-#    Then confirms delete operation
-#    Then asserts the updated message
-#
-#    Examples:
-#      | userName   |
-#      | sibel      |
-#      | testadmin5 |
-#      | testadmin4 |
-#      | testadmin3 |
-#      | testadmin2 |
-#      | testadmin1 |
+
+  @TC01705-01708
+  Scenario Outline: Admin can view all roles
+
+    Then selects "<profile>" role and clicks the view button
+
+    Then asserts that the user info is displayed
+
+
+    Examples:
+
+      | profile       |
+      | ROLE_USER     |
+      | ROLE_EMPLOYEE |
+      | ROLE_MANAGER  |
+      | ROLE_ADMIN    |
+
+  @TC01709-01712
+  Scenario Outline: Admin can edit all roles
+    Then clicks "<profile>" edit button
+    Then updates user info
+    Then clicks save button
+    Then asserts the updated message
+
+    Examples:
+      | profile       |
+      | ROLE_USER     |
+      | ROLE_EMPLOYEE |
+      | ROLE_MANAGER  |
+      | ROLE_ADMIN    |
+
+
+  @TC01713-01716
+  Scenario Outline:
+    Then user searches for "<userName>" to delete
+    Then confirms delete operation
+    Then asserts the updated message
+
+    Examples:
+      | userName   |
+      | sibel      |
+      | testadmin5 |
+      | testadmin4 |
+      | testadmin3 |
+      | testadmin2 |
+      | testadmin1 |
