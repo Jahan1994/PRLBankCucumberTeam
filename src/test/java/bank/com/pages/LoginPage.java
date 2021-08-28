@@ -25,9 +25,14 @@ public class LoginPage {
     @FindBy(partialLinkText = "Cancel")
     public WebElement loginPageCancelButton;
 
-    @FindBy(xpath = "//button[@class='btn btn-primary']")
+    // @FindBy(partialLinkText = "Sign in")
+    // public WebElement loginPageSignInButton;
+
+    @FindBy(xpath = "//*[text()='Sign in']")
     public WebElement loginPageSignInButton;
 
-
+    @FindBy(xpath = "(//*[.='Sign in'])[7]")
+    public WebElement secondSignInButton;
 
 }
+
