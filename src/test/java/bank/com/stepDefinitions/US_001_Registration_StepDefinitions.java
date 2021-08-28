@@ -1,22 +1,22 @@
 package bank.com.stepDefinitions;
 
 import bank.com.pojos.User;
-import bank.com.utilities.Driver;
-import bank.com.utilities.ReadTxt;
-import bank.com.utilities.WriteToTxt;
+import bank.com.utilities.*;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 import org.junit.Assert;
 import bank.com.pages.HomePage;
 import bank.com.pages.RegistrationPage;
-import bank.com.utilities.ConfigReader;
 import bank.com.pojos.Customer;
 
 import java.util.List;
 
 public class    US_001_Registration_StepDefinitions {
+
+    RegistrationPage registerPage=new RegistrationPage();
 
     HomePage homePage = new HomePage();
     RegistrationPage registrationPage= new RegistrationPage();
@@ -32,12 +32,13 @@ public class    US_001_Registration_StepDefinitions {
     String ssn;
 
 
+
     @Then("User provides a valid SSN with javafaker as {string}")
     public void userProvidesAValidSSNWithJavafakerAs(String ssn) {
         ssn = faker.idNumber().ssnValid();
         this.ssn=ssn;
         Driver.waitAndSendText(registrationPage.ssnTextBox, ssn, 5);
-       // registrationPage.ssnTextBox.sendKeys(ssn);
+        // registrationPage.ssnTextBox.sendKeys(ssn);
         customer.setSsn(ssn);
     }
     @Then("User provides a valid Firstname with javafaker as {string}")
@@ -79,13 +80,13 @@ public class    US_001_Registration_StepDefinitions {
         username= faker.name().username();
         this.userName=username;
         registrationPage.usernameTextBox.sendKeys(username);
-       customer.setUserName(username);
+        customer.setUserName(username);
 
     }
 
     @Then("User provides a valid Email with javafaker as {string}")
     public void userProvidesAValidEmailWithJavafakerAs(String email) {
-       // email= faker.internet().emailAddress();
+        // email= faker.internet().emailAddress();
         email=firstName+lastName+"@gmail.com";
         registrationPage.emailTextBox.sendKeys(email);
         customer.setEmail(email);
@@ -112,7 +113,7 @@ public class    US_001_Registration_StepDefinitions {
 
         registrationPage.registerButton.click();
         WriteToTxt.saveAllCustomer(fileName, customer, firstPassword, userName);
-      //  System.out.println("Username " + customer.getUser().getUsername());
+        //  System.out.println("Username " + customer.getUser().getUsername());
 
         //toplu olarak yazdirma
         List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
@@ -139,7 +140,7 @@ public class    US_001_Registration_StepDefinitions {
 
     @And("User validates that he registered succesfully success message as {string}")
     public void userValidatesThatHeRegisteredSuccesfullySuccessMessageAs(String expectedSuccesMessage) {
-         String actualSuccessMessage = registrationPage.successfulRegisterMessage.getText();
+        String actualSuccessMessage = registrationPage.successfulRegisterMessage.getText();
         System.out.println(actualSuccessMessage);
         expectedSuccesMessage= ConfigReader.getProperty("registration_success_message");
         // Assert.assertEquals(expectedSuccesMessage,actualSuccessMessage);
@@ -214,5 +215,67 @@ public class    US_001_Registration_StepDefinitions {
     }
 
 
+    @Then("User provides a valid ssn for password {string}")
+    public void userProvidesAValidSsnForPassword(String ssn) {
+        String ssn1=faker.idNumber().ssnValid();
+        System.out.println(ssn1);
+        registerPage.ssnTextBox.sendKeys(ssn1);
+    }
+
+    @Then("User provides a valid firstname for password {string}")
+    public void userProvidesAValidFirstnameForPassword(String firstname) {
+        registerPage.firstNameTextBox.sendKeys(firstname);
+    }
+
+    @Then("User provides a valid lastname for password {string}")
+    public void userProvidesAValidLastnameForPassword(String lastname) {
+        registerPage.lastNameTextBox.sendKeys(lastname);
+    }
+
+    @Then("User provides a valid address for password {string}")
+    public void userProvidesAValidAddressForPassword(String address) {
+        registerPage.addressTextBox.sendKeys(address);
+    }
+
+    @Then("User provides a valid Mobile Phone Number for password {string}")
+    public void userProvidesAValidMobilePhoneNumberForPassword(String mobilePhoneNumber){
+        registerPage.mobilePhoneNumberTextBox.sendKeys(mobilePhoneNumber);
+    }
+
+    @Then("User provides a valid Username for password {string}")
+    public void userProvidesAValidUsernameForPassword(String userName) {
+        registerPage.usernameTextBox.sendKeys(userName);
+    }
+
+    @Then("User provides a valid Email for password {string}")
+    public void userProvidesAValidEmailForPassword(String email) {
+        registerPage.emailTextBox.sendKeys(email);
+    }
+
+    @Then("User provides a valid Password for password {string}")
+    public void userProvidesAValidPasswordForPassword(String validPassword) {
+        registerPage.firstPasswordTextBox.sendKeys(validPassword);
+    }
+
+    @Then("User controls stronger Password for password {string}")
+    public void userControlsStrongerPasswordForPassword(String strongPassword) {
+        Assert.assertTrue(registerPage.passwordStrenght.isEnabled());
+
+    }
+
+    @Then("User provides a valid Password to Password confirmation textbox for password {string}")
+    public void userProvidesAValidPasswordToPasswordConfirmationTextboxForPassword(String passwordConfirmation) {
+        registerPage.secondPasswordTextBox.sendKeys(passwordConfirmation);
+
+    }
+    @Then("User clicks on Register button for new register")
+    public void userClicksOnRegisterButtonForNewRegister() {
+        registrationPage.registersubmitTextBox.click();
+    }
+    @And("User validates that the registered succesfully for password")
+    public void userValidatesThatTheRegisteredSuccesfullyForPassword() {
+        ReusableMethods.waitForVisibility(registerPage.successfulRegisterMessage, 5);
+    }
 
 }
+
