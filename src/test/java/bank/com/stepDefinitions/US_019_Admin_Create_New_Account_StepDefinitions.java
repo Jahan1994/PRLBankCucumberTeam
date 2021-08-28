@@ -132,7 +132,6 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
         String expectedDescription =  "Instructor saving account";
         Assert.assertEquals(expectedDescription, actualDescription);
 
-
     }
 
     @Then("user clicks on back button")
