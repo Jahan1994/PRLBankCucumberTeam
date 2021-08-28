@@ -1,40 +1,49 @@
-@registration
+
 Feature: US_001 Pozitif Registration with valid credentials
+#  Background: Open page
+#    Given user goes to "gmibank_url"
+#    Then user cliks menu icon
+#    And user clicks to register
 
-  Scenario Outline: Register Page
-    Given User on the home page "gmibank_url"
+#  bu metodu sadece SignIN tiklayabilmek icin olusturdum Ahmet abi bu metodu kendi feature sayfasinda olusturacak.
+#  Sonra ben buradan silerim
+  Background:
+    Given User on the home page "homepage_url"
     Then User clicks menu icon
-    And  User clicks register button
-    Then User provides a valid ssn "<SSN>"
-    Then User provides a valid firstname "<Firstname>"
-    Then User provides a valid lastname "<Lastname>"
-    Then User provides a valid address "<Address>"
-    Then User provides a valid Mobile Phone Number "<Mobile Phone Number>"
-    Then User provides a valid Username "<Username>"
-    Then User provides a valid Email "<Email>"
-    Then User provides a valid Password "<Password>"
-    Then User controls stronger Password "<Password>"
-    Then User provides a valid Password to Password confirmation textbox "<Password confirmation textbox>"
+#        And  User navigates to Login page
+
+  @registrationwithconcretevalues
+  Scenario: TC_001 Success registration with valid credentials
+#    Given User on the home page "homepage_url"
+#    Then User clicks menu icon
+    And  User navigates to registration page
+    Then User provides a valid SSN
+    Then User provides a valid Firstname
+    Then User provides a valid Lastname
+    Then User provides a valid Address
+    Then User provides a valid Mobile Phone Number
+    Then User provides a valid Username
+    Then User provides a valid Email
+    Then User provides a valid Password
+    Then User provides a valid Password to Password confirmation textbox
     Then User clicks on Register button
-    And  User validates that the registered succesfully
+    And  User validates that he registered succesfully
 
+  @registrationwithjavafakervalues
+  Scenario Outline: TC_002 Success registration with valid credentials with java faker
+    And  User navigates to registration page
+    Then User provides a valid SSN with javafaker as "<ssn>"
+    Then User provides a valid Firstname with javafaker as "<firstname>"
+    Then User provides a valid Lastname with javafaker as "<lastname>"
+    Then User provides a valid Address with javafaker as "<address>"
+    Then User provides a valid Mobile Phone Number with javafaker as "<mobilephone>"
+    Then User provides a valid Username with javafaker as "<username>"
+    Then User provides a valid Email with javafaker as "<email>"
+    Then User provides a valid Password with javafaker as "<firstpassword>"
+    Then User provides a valid Password to Password confirmation textbox with javafaker as "<secondpassword>"
+    Then User clicks on Register button and validates that with a success message as "<message>"
+#    And user close the browser
 
-
-    Examples: valid datas
-      | SSN | Firstname | Lastname     | Address    | Mobile Phone Number | Username | Email                       | Password        | Password confirmation textbox |
-      |     | Arnold    | Happy        | Canada     | 123-456-7990        | Arnold   | arnold@gmail.com            | aRNOLD1234.     | aRNOLD1234.                   |
-      |     | Fernando  | Muslera      | Uruguay    | 234-566-5443        | Fernando | fernando@gmail.com          | Fernando1234?   | Fernando1234?                 |
-      |     | Hüsnü     | Şenlendirici | Afganistan | 345-432-5678        | Husnu    | husnusenlendirici@gmail.com | Husnu1234.      | Husnu1234.                    |
-      |     | Jardel    | Tutamaki     | Giresun    | 123-456-7654        | Jardel   | Jardel@gmail.com            | Jardel.9876     | Jardel.9876                   |
-      |     | Kamuran   | Akkor        | Trabzon    | 657-670-8799        | Kamuran  | kamuranAkkor@gmail.com      | Kamuran1231979? | Kamuran1231979?               |
-
-  @logİn
-  Scenario: Login Page
-    Given User on the home page "gmibank_url"
-    Then User clicks menu icon
-    Then User clicks Sign in button
-    Then User provides a valid username
-    Then User provides a valid passWord
-    Then User clicks Sign in
-    Then User asserts new page
-
+    Examples:
+      | ssn | firstname | lastname | address | mobilephone | username | email | firstpassword | secondpassword | message |
+      |     |           |           |         |            |          |       |               |                |         |

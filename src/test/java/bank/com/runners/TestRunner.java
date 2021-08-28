@@ -41,7 +41,9 @@ import org.junit.runner.RunWith;
 
         //4
 //        tags="@ali or miniregression",
+
         tags="@registration",
+
         //tags="@istediginiz tag", TEstNG de gordugumuz group gibi calisir
         //tags="@smoke or miniregression" => boyle yapabiliriz. Or dersek veya
         // work in progress hangi feature veya senaryoyu calistiracagini bilmesi icin onemli

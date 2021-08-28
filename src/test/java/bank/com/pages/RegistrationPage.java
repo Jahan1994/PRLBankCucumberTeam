@@ -1,5 +1,4 @@
 package bank.com.pages;
-
 import bank.com.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import static org.openqa.selenium.support.PageFactory.*;
@@ -7,14 +6,21 @@ import static org.openqa.selenium.support.PageFactory.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import bank.com.utilities.Driver;
+
+public class RegistrationPage{
 
 
-public class RegistrationPage {
 
     //static olan metodlari cagirdik
     public RegistrationPage(){
 
-        PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
+       // initElements(Driver.getDriver(), this);
+
     }
 
     @FindBy(xpath = "//a[@aria-haspopup='true']")
@@ -60,8 +66,9 @@ public class RegistrationPage {
     @FindBy(xpath = "//*[text()='Registration saved!']")
     public WebElement successfulRegisterMessage;
 
-    @FindBy(xpath = "//*[text()='Registration saved!']")
+    @FindBy(xpath = "//*[text()='Failed to sign in!']")
     public WebElement wrongSuccesRegisterMessage;
+
 
     @FindBy (xpath = "//*[@name='username']")
     public WebElement userName;
@@ -73,7 +80,13 @@ public class RegistrationPage {
     public WebElement signIn;
 
     @FindBy(xpath = "//*[span='My Operations']")
-    public WebElement logIn;
+    public WebElement myOperations;
+
+    @FindBy (xpath = "(//*[@type='button'])[3]")
+    public WebElement cancelButton;
+
+
+
 
     /*
     @FindBy( css= "#strengthBar > li:nth-child(1)")
@@ -91,5 +104,15 @@ public WebElement colorLine4;
 @FindBy( css= "#strengthBar > li:nth-child(5)")
 public WebElement colorLine5;
      */
+
+    @FindBy(xpath = "(//div[@class='invalid-feedback'])[1]")
+    public WebElement invalidSsnFeedbackText;
+
+    @FindBy(xpath = "//*[@id=\"register-form\"]/div[5]/div")
+    public WebElement invalidMobilePhoneNumberfeedbackText;
+
+    @FindBy(css = "#register-form > div:nth-child(7) > div")
+    public WebElement invalidEmailFeedbackText;
+
 
 }
