@@ -11,6 +11,20 @@ public class DateUtil {
         String today = new SimpleDateFormat("MMMM dd, yyy").format(new Date());
         return today;
     }
+    // MM/dd/yyyy
+    public static String todaysDate1() {
+        String today = new SimpleDateFormat("MM/dd/yyyy").format(new Date());
+        return today;
+    }
+
+    public static String todaysTime1() {
+        String today = new SimpleDateFormat("hh:mm").format(new Date());
+        return today;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(todaysDate1());
+    }
 
     // MM-dd-yy     --> 02-17-19
     public static String todaysDate2(){
@@ -43,7 +57,7 @@ public class DateUtil {
 
     // hh:mm   --> -3:45
     public static String todaysTime(){
-        String today = new SimpleDateFormat("hh:mm").format(new Date());
+        String today = new SimpleDateFormat("hh:mm a").format(new Date());
         return today;
     }
 

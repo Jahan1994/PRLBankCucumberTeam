@@ -20,7 +20,8 @@ public class LoginPage{
     @FindBy(partialLinkText = "Cancel")
     public WebElement loginPageCancelButton;
 
-    @FindBy(partialLinkText = "Sign in")
+    //@FindBy(partialLinkText = "Sign in")
+    @FindBy(xpath = "(//span[text()='Sign in'])[3]")
     public WebElement loginPageSignInButton;
 
     @FindBy(xpath = "(//*[.='Sign in'])[7]")
