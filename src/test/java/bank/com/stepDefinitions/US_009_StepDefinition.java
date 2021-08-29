@@ -129,7 +129,7 @@ public class US_009_StepDefinition {
 
     @Then("User cliks sign in button")
     public void userCliksSignInButton() {
-        loginPage.loginPageSignInButton.click();
+        loginPage.loginPageSignInButtonSibel.click();
 
     }
 
