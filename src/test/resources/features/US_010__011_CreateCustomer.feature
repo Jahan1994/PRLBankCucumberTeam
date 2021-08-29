@@ -18,7 +18,7 @@ Feature: US_010_011 Create Customer
     And User sees lastname written
     And User sees Email written
     And User sees Adress written
-    Then  User sees SSN written
+    Then User sees SSN written
 
 
 
@@ -52,7 +52,6 @@ Feature: US_010_011 Create Customer
 
     Scenario:State should be provided as US state and cannot be blank
       And User enter State"state"
-
 
 
 

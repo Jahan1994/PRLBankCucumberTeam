@@ -20,7 +20,7 @@ Feature: US_0019 System should allow Admin to create a new Account
 
       Examples: all data
         |description|balance|accountType|accountStatusType|
-        |Instructor saving account|10000|CHECKING|ACTIVE  |
+        |saving account|10000|CHECKING|ACTIVE  |
     # |Instructor checking account|2000|SAVING|ACTIVE|
 
   @accountcreatesave
@@ -69,6 +69,22 @@ Feature: US_0019 System should allow Admin to create a new Account
              |description|balance|accountType|accountStatusType|
              |Instructor saving account|10000|CHECKING|ACTIVE  |
     # |Instructor checking account|2000|SAVING|ACTIVE|
+  @accountcreatesave
+  Scenario Outline: User goes to account creation page again to create a second account
+    Given user creates a new account
+    Given user types a description "<description>" for second account
+    And user types the balance as "<balance>"
+    Then user selects an account type from dropdown "<accountType>"
+    When user selects an accountStatusType "<accountStatusType>"
+    Given user selects a current create date "<currentDate>" "<currentTime>"
+    Given user selects a closed date "<closedDate>" "<currentTime>"
+    And user selects an employee
+    And user clicks on save button
+    Then user confirm that he saves the account with success for second account
+#    And user close the browser
+    Examples: all data
+      |description|balance|accountType|accountStatusType|currentDate|currentTime|closedDate|
+      |saving account|10000|CHECKING|ACTIVE  |            |          |           |
 
   @accountcreateback
   Scenario Outline: TC_1907	There should be a back button on the page

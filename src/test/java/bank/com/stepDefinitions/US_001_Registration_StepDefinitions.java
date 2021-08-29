@@ -1,8 +1,10 @@
 package bank.com.stepDefinitions;
 
+import bank.com.pages.LoginPage;
 import bank.com.pojos.User;
 import bank.com.utilities.*;
 import com.github.javafaker.Faker;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,6 +21,7 @@ public class    US_001_Registration_StepDefinitions {
     RegistrationPage registerPage=new RegistrationPage();
 
     HomePage homePage = new HomePage();
+    LoginPage loginPage= new LoginPage();
     RegistrationPage registrationPage= new RegistrationPage();
     Faker faker = new Faker();
     Customer customer=new Customer();
@@ -61,7 +64,8 @@ public class    US_001_Registration_StepDefinitions {
 
     @Then("User provides a valid Address with javafaker as {string}")
     public void userProvidesAValidAddressWithJavafakerAs(String address) {
-        address=faker.address().fullAddress();
+//        address=faker.address().fullAddress();
+        address=faker.address().streetAddress();
         Driver.waitAndSendText(registrationPage.addressTextBox, address, 1);
         //registrationPage.firstNameTextBox.sendKeys(ConfigReader.getProperty("valid_firstname"));
         customer.setAddress(address);
@@ -112,6 +116,7 @@ public class    US_001_Registration_StepDefinitions {
     public void userClicksOnRegisterButtonAndValidatesThatWithASuccessMessageAs(String expectedSuccesMessage) throws InterruptedException {
 
         registrationPage.registerButton.click();
+
         WriteToTxt.saveAllCustomer(fileName, customer, firstPassword, userName);
         //  System.out.println("Username " + customer.getUser().getUsername());
 
@@ -277,5 +282,16 @@ public class    US_001_Registration_StepDefinitions {
         ReusableMethods.waitForVisibility(registerPage.successfulRegisterMessage, 5);
     }
 
+
+
+    @And("User enter a valid username and a valid password for customer")
+    public void userEnterAValidUsernameAndAValidPasswordForCustomer() {
+        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
+        String newCostumerUsername= list2.get(list2.size()-1).getUserName();
+        String  newCostumerPassword= list2.get(list2.size()-1).getFirstPassword();
+
+        loginPage.loginPageUsernameTextBox.sendKeys(newCostumerUsername);
+        loginPage.loginPagePasswordTextBox.sendKeys(newCostumerPassword);
+    }
 }
 
