@@ -96,7 +96,7 @@ public class US_008_StepDefinitions {
         ReusableMethods.waitFor(2);
     }
 
-    @Then("User click save button")
+    @Then("User click save button for password")
     public void userClickSaveButton() {
         us_008_password_homePage.saveButton.click();
         ReusableMethods.waitFor(2);
