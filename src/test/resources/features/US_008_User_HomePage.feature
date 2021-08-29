@@ -52,19 +52,5 @@ Feature: US_008_Password segment as user Homepage should be editable
     Then User enter new password confirmation
     Then User click save button for password
     Then User sees and verifies the password has changed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Then User sees and verifies the password has changed
 

@@ -7,15 +7,15 @@ public class Countries {
 
     private int id;
     private String firstName;
-    private String  lastName;
-    private String  middleInitial;
-    private String  email;
-    private String  mobilePhoneNumber;
-    private String  phoneNumber;
-    private String  zipCode;
-    private String  address;
+    private String lastName;
+    private String middleInitial;
+    private String email;
+    private String mobilePhoneNumber;
+    private String phoneNumber;
+    private String zipCode;
+    private String address;
     private String city;
-    private String  ssn;
+    private String ssn;
     private String createDate;
     private boolean zelleEnrolled;
 
@@ -27,22 +27,11 @@ public class Countries {
         this.country = country;
     }
 
-    Country []country;
-
-
+    Country[] country;
 
 
     private String state;
     private String accounts;
-
-
-
-
-
-
-
-
-
 
     public int getId() {
         return id;
@@ -163,8 +152,6 @@ public class Countries {
     public void setAccounts(String accounts) {
         this.accounts = accounts;
     }
-
-
 
 
 }

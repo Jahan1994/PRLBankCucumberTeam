@@ -1,6 +1,7 @@
 @Create
 Feature: US_010_011 Create Customer
-  Background:
+  #Background:
+  Scenario:
     Given User on the home page "homepage_url"
     Then  User clicks menu icon
     And  User navigates to Login page
@@ -17,45 +18,61 @@ Feature: US_010_011 Create Customer
     And User sees lastname written
     And User sees Email written
     And User sees Adress written
-    Then  User sees SSN written
+    Then User sees SSN written
 
 
-  @US010TC01
+
     Scenario:Middle Intial should be provided and cannot be left as blank
-    And User enter MI "middle"
+      And User enter MI "middle"
 
 
-    @US010T02
     Scenario:Mobile Phone Number should be provided and cannot be left as blank
       And User enter MP "mobile"
 
 
-  @US010T03
-  Scenario:Phone Numer should be provided and cannot be left as blank
-    And User enter PH "phone"
+    Scenario:Phone Numer should be provided and cannot be left as blank
+      And User enter PH "phone"
 
 
-  @US010T04
-  Scenario:Zip Code  should be provided and cannot be left as blank
-    And User enter ZC "zipcode"
+    Scenario:Zip Code  should be provided and cannot be left as blank
+      And User enter ZC "zipcode"
 
 
-  @US010T05
-  Scenario:Address as street and number should be provided and cannot be left blank
-    And User enter  Adress "adress"
+    Scenario:Address as street and number should be provided and cannot be left blank
+      And User enter Adress "adress"
 
 
-  @US010T06
-  Scenario:City should be provided and cannot be left as blank
-    And User enter City "city"
+    Scenario:City should be provided and cannot be left as blank
+      And User enter City "city"
 
 
-  @US010T07
-  Scenario:Country should be typed and cannot be blank
-    And User enter Country "country"
+    Scenario:Country should be typed and cannot be blank
+      And User enter Country "country"
 
 
-  @US010T08
-  Scenario:State should be provided as US state and cannot be blank
-    And User enter State"state"
+    Scenario:State should be provided as US state and cannot be blank
+      And User enter State"state"
+
+
+
+    Scenario: The date cannot be typed earlier, in the past, at the time of creation a customer
+      And User sees entered today date and time
+
+
+    Scenario: The date cannot be typed earlier, in the past, at the time of creation a custome
+      And User sees correct order date
+
+
+    Scenario: User can choose a user from the registration and it cannot be blank
+      And User choose valid user
+
+
+    Scenario: There user can choose an account created on manage accounts
+      And User choose valid account
+
+
+    Scenario: User can select Zelle Enrolled optionally and save it
+      And User click zelle enrolled check box
+      Then User click save button to create customer
+      And User sees success message2
 

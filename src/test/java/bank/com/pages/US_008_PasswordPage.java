@@ -83,4 +83,5 @@ public class US_008_PasswordPage {
 
     @FindBy(xpath = "//li[@style='background-color: rgb(0, 255, 0);']")
     public WebElement green;
+
 }

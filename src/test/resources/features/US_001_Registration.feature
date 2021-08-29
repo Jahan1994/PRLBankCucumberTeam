@@ -7,9 +7,9 @@ Feature: US_001 Pozitif Registration with valid credentials
 
 #  bu metodu sadece SignIN tiklayabilmek icin olusturdum Ahmet abi bu metodu kendi feature sayfasinda olusturacak.
 #  Sonra ben buradan silerim
-      Background:
-        Given User on the home page "homepage_url"
-        Then User clicks menu icon
+  Background:
+    Given User on the home page "homepage_url"
+    Then User clicks menu icon
 #        And  User navigates to Login page
 
   @registrationwithconcretevalues
