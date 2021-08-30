@@ -1,0 +1,7 @@
+/target/
+*/target/*
+/.idea
+.idea
+/*.iml
+/*.log
+/bank.com.runners

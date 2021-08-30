@@ -33,15 +33,22 @@ import org.junit.runner.RunWith;
         features= "src/test/resources/features",
         //stepDefinitions package ismiu
         //3
-        glue="stepDefinitions",
+        glue="bank/com/stepDefinitions",
         //boylece packageleri birbirine bagladik
         //bu iki paket altinda kac tane class olursa olsun herhandi bir clasta yazilan her aadim
         //diger classlardaki adimlarla uyusurssa yeni adim olusturmaya gerek kalmaz
 
 
         //4
-//        tags="@ali or miniregression",
-        tags="@dex",
+//        tags="@ali or miniregression"
+
+
+
+
+
+        tags="@demo",
+
+
         //tags="@istediginiz tag", TEstNG de gordugumuz group gibi calisir
         //tags="@smoke or miniregression" => boyle yapabiliriz. Or dersek veya
         // work in progress hangi feature veya senaryoyu calistiracagini bilmesi icin onemli
@@ -59,7 +66,6 @@ import org.junit.runner.RunWith;
 )
 
 public class TestRunner {
-
 
 }
 
