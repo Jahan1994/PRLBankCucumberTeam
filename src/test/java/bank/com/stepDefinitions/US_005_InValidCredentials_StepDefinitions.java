@@ -38,7 +38,7 @@ public class US_005_InValidCredentials_StepDefinitions {
 
     @Then("user provides username and password")
     public void userProvidesUsernameAndPassword(DataTable dataTable) throws InterruptedException {
-        List<String> datalar= dataTable.row(1);
+        List<String> datalar= dataTable.row(2);
         System.out.println(datalar.get(0)); //xxxxxx
         pagelogin.loginPageUsernameTextBox.sendKeys(datalar.get(0));
         pagelogin.loginPagePasswordTextBox.sendKeys(datalar.get(1));

@@ -9,9 +9,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
 
 
 public class US_010_011_StepDefinition {
@@ -145,11 +147,21 @@ public class US_010_011_StepDefinition {
 
     @And("User choose valid account")
     public void userChooseValidAccount() {
+//        Select select = new Select(us_010_011Page.selectAccount);
+//        List<WebElement> accountList = select.getOptions();
+//        for (WebElement each : accountList) {
+//               System.out.println(each.getText());
+
+
         Select select = new Select(us_010_011Page.selectAccount);
-        select.selectByVisibleText("hh");
+        select.selectByVisibleText("617-92-0215 nolu SSN numarali sahis icin olusturlan CHECKING hesap numarasi");
         System.out.println(select.getFirstSelectedOption().getText());
 
-    }
+        select.selectByVisibleText("617-92-0215 nolu SSN numarali sahis icin olusturlan SAVING hesap numarasi");
+
+
+        }
+
 
     @And("User click zelle enrolled check box")
     public void userClickZelleEnrolledCheckBox() {

@@ -51,6 +51,7 @@ public class US_017_Pages {
     @FindBy(id = "activated")
     public WebElement activationCheckBox;
 
+
 //        @FindBy(xpath = "(//a[@class='d-flex align-items-center dropdown-toggle nav-link'])[3]")
 //        public WebElement signoutDropDownMenuButton;
 //

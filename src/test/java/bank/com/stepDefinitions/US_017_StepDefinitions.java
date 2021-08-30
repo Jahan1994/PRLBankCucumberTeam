@@ -2,14 +2,14 @@ package bank.com.stepDefinitions;
 
 import bank.com.pages.LoginPage;
 import bank.com.pages.US_017_Pages;
-import bank.com.utilities.ConfigReader;
-import bank.com.utilities.Driver;
-import bank.com.utilities.ReusableMethods;
+import bank.com.pojos.Customer;
+import bank.com.utilities.*;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
@@ -23,6 +23,10 @@ public class US_017_StepDefinitions {
     public static int order;
     public static String userName = "";
     public static int page = 1;
+
+    //buraya bu kodlari ekledim, dinamik olmasi icin
+    Customer customer=new Customer();
+    String fileName= ConfigReader.getProperty("fileNameOfCustomer");
 
     @Then("enters valid <{string}> as admin")
     public void entersValidAsAdmin(String username) {
@@ -56,25 +60,40 @@ public class US_017_StepDefinitions {
     public void userClicksOnTheDate() {
         us_17.createdDate.click();
 
-
     }
     @Then("user searches for {string}")
-    public void userSearchesFor(String userName) {
-        int count = 0;
+    public void userSearchesFor(String userName) throws InterruptedException {
 
-        for (int i = 1; i <= 20; i++) {
-            if (us_17.getUserName(i).equals(userName)) {
-                count++;
-                us_17.pressEditButton(i);
-                page = 1;
-                break;
-            }
-        }
-        if (count == 0) {
-            page++;
-            us_17.pageLinkClick(page);
-            userSearchesFor(userName);
-        }
+        Thread.sleep(3000);
+        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
+        userName=list2.get(list2.size()-1).getUserName();
+        WebElement lastCreatedCostumer= Driver.getDriver().findElement(By.xpath("//*[@id='" + userName +"']/td[4]/button"));
+        JSUtils.clickElementByJS(lastCreatedCostumer);
+        Thread.sleep(5000);
+
+                   //2. yontem, Bu yontemde olur.
+//        WebElement lastCreatedCostumerEdit= Driver.getDriver().findElement(By.xpath("(//span[text()='Edit'])[1]"));
+//        Driver.waitAndClick(lastCreatedCostumerEdit, 3);
+       // JSUtils.clickElementByJS(lastCreatedCostumerEdit);
+
+
+        //Asagidaki kodlari yoruma aldim. Tiklama yukarida yaptim
+
+//        int count = 0;
+//
+//        for (int i = 1; i <= 20; i++) {
+//            if (us_17.getUserName(i).equals(userName)) {
+//                count++;
+//                us_17.pressEditButton(i);
+//                page = 1;
+//                break;
+//            }
+//        }
+//        if (count == 0) {
+//            page++;
+//            us_17.pageLinkClick(page);
+//            userSearchesFor(userName);
+//        }
     }
 
 

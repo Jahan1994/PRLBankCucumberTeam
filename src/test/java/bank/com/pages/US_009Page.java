@@ -51,7 +51,7 @@ public class US_009Page {
     @FindBy(xpath = "//div[@class='form-group']")
     public WebElement dropdown;
 
-    @FindBy(id = "tp-customer-middleInitial")
+    @FindBy(xpath = "//input[@name='middleInitial']")
     public WebElement middle;
 
     @FindBy(xpath = "//input[@name='mobilePhoneNumber']")

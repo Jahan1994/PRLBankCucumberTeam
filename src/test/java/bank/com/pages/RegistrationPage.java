@@ -25,8 +25,13 @@ public class RegistrationPage{
 
     @FindBy(xpath = "//a[@aria-haspopup='true']")
     public WebElement iconMenu;
-    @FindBy(xpath = "//*[text()='Register']")
+
+//    @FindBy(xpath = "//*[text()='Register']")
+//        public WebElement registerButton;
+
+    @FindBy(id= "register-submit")
     public WebElement registerButton;
+
     @FindBy(xpath = "(//*[text()='Sign in'])[1]")
     public WebElement signInButton;
 
