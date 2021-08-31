@@ -17,6 +17,7 @@ import java.util.List;
 
 public class US_009_StepDefinition {
 
+
     LoginPage loginPage=new LoginPage();
     US_009Page us_009Page=new US_009Page();
     SoftAssert softAssert=new SoftAssert();
@@ -60,10 +61,7 @@ public class US_009_StepDefinition {
 
     @And("User enter {string}")
     public void userEnter(String ssn) {
-
-
        us_009Page.SSN.sendKeys(ConfigReader.getProperty(ssn));
-
     }
 
     @And("User cliks Search button")
