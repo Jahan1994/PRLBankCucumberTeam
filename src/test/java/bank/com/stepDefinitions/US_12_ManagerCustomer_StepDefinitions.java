@@ -4,14 +4,11 @@ import bank.com.pages.LoginPage;
 import bank.com.pages.US_012Page;
 import bank.com.utilities.JSUtils;
 import bank.com.utilities.ReusableMethods;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class US_12_ManagerCustomer_StepDefinitions {

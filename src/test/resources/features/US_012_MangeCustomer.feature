@@ -41,5 +41,5 @@ Feature:US_012_An Employee can manage Customer
   Scenario: User can delete a customer, but seeing a message if the user is sure about deletion
     When User click delete button
     Then User sees confirm delete operation message
-    And User click second delete button
-    And User sees success edit message
+   # And User click second delete button
+   # And User sees success edit message
