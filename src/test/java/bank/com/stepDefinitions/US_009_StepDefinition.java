@@ -22,9 +22,6 @@ public class US_009_StepDefinition {
     US_009Page us_009Page=new US_009Page();
     SoftAssert softAssert=new SoftAssert();
 
-    //Sorry.Buraya bu kodu ekledim dinamik olmaasi icin ==>bakiniz SSN
-    Customer customer=new Customer();
-    String fileName= ConfigReader.getProperty("fileNameOfCustomer");
 
     @And("User enter valid {string}")
     public void userEnterValid(String username) {
@@ -64,14 +61,7 @@ public class US_009_StepDefinition {
 
     @And("User enter {string}")
     public void userEnter(String ssn) {
-
-        //SSN dinamik olarak alindi
-//        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
-//        ssn= list2.get(list2.size()-1).getSsn();
-//        us_009Page.SSN.sendKeys(ssn);
-
-        us_009Page.SSN.sendKeys(ConfigReader.getProperty(ssn));
-
+       us_009Page.SSN.sendKeys(ConfigReader.getProperty(ssn));
     }
 
     @And("User cliks Search button")
