@@ -2,7 +2,7 @@ package bank.com.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)//unutulan bir sey varsa onu gormezden gel, hata verme demek
 public class Customer {
 
     private int id;
@@ -19,9 +19,9 @@ public class Customer {
     private String createDate;
     private boolean zelleEnrolled;
     private Country country;
-    private String state;
+    private String state;// bunu degistirmeli miyim? State mi olmali class adi? solda adi States , bir problem olur mu?
     private User user;
-
+  //  private String accounts;// bu yazilmamisti? yazmali miyim?
 
     //bunlar burda aslinda YOK!
     private String userName;
@@ -174,6 +174,26 @@ public class Customer {
     private Accounts accounts;
 
 
-}
+}    /*
 
+        "country": {
+            "id": 3,
+            "name": "USA",
+            "states": null
+        },
+        "state": "California",
+        "user": {
+            "id": 75194,
+            "login": "customer55",
+            "firstName": "Maria",
+            "lastName": "Clark",
+            "email": "customer55@gmail.com",
+            "activated": true,
+            "langKey": "en",
+            "imageUrl": null,
+            "resetDate": null
+        },
+        "accounts": null
+    },
+     */
 

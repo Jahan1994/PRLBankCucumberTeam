@@ -56,7 +56,6 @@ public class US_017_StepDefinitions {
     public void userClicksOnTheDate() {
         us_17.createdDate.click();
 
-
     }
     @Then("user searches for {string}")
     public void userSearchesFor(String userName) {
