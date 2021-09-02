@@ -214,7 +214,6 @@ public class    US_001_Registration_StepDefinitions {
     }
 
 
-<<<<<<< HEAD
     @Then("User provides a valid ssn for password {string}")
     public void userProvidesAValidSsnForPassword(String ssn) {
         String ssn1=faker.idNumber().ssnValid();
@@ -278,7 +277,3 @@ public class    US_001_Registration_StepDefinitions {
     }
 
 }
-=======
-
-}
->>>>>>> main
