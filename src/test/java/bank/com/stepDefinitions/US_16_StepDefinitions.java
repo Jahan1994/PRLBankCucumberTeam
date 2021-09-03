@@ -1,19 +1,16 @@
 package bank.com.stepDefinitions;
 
-import bank.com.pages.US_009Page;
-import bank.com.pages.US_015_Page;
+
 import bank.com.pages.US_16_Page;
 import bank.com.utilities.ConfigReader;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class US_16_StepDefinitions {
 
-    US_015_Page us_015_page = new US_015_Page();
-    US_009Page us_009Page = new US_009Page();
+
     US_16_Page us_16_page = new US_16_Page();
 
 
