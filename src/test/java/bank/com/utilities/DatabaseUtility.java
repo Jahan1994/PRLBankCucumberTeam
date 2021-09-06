@@ -262,6 +262,7 @@ public class DatabaseUtility {
 
         List<Object> list =getColumnData(query,"name");
         System.out.println(list);
+
 //        closeConnection();
 
 //        System.out.println(list);
