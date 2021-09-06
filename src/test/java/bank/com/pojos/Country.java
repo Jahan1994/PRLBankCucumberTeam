@@ -33,8 +33,14 @@ public class Country {
         this.state = state;
     }
 
+    public Country() {
+    }
+
+    public Country(int id, String name, String state) {
+        this.id = id;
+        this.name = name;
+        this.state = state;
 
 
-
-
+    }
 }
