@@ -80,8 +80,8 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
     @Given("user types a description {string}")
     public void userTypesADescription(String description) {
         //en son satiri cagirma
-        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
-        description= list2.get(list2.size()-1).getSsn() + " nolu SSN numarali sahis icin olusturlan CHECKING hesap numarasi";
+//        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
+//        description= list2.get(list2.size()-1).getSsn() + " nolu SSN numarali sahis icin olusturlan CHECKING hesap numarasi";
         manageAccountsPage.accountDescriptionTextBox.sendKeys(description);
 
     }
@@ -89,9 +89,9 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
     @Given("user types a description {string} for second account")
     public void userTypesADescriptionForSecondAccount(String secondDescription) {
         //en son satiri cagirma
-        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
-        secondDescription= list2.get(list2.size()-1).getSsn() + " nolu SSN numarali sahis icin olusturlan SAVING hesap numarasi";
-        manageAccountsPage.accountDescriptionTextBox.sendKeys(secondDescription);
+//        List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
+//        secondDescription= list2.get(list2.size()-1).getSsn() + " nolu SSN numarali sahis icin olusturlan SAVING hesap numarasi";
+         manageAccountsPage.accountDescriptionTextBox.sendKeys(secondDescription);
     }
 
     @And("user types the balance as {string}")
@@ -105,6 +105,14 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
         Select select = new Select(manageAccountsPage.accountTypeDropDown);
         //CHECKING hesap
         select.selectByVisibleText("CHECKING");
+        //select.selectByIndex(2);
+    }
+
+    @Then("user selects an account type from dropdown {string} for second account")
+    public void userSelectsAnAccountTypeFromDropdownForSecondAccount(String accountType) {
+        Select select = new Select(manageAccountsPage.accountTypeDropDown);
+        //CHECKING hesap
+        select.selectByVisibleText("SAVING");
         //select.selectByIndex(2);
     }
 

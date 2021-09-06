@@ -13,6 +13,7 @@ public class US_015_StepDefinitions {
 
 
 
+<<<<<<< HEAD
 
 
 
@@ -21,6 +22,12 @@ public class US_015_StepDefinitions {
     public void user_cliks_my_accounts() {
 
          us_015_page.Myaccounts.click();
+=======
+    @Then("User cliks My Accounts")
+    public void user_cliks_my_accounts() {
+
+        us_015_page.Myaccounts.click();
+>>>>>>> main
 
     }
 
@@ -55,4 +62,8 @@ public class US_015_StepDefinitions {
     public void userCloseDriver() {
         Driver.closeDriver();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

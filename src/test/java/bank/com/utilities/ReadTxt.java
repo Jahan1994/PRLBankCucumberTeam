@@ -1,5 +1,6 @@
 package bank.com.utilities;
 
+import bank.com.pojos.Country;
 import bank.com.pojos.Customer;
 import bank.com.pojos.States;
 import bank.com.pojos.User;
@@ -229,6 +230,96 @@ public class ReadTxt {
                 sb.append(System.lineSeparator());
                 line = br.readLine();
                 all.add(customer);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return all;
+    }
+
+    public static List<String> returnCountryIdList(String filePath){
+        List<String>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            System.out.println(line);
+            int i = 0;
+            while (line != null) {
+                Customer customer = new Customer();
+                customer.setSsn(line.split(",")[0]);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                System.out.println(i++);
+                all.add(customer.getSsn());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return all;
+    }
+
+    public static List<String> returnCountryNameList(String filePath){
+        List<String>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            System.out.println(line);
+            int i = 0;
+            while (line != null) {
+                Country country5 = new Country();
+                country5.setName(line.split(",")[0]);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                System.out.println(i++);
+                all.add(country5.getName());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return all;
+    }
+
+    public static List<String> returnCountry5IdList(String filePath){
+        List<String>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            System.out.println(line);
+            int i = 0;
+            while (line != null) {
+                Country country5 = new Country();
+                country5.setId(Integer.parseInt(line.split(",")[0]));
+                // country5.setName((line.split(",")[1]));
+                // country5.setId(Integer.parseInt(line.split(",")[0]));
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                // System.out.println(i++);
+                all.add(String.valueOf(country5.getId()));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return all;
+    }
+
+    public static List<String> returnCountryIdNameList(String filePath){
+        List<String>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            System.out.println(line);
+            int i = 0;
+            while (line != null) {
+                Country country5 = new Country();
+                //Burda trim kullanmazsak NullPointerExeption veriyor.
+                country5.setId(Integer.parseInt(line.split(",")[0].trim()));
+                country5.setName(line.split(",")[1].trim());
+                // country5.setId(Integer.parseInt(line.split(",")[0]));
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                // System.out.println(i++);
+                all.add(String.valueOf(country5.getId()));
+                all.add(country5.getName());
             }
         }catch (Exception e){
             e.printStackTrace();
