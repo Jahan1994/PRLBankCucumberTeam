@@ -1,7 +1,6 @@
 package bank.com.stepDefinitions;
 
 import bank.com.pojos.Country;
-import bank.com.utilities.ConfigReader;
 import bank.com.utilities.ReadTxt;
 import bank.com.utilities.WriteToTxt;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,14 +21,15 @@ import static io.restassured.RestAssured.given;
 
 public class
 US_025_CreateCountryStepDefinitions {
-    String token;
+
+
     Response response;
     Response responseAll;
     int createdCountryId;
+    String token;
 
-   /*
     @Given("user should get a token by using API {string}")
-    public void userShouldGetATokenByUsingAPI(String token) {
+    public void userShouldGetATokenByUsingAPI(String endtoken) {
         String credentials = "{\n" +
                 "    \"username\" : \"team18_customer\",\n" +
                 "    \"password\" : \"Team18customer\",\n" +
@@ -39,7 +39,7 @@ US_025_CreateCountryStepDefinitions {
         token = given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
                 .when()
                 .body(credentials)
-                .post(token)
+                .post(endtoken)
                 .then()
                 .extract()
                 .path("id_token");
@@ -47,37 +47,11 @@ US_025_CreateCountryStepDefinitions {
         System.out.println("token: " + token);
     }
 
-
-    */
-    @Then("user sets the response using api end point {string} and creates country")
-    public void userSetsTheResponseUsingApiEndPointAndCreatesCountry(String endpoint) {
-        response = given().headers(
-                        "Authorization",
-                        "Bearer " + ConfigReader.getProperty(token),
-                        "Content-Type",
-                        ContentType.JSON,
-                        "Accept",
-                        ContentType.JSON)
-                .when().body(createCountry)
-                .post(endpoint)
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .response();
-        response.prettyPrint();
-
-        //olusturulan country id
-        JsonPath jsonPath = response.jsonPath();
-        createdCountryId = jsonPath.getInt("id");
-        System.out.println("=======================================================");
-        System.out.println(createdCountryId);
-    }
-
     @Then("user reads all countries from end point {string}")
     public void userReadsAllCountriesFromEndPoint(String endpoint) throws IOException {
          responseAll = given().headers(
                         "Authorization",
-                        "Bearer " + ConfigReader.getProperty(token),
+                        "Bearer " + token,
                         "Content-Type",
                         ContentType.JSON,
                         "Accept",
@@ -95,11 +69,11 @@ US_025_CreateCountryStepDefinitions {
 
         // objectmapper kullanarak deserilazition yapiyoruz
         ObjectMapper objectMapper = new ObjectMapper();
-        Country[] country5 = objectMapper.readValue(response.asString(), Country[].class);
+        Country[] country = objectMapper.readValue(response.asString(), Country[].class);
 
         // for dongusu ile tum country id lerini daha  once olusturdugumuz listin icine ekleyelim
-        for (int i = 0; i < country5.length; i++) {
-            countryId.add(String.valueOf(country5[i].getId()));
+        for (int i = 0; i < country.length; i++) {
+            countryId.add(String.valueOf(country[i].getId()));
         }
         //Eger dosya bos degilse silmek icin
         File file = new File("countryId2");
@@ -107,7 +81,7 @@ US_025_CreateCountryStepDefinitions {
             file.delete();
         }
         // ulke idlerini txt olarak yazdiralim
-        WriteToTxt.saveDataInFileWithCountryId("countryId2", country5);
+        WriteToTxt.saveDataInFileWithCountryId("countryId2", country);
 
         // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
         List<String> readId = ReadTxt.returnCountryIdListesi("countryId2");
@@ -118,10 +92,34 @@ US_025_CreateCountryStepDefinitions {
 
     }
 
+    @Then("user sets the response using api end point {string} and creates country")
+    public void userSetsTheResponseUsingApiEndPointAndCreatesCountry(String endpoint) {
+        response = given().headers("Authorization",
+                        "Bearer " + token,
+                        "Content-Type",
+                        ContentType.JSON,
+                        "Accept", ContentType.JSON)
+                .when()
+                .body(createCountry)
+                .post(endpoint)
+                .then()
+                .contentType(ContentType.JSON)
+                .extract()
+                .response();
+
+        response.prettyPrint();
+
+        //olusturulan country id
+        JsonPath jsonPath = response.jsonPath();
+        createdCountryId = jsonPath.getInt("id");
+        System.out.println("=======================================================");
+        System.out.println(createdCountryId);
+    }
+
     @Then("user asserts for new country")
     public void userAssertsForNewCountry() throws IOException {
         response = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty(token),
+                        "Bearer " + token,
                         "Content-Type",
                         ContentType.JSON,
                         "Accept", ContentType.JSON)
@@ -139,7 +137,7 @@ US_025_CreateCountryStepDefinitions {
 
         Assert.assertTrue("not contain", stringIds.contains(stringCreatedCountryId));
         System.out.println("Validation is succesfull");
-
+        System.out.println(stringCreatedCountryId);
     }
 
 }
