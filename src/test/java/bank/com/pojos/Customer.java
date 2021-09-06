@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)//unutulan bir sey varsa onu gormezden gel, hata verme demek
 public class Customer {
 
-    private int id;
+
+    private String id;
     private String firstName;
     private String lastName;
     private String middleInitial;
@@ -19,27 +20,17 @@ public class Customer {
     private String createDate;
     private boolean zelleEnrolled;
     private Country country;
-    private String state;// bunu degistirmeli miyim? State mi olmali class adi? solda adi States , bir problem olur mu?
+    private String state;
     private User user;
-  //  private String accounts;// bu yazilmamisti? yazmali miyim?
+    private String accounts;
 
-    //bunlar burda aslinda YOK!
-    private String userName;
-    private String firstPassword;
 
-    public String getUserName() {   return userName;    }
 
-    public void setUserName(String userName) {  this.userName = userName;    }
-
-    public String getFirstPassword() {        return firstPassword;    }
-
-    public void setFirstPassword(String firstPassword) {        this.firstPassword = firstPassword;    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -139,8 +130,7 @@ public class Customer {
         this.zelleEnrolled = zelleEnrolled;
     }
 
-    public Country getCountry() {
-        return country;
+    public Country getCountry() {   return country;
     }
 
     public void setCountry(Country country) {
@@ -163,17 +153,66 @@ public class Customer {
         this.user = user;
     }
 
-    public Accounts getAccounts() {
+    public String getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Accounts accounts) {
+    public void setAccounts(String accounts) {
         this.accounts = accounts;
     }
 
-    private Accounts accounts;
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleInitial='" + middleInitial + '\'' +
+                ", email='" + email + '\'' +
+                ", mobilePhoneNumber='" + mobilePhoneNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ", zelleEnrolled=" + zelleEnrolled +
+                ", country=" + country +
+                ", state='" + state + '\'' +
+                ", user=" + user +
+                ", accounts='" + accounts + '\'' +
+                '}';
+    }
+
+    //Costructor
+
+    public Customer() {
+    }
+
+    public Customer(String id, String firstName, String lastName, String middleInitial, String email, String mobilePhoneNumber, String phoneNumber, String zipCode, String address, String city, String ssn, String createDate, boolean zelleEnrolled, Country country, String state, User user, String accounts) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleInitial = middleInitial;
+        this.email = email;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.phoneNumber = phoneNumber;
+        this.zipCode = zipCode;
+        this.address = address;
+        this.city = city;
+        this.ssn = ssn;
+        this.createDate = createDate;
+        this.zelleEnrolled = zelleEnrolled;
+        this.country = country;
+        this.state = state;
+        this.user = user;
+        this.accounts = accounts;
 
 
+
+
+    }
 }    /*
 
         "country": {

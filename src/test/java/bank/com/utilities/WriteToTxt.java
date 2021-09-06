@@ -90,7 +90,7 @@ public class WriteToTxt {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
             //writer.append("Ibrahim");
 //            writer.append(password + "," +username+","+ customer.getFirstName() + ",");
-            writer.append(customer.getFirstPassword()+ "," +customer.getUserName() +","+ customer.getFirstName() + ",");
+ //           writer.append(customer.getFirstPassword()+ "," +customer.getUserName() +","+ customer.getFirstName() + ",");
             writer.append(customer.getLastName() + "," + customer.getSsn() + ",");
             writer.append(customer.getAddress() + "," + customer.getEmail() + ","+customer.getMobilePhoneNumber()+"\n");
             writer.close();

@@ -43,10 +43,8 @@ import org.junit.runner.RunWith;
 //        tags="@ali or miniregression",
 
 
-        tags="@registration",
 
-
-
+        tags="@demo",
 
         //tags="@istediginiz tag", TEstNG de gordugumuz group gibi calisir
         //tags="@smoke or miniregression" => boyle yapabiliriz. Or dersek veya

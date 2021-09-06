@@ -218,8 +218,8 @@ public class ReadTxt {
             int i = 0;
             while (line != null) {
                 Customer customer = new Customer();
-                customer.setFirstPassword(line.split(",")[0].trim());
-                customer.setUserName(line.split(",")[1].trim());
+             //   customer.setFirstPassword(line.split(",")[0].trim());
+             //   customer.setUserName(line.split(",")[1].trim());
                 customer.setFirstName(line.split(",")[2].trim());
                 customer.setLastName(line.split(",")[3].trim());
                 customer.setSsn(line.split(",")[4].trim());
