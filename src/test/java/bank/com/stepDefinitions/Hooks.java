@@ -8,6 +8,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
+
     //hOOKS biz hooksu screenschot almak iixn kulaniriz.
     //Frameworkumujzde hooks failed olanlrin screen shor ini almak icin kullaniliyor
     //Before metdounda sayufa ile hazirlik yapamayiz. Cunku cucumber package duzeyinde calisiyor.
@@ -27,6 +28,11 @@ public class Hooks {
         if (scenario.isFailed()) {
             scenario.attach(screenshot, "image/png","screenshots");
         }
-      //  Driver.closeDriver();
+
+
+       // Driver.closeDriver();
+
+
+
     }
 }

@@ -170,7 +170,26 @@ public class WriteToText {
 
 
     }
+    public static void saveDataInFileWithCountryName(String fileName, Country[] countries) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            for (int i = 0; i < countries.length; i++)
+                if (countries[i] != null) {
+                    writer.append(countries[i].getName() + "\n");
+                }
+            writer.close();
+        } catch (Exception e) {
+        }
+    }
 
-
+    public static void saveDataInFileWithCountry5Id(String fileName, Country[] countries) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            for (int i = 0; i < countries.length; i++)
+                writer.append(countries[i].getId() + "\n");
+            writer.close();
+        } catch (Exception e) {
+        }
+    }
 
 }

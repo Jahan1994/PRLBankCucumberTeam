@@ -14,7 +14,7 @@ public class ReadTxt {
 
     public static List<Customer> returnCustomer(String filePath){
         List<Customer>all = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(ConfigReader.getProperty(filePath)))) {
+        try(BufferedReader br = new BufferedReader(new FileReader(ConfigurationReader.getProperty(filePath)))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 

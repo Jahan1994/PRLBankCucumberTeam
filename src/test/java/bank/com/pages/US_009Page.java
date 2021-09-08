@@ -3,15 +3,17 @@ package bank.com.pages;
 import bank.com.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import java.util.List;
+
+
 
 import static org.openqa.selenium.support.PageFactory.initElements;
 
 public class US_009Page {
     public US_009Page(){
 
-        initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(), this);
     }
     @FindBy(id = "entity-menu")
     public WebElement MyOpertions;
@@ -65,10 +67,17 @@ public class US_009Page {
     public WebElement city;
 
     @FindBy(xpath = "//select[@name='country.id']")
-    public List<WebElement> countryList;
+    public WebElement countryList;
 
     @FindBy(xpath = "//input[@name='state']")
     public WebElement state;
 
+
+
 }
+
+
+
+
+
 

@@ -43,7 +43,8 @@ import org.junit.runner.RunWith;
 //        tags="@ali or miniregression",
 
 
-        tags="@registration",
+
+        tags="@Statedeletion",
 
 
         //tags="@istediginiz tag", TEstNG de gordugumuz group gibi calisir
