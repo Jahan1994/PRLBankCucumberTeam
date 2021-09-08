@@ -3,11 +3,14 @@ Feature: System should allow to create states info using api end point
 
   Scenario Outline: User create each state 1 by 1
     Given User should get a token as first step "https://gmibank-qa-environment.com/api/authenticate"
-    Then User using api end point "<endpoint>" create state
+    Then User using api end point "<endpoint>" create "<stateName>" and "<id>"
 
     Examples: create state
-      | endpoint                              |
-      | https://gmibank-qa-environment.com/api/tp-states |
+      | endpoint                                         | stateName  | id |
+     # | https://gmibank-qa-environment.com/api/tp-states | KAZABLANKA |  20844  |
+     # | https://gmibank-qa-environment.com/api/tp-states | KAHİRE |  20846  |
+      | https://gmibank-qa-environment.com/api/tp-states | ŞAM |   20847 |
+
 
 
   Scenario Outline:
@@ -18,7 +21,7 @@ Feature: System should allow to create states info using api end point
 
     Examples: create state
       | idJson | nameJson   |
-      | 95156  | KAZABLANKA |
+      | 20844  | KAZABLANKA |
 
   @Statedeletion
   Scenario Outline: Delete states
@@ -28,18 +31,17 @@ Feature: System should allow to create states info using api end point
 
     Examples: all data
       | endpoint                                          | id    | stateName  |
-      | https://gmibank-qa-environment.com/api/tp-states/ | 95156 | KAZABLANKA |
+      | https://gmibank-qa-environment.com/api/tp-states/ | 20847 | ŞAM |
 
 
   Scenario Outline:
     Given User should get a token as first step "https://gmibank-qa-environment.com/api/authenticate"
-    Then User reads all states from end point "https://gmibank-qa-environment.com/api/tp-states"
     Then User verifies new state deleted "<idJson>" and "<nameJson>"
 
 
     Examples: create state
       | idJson | nameJson   |
-      | 95156  | KAZABLANKA |
+      | 20847  | KAZABLANKA |
 
 
 

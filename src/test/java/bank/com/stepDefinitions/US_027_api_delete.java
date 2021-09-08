@@ -16,7 +16,9 @@ import org.junit.Assert;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static bank.com.jsonModels.StateJson.*;
 import static io.restassured.RestAssured.*;
@@ -57,10 +59,11 @@ public class US_027_api_delete {
 
 
     }
-
-
-    @Given("User using api end point {string} create state")
-    public void userUsingApiEndPointCreateState(String string) {
+    @Then("User using api end point {string} create {string} and {string}")
+    public void userUsingApiEndPointCreateAnd(String endpoint, String stateName, String id) {
+        //map olusturduk
+        Map<String, Object> putState = new HashMap<>();
+        putState.put("name",stateName);
 
         response = given().headers("Authorization",
                         "Bearer " + token,
@@ -69,8 +72,8 @@ public class US_027_api_delete {
                         "Accept",
                         ContentType.JSON)
                 .when()
-                .body(CREATE_STATE9)
-                .post(string)
+                .body(putState)
+                .post(endpoint)
                 .then()
                 .contentType(ContentType.JSON)
                 .extract()
@@ -158,12 +161,12 @@ public class US_027_api_delete {
                         "Content-Type",
                         ContentType.JSON, "Accept", ContentType.JSON)
                 .when()
-                .delete(api_endpoint + id + stateName)
+                .delete(api_endpoint + id)
                 .then()
                 .extract()
                 .response();
         response.prettyPrint();
-
+        System.out.println(id);
 
     }
 
@@ -171,14 +174,32 @@ public class US_027_api_delete {
     @Then("User verifies new state deleted {string} and {string}")
     public void userVerifiesNewStateDeleteAnd(String arg0, String arg1) {
 
+        responseAll = given().headers(
+                        "Authorization",
+                        "Bearer " + token,
+                        "Content-Type",
+                        ContentType.JSON)
+                .when()
+                .get("https://gmibank-qa-environment.com/api/tp-states")
+                .then()
+                .contentType(ContentType.JSON)
+                .extract()
+                .response();
+        responseAll.prettyPrint();
+
         JsonPath jsonPath = responseAll.jsonPath();
         // int id1= jsonPath.getInt("id"); string metohlarini kullanmak icin json.getString olarak cagirdik
+
+
 
         String id = jsonPath.getString("id");
         String stringCreatedStateId = String.valueOf(createdStateId);
 
-        Assert.assertFalse("not contain", id.contains(stringCreatedStateId));
+
+        Assert.assertFalse("not contain", id.contains("20847"));
         System.out.println("Validation is succesfull");
+
+
 
 /*
         jsonPath= response.jsonPath();
@@ -188,4 +209,5 @@ public class US_027_api_delete {
  */
 
     }
+
 }
