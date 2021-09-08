@@ -81,7 +81,7 @@ US_025_CreateCountryStepDefinitions {
             file.delete();
         }
         // ulke idlerini txt olarak yazdiralim
-        WriteToTxt.saveDataInFileWithCountryId("countryId2", country);
+        WriteToTxt.saveDataInFileWithCountry5Id("countryId2", country);
 
         // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
         List<String> readId = ReadTxt.returnCountryIdListesi("countryId2");

@@ -42,8 +42,4 @@ public class Country {
         this.state = state;
     }
 
-
-
-
-
 }
