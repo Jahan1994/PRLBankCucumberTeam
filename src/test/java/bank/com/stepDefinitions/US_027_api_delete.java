@@ -106,40 +106,10 @@ public class US_027_api_delete {
                 .extract()
                 .response();
         responseAll.prettyPrint();
-
-        /*
-
-        //tüm state id lerini yazdırmak istiyorum
-
-        // validate isleminde kullanmak icin tum state idlerini bir listin icine atalim
-        List<String> statesId = new ArrayList<>();
-
-        // objectmapper kullanarak deserilazition yapiyoruz
-        ObjectMapper objectMapper = new ObjectMapper();
-        States[] state = objectMapper.readValue(response.asString(), States[].class);
-
-        // for dongusu ile tum state id lerini daha  once olusturdugumuz listin icine ekleyelim
-        for (int i = 0; i < state.length; i++) {
-            statesId.add(String.valueOf(state[i].getId()));
-
-            //Eger dosya bos degilse silmek icin
-            File file = new File("stateId");
-            if (file != null) {
-                file.delete();
-            }
-            // ulke idlerini txt olarak yazdiralim
-            WriteToTxt.saveDataInFileWithCountry5Id("stateId", state);
-
-            // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
-            List<String> readId = ReadTxt.returnCountry5IdList("stateId");
-
-
-        }
-*/
     }
 
-    @Then("User verifies new state using {string} and {string}")
-    public void userVerifiesStatesUsingAnd(String idJson, String nameJson) {
+    @Then("User verifies new state using {string}")
+    public void userVerifiesStatesUsingAnd(String idJson) {
 
 
         JsonPath jsonPath = responseAll.jsonPath();
@@ -153,8 +123,8 @@ public class US_027_api_delete {
 
     }
 
-    @Then("user deletes a state using {string} and {string} and {string}")
-    public void userDeletesAStateUsingAnd(String api_endpoint, String id, String stateName) {
+    @Then("user deletes a state using {string} and {string}")
+    public void userDeletesAStateUsingAnd(String api_endpoint, String id) {
 
         response = given().headers("Authorization",
                         "Bearer " + token,
@@ -171,8 +141,8 @@ public class US_027_api_delete {
     }
 
 
-    @Then("User verifies new state deleted {string} and {string}")
-    public void userVerifiesNewStateDeleteAnd(String arg0, String arg1) {
+    @Then("User verifies new state deleted {string}")
+    public void userVerifiesNewStateDeleteAnd(String id1) {
 
         responseAll = given().headers(
                         "Authorization",
@@ -190,13 +160,11 @@ public class US_027_api_delete {
         JsonPath jsonPath = responseAll.jsonPath();
         // int id1= jsonPath.getInt("id"); string metohlarini kullanmak icin json.getString olarak cagirdik
 
-
-
         String id = jsonPath.getString("id");
         String stringCreatedStateId = String.valueOf(createdStateId);
 
 
-        Assert.assertFalse("not contain", id.contains("20847"));
+        Assert.assertFalse("not contain", id.contains("59132"));
         System.out.println("Validation is succesfull");
 
 
