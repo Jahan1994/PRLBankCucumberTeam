@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 //package gmibank.jsonModels;
 package bank.com.jsonModels;
+=======
+package bank.com.jsonModels;
+
+>>>>>>> main
 public class StateJson {
 
 
