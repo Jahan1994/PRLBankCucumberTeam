@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class US_016_StepDefinitions {
-
+/*
 
     US_16_Page us_16_page = new US_16_Page();
 
@@ -129,4 +129,6 @@ public class US_016_StepDefinitions {
     @And("User do not enters description in the description text box")
     public void userDoNotEntersDescriptionInTheDescriptionTextBox() {
     }
+    */
+
 }
