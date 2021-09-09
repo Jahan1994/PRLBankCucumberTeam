@@ -217,7 +217,7 @@ public class PDFGenerator {
 
     public static void main(String[] args) {
 
-        String fileName = "C:\\Users\\hiset\\IdeaProjects\\Gmibankapplication\\src\\test\\resources\\test_data\\BankCustomers4.pdf";
+        String fileName = "src\\test\\resources\\test_data\\BankCustomers4.pdf";
         String title = "Customer Info";
 
         /*
