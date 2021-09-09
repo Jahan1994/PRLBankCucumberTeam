@@ -85,7 +85,7 @@ public class US_027_api_delete {
         createdStateId = jsonPath.getInt("id");
 
         System.out.println("===============================================");
-        System.out.println(createdStateId); //95156
+        System.out.println(createdStateId);
 
 
     }
@@ -166,15 +166,6 @@ public class US_027_api_delete {
 
         Assert.assertFalse("not contain", id.contains("59132"));
         System.out.println("Validation is succesfull");
-
-
-
-/*
-        jsonPath= response.jsonPath();
-        String stateId= jsonPath.getString("id");
-        Assert.assertFalse("state silinmedi ",stateId.contains("73007"));
-
- */
 
     }
 
