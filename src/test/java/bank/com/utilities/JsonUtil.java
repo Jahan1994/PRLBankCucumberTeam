@@ -22,4 +22,18 @@ public class JsonUtil {
         }
         return javaResult;
     }
+
+    //Create a method to convert Java Object to Json Data (Serialization)
+    public static String convertJavaToJson(Object obj){
+
+        String jsonResult = null;
+
+        try {
+            jsonResult = mapper.writeValueAsString(obj);
+        } catch (IOException e) {
+            System.out.println("Java Object could not be converted to Json Data " + e.getMessage());
+        }
+
+        return jsonResult;
+    }
 }
