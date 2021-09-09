@@ -22,17 +22,16 @@ import static io.restassured.RestAssured.given;
 public class
 US_025_CreateCountryStepDefinitions {
 
-
     Response response;
     Response responseAll;
     int createdCountryId;
     String token;
-    //otomasyonla token alma
+
     @Given("user should get a token by using API {string}")
     public void userShouldGetATokenByUsingAPI(String endtoken) {
         String credentials = "{\n" +
-                "    \"username\" : \"team53employee\",\n" +
-                "    \"password\" : \"Team53employee.\",\n" +
+                "    \"username\" : \"team18_customer\",\n" +
+                "    \"password\" : \"Team18customer\",\n" +
                 "    \"rememberMe\" : false\n" +
                 "}";
 
@@ -43,12 +42,13 @@ US_025_CreateCountryStepDefinitions {
                 .then()
                 .extract()
                 .path("id_token");
+
         System.out.println("token: " + token);
     }
 
     @Then("user reads all countries from end point {string}")
     public void userReadsAllCountriesFromEndPoint(String endpoint) throws IOException {
-         responseAll = given().headers(
+        responseAll = given().headers(
                         "Authorization",
                         "Bearer " + token,
                         "Content-Type",
@@ -61,18 +61,18 @@ US_025_CreateCountryStepDefinitions {
                 .contentType(ContentType.JSON)
                 .extract()
                 .response();
-         responseAll.prettyPrint();
+        responseAll.prettyPrint();
 
         // validate isleminde kullanmak icin tum ulke idlerini bir listin icine atalim
         List<String> countryId = new ArrayList<>();
 
         // objectmapper kullanarak deserilazition yapiyoruz
         ObjectMapper objectMapper = new ObjectMapper();
-        Country[] country5 = objectMapper.readValue(response.asString(), Country[].class);
+        Country[] country = objectMapper.readValue(response.asString(), Country[].class);
 
         // for dongusu ile tum country id lerini daha  once olusturdugumuz listin icine ekleyelim
-        for (int i = 0; i < country5.length; i++) {
-            countryId.add(String.valueOf(country5[i].getId()));
+        for (int i = 0; i < country.length; i++) {
+            countryId.add(String.valueOf(country[i].getId()));
         }
         //Eger dosya bos degilse silmek icin
         File file = new File("countryId2");
@@ -80,10 +80,10 @@ US_025_CreateCountryStepDefinitions {
             file.delete();
         }
         // ulke idlerini txt olarak yazdiralim
-        WriteToTxt.saveDataInFileWithCountry5Id("countryId", country5);
+        WriteToTxt.saveDataInFileWithCountry5Id("countryId2", country);
 
         // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
-        List<String> readId = ReadTxt.returnCountryIdListesi("countryId");
+        List<String> readId = ReadTxt.returnCountryIdListesi("countryId2");
 
         // validasyon
         Assert.assertEquals("mot match", countryId, readId);
@@ -123,7 +123,7 @@ US_025_CreateCountryStepDefinitions {
                         ContentType.JSON,
                         "Accept", ContentType.JSON)
                 .when()
-                .get("https://www.gmibank.com/api/tp-countries")
+                .get("https://gmibank-qa-environment.com/api/tp-countries")
                 .then()
                 .contentType(ContentType.JSON)
                 .extract()
@@ -131,12 +131,14 @@ US_025_CreateCountryStepDefinitions {
 
         JsonPath jsonPath = response.jsonPath();
         String stringIds = jsonPath.getString("id");
+        System.out.println("stringIds = " + stringIds);
 
         String stringCreatedCountryId = String.valueOf(createdCountryId);
+        System.out.println("stringCreatedCountryId = " + stringCreatedCountryId);
 
-        Assert.assertTrue("not contain", stringIds.contains(stringCreatedCountryId));
+        Assert.assertTrue("not contain", stringIds.contains("21196"));
         System.out.println("Validation is succesfull");
-        System.out.println(stringCreatedCountryId);
+        System.out.println("stringCreatedCountryId :" + stringCreatedCountryId);
     }
 
 }
