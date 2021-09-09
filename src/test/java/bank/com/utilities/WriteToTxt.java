@@ -1,6 +1,7 @@
 package bank.com.utilities;
 import bank.com.pojos.Country;
 import bank.com.pojos.Customer;
+import bank.com.pojos.Registration;
 import bank.com.pojos.States;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -164,7 +165,6 @@ public class WriteToTxt {
     }
 
 
-
     public static void saveDataInFileWithUserInfo5(String fileName, Customer customer) {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
@@ -246,7 +246,17 @@ public class WriteToTxt {
         }
     }
 
+    public static void saveDataInFileWithSSN(String fileName, Registration[] registrations1) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            for (int i = 0; i < registrations1.length; i++) {
+                writer.append(registrations1[i].getSsn() + ",\n");
+            }
+            writer.close();
+        } catch (Exception e) {
+        }
+
+    }
+
 }
-
-
 
