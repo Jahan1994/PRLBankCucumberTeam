@@ -27,12 +27,12 @@ US_025_CreateCountryStepDefinitions {
     Response responseAll;
     int createdCountryId;
     String token;
-
+    //otomasyonla token alma
     @Given("user should get a token by using API {string}")
     public void userShouldGetATokenByUsingAPI(String endtoken) {
         String credentials = "{\n" +
-                "    \"username\" : \"team18_customer\",\n" +
-                "    \"password\" : \"Team18customer\",\n" +
+                "    \"username\" : \"team53employee\",\n" +
+                "    \"password\" : \"Team53employee.\",\n" +
                 "    \"rememberMe\" : false\n" +
                 "}";
 
@@ -43,7 +43,6 @@ US_025_CreateCountryStepDefinitions {
                 .then()
                 .extract()
                 .path("id_token");
-
         System.out.println("token: " + token);
     }
 
@@ -69,11 +68,11 @@ US_025_CreateCountryStepDefinitions {
 
         // objectmapper kullanarak deserilazition yapiyoruz
         ObjectMapper objectMapper = new ObjectMapper();
-        Country[] country = objectMapper.readValue(response.asString(), Country[].class);
+        Country[] country5 = objectMapper.readValue(response.asString(), Country[].class);
 
         // for dongusu ile tum country id lerini daha  once olusturdugumuz listin icine ekleyelim
-        for (int i = 0; i < country.length; i++) {
-            countryId.add(String.valueOf(country[i].getId()));
+        for (int i = 0; i < country5.length; i++) {
+            countryId.add(String.valueOf(country5[i].getId()));
         }
         //Eger dosya bos degilse silmek icin
         File file = new File("countryId2");
@@ -81,10 +80,10 @@ US_025_CreateCountryStepDefinitions {
             file.delete();
         }
         // ulke idlerini txt olarak yazdiralim
-        WriteToTxt.saveDataInFileWithCountry5Id("countryId2", country);
+        WriteToTxt.saveDataInFileWithCountry5Id("countryId", country5);
 
         // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
-        List<String> readId = ReadTxt.returnCountryIdListesi("countryId2");
+        List<String> readId = ReadTxt.returnCountryIdListesi("countryId");
 
         // validasyon
         Assert.assertEquals("mot match", countryId, readId);
