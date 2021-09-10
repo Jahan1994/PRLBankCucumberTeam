@@ -240,9 +240,9 @@ public class ReadTxt {
     }
 
 
-    public static List<String> returnCountryIdListesi(String filePath){
-        List<String>all = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    public static List<String> returnCountryIdListesi(String filePath) {
+        List<String> all = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             System.out.println(line);
@@ -255,16 +255,16 @@ public class ReadTxt {
                 System.out.println(i++);
                 all.add(String.valueOf(country.getId()));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return all;
     }
 
 
-    public static List<String> returnCountryIdList(String filePath){
-        List<String>all = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    public static List<String> returnCountryIdList(String filePath) {
+        List<String> all = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             System.out.println(line);
@@ -277,15 +277,15 @@ public class ReadTxt {
                 System.out.println(i++);
                 all.add(customer.getSsn());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return all;
     }
 
-    public static List<String> returnCountryNameList(String filePath){
-        List<String>all = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    public static List<String> returnCountryNameList5(String filePath) {
+        List<String> all = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             System.out.println(line);
@@ -298,15 +298,34 @@ public class ReadTxt {
                 System.out.println(i++);
                 all.add(country5.getName());
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return all;
+    }
+    public static List<String> returnCountryNameList(String filePath){
+        List<String>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            System.out.println(line);
+            int i = 0;
+            while (line != null) {
+                Country country = new Country();
+                country.setName(line.split(",")[0]);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                System.out.println(i++);
+                all.add(country.getName());
+            }
         }catch (Exception e){
             e.printStackTrace();
         }
         return all;
     }
-
-    public static List<String> returnCountry5IdList(String filePath){
-        List<String>all = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    public static List<String> returnCountry5IdList(String filePath) {
+        List<String> all = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             System.out.println(line);
@@ -321,15 +340,15 @@ public class ReadTxt {
                 // System.out.println(i++);
                 all.add(String.valueOf(country5.getId()));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return all;
     }
 
-    public static List<String> returnCountryIdNameList(String filePath){
-        List<String>all = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+    public static List<String> returnCountryIdNameList(String filePath) {
+        List<String> all = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             System.out.println(line);
@@ -346,7 +365,7 @@ public class ReadTxt {
                 all.add(String.valueOf(country5.getId()));
                 all.add(country5.getName());
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return all;
@@ -354,15 +373,6 @@ public class ReadTxt {
 }
 
 
-//package gmibank.utilities;
-//        import gmibank.pojos.Customer;
-//        import gmibank.pojos.States;
-//        import gmibank.pojos.User;
-//        import java.io.BufferedReader;
-//        import java.io.FileReader;
-//        import java.util.ArrayList;
-//        import java.util.List;
-//public class ReadTxt {
 //    public static List<Customer> returnCustomer(String filePath){
 //        List<Customer>all = new ArrayList<>();
 //        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -824,24 +834,3 @@ public class ReadTxt {
 //    }
 
 
-    public static List<String> returnCountryNameList(String filePath){
-        List<String>all = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-            System.out.println(line);
-            int i = 0;
-            while (line != null) {
-                Country country = new Country();
-                country.setName(line.split(",")[0]);
-                sb.append(System.lineSeparator());
-                line = br.readLine();
-                System.out.println(i++);
-                all.add(country.getName());
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return all;
-    }
-}
