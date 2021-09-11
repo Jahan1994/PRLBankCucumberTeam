@@ -22,7 +22,6 @@ import static io.restassured.RestAssured.given;
 public class
 US_025_CreateCountryStepDefinitions {
 
-
     Response response;
     Response responseAll;
     int createdCountryId;
@@ -49,7 +48,7 @@ US_025_CreateCountryStepDefinitions {
 
     @Then("user reads all countries from end point {string}")
     public void userReadsAllCountriesFromEndPoint(String endpoint) throws IOException {
-         responseAll = given().headers(
+        responseAll = given().headers(
                         "Authorization",
                         "Bearer " + token,
                         "Content-Type",
@@ -62,7 +61,7 @@ US_025_CreateCountryStepDefinitions {
                 .contentType(ContentType.JSON)
                 .extract()
                 .response();
-         responseAll.prettyPrint();
+        responseAll.prettyPrint();
 
         // validate isleminde kullanmak icin tum ulke idlerini bir listin icine atalim
         List<String> countryId = new ArrayList<>();
@@ -124,7 +123,7 @@ US_025_CreateCountryStepDefinitions {
                         ContentType.JSON,
                         "Accept", ContentType.JSON)
                 .when()
-                .get("https://www.gmibank.com/api/tp-countries")
+                .get("https://gmibank-qa-environment.com/api/tp-countries")
                 .then()
                 .contentType(ContentType.JSON)
                 .extract()
@@ -132,12 +131,14 @@ US_025_CreateCountryStepDefinitions {
 
         JsonPath jsonPath = response.jsonPath();
         String stringIds = jsonPath.getString("id");
+        System.out.println("stringIds = " + stringIds);
 
         String stringCreatedCountryId = String.valueOf(createdCountryId);
+        System.out.println("stringCreatedCountryId = " + stringCreatedCountryId);
 
-        Assert.assertTrue("not contain", stringIds.contains(stringCreatedCountryId));
+        Assert.assertTrue("not contain", stringIds.contains("21196"));
         System.out.println("Validation is succesfull");
-        System.out.println(stringCreatedCountryId);
+        System.out.println("stringCreatedCountryId :" + stringCreatedCountryId);
     }
 
 }

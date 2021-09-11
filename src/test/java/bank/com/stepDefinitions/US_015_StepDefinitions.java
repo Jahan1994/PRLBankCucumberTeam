@@ -1,3 +1,4 @@
+
 package bank.com.stepDefinitions;
 
 
@@ -8,18 +9,27 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
 public class US_015_StepDefinitions {
+/*
 
     US_015_Page us_015_page = new US_015_Page();
 
     @Then("User cliks My Accounts")
     public void user_cliks_my_accounts() {
          us_015_page.Myaccounts.click();
+
     }
 
         @Then("User clicks View Transfer")
         public void userClicksViewTransfer () {
             us_015_page.ViewTransfer.click();
         }
+
+
+    @Then("User cliks My Accounts")
+    public void user_cliks_my_accounts() {
+
+        us_015_page.Myaccounts.click();
+
 
         @And("User verifies that Transfer transactions are displayed")
         public void userVerifiesThatTransferTransactionsAreDisplayed () {
@@ -49,6 +59,17 @@ public class US_015_StepDefinitions {
     }
 
 
+
+
+    @Then("User close driver")
+    public void userCloseDriver() {
+        Driver.closeDriver();
+
+    }
+
+}
+        */
+}
 
 
 
