@@ -75,7 +75,7 @@ public class ApiUtility {
                 ContentType.JSON,
                 "Accept", ContentType.JSON)
                 .when()
-                .body(updateBody) //buraya update edilecek kisma gore MAP formatindda data girilebilir.Uts kisimda ornegi var.
+                .body(updateBody) //buraya update edilecek kisma gore MAP formatindda data girilebilir.Ust kisimda ornegi var.
                 .put(api_url)
                 .then()
                 .contentType(ContentType.JSON)

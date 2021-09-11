@@ -25,6 +25,15 @@
             <version>3.141.59</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>6.9.1</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -32,11 +41,19 @@
             <version>4.2.2</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.1.0</version>
+            <scope>test</scope>
+
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>6.9.1</version>
+
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
@@ -54,6 +71,14 @@
         </dependency>
 
         <dependency>
+
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+          <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
@@ -68,6 +93,7 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+
 
         <dependency>
             <groupId>com.github.javafaker</groupId>
@@ -111,6 +137,13 @@
             <version>20190722</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+
+
 
 
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
@@ -120,32 +153,6 @@
             <version>5.4.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-
-
-        <!-- DATABASE  -->
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.18</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.8</version>
-        </dependency>
 
     </dependencies>
 
