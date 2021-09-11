@@ -11,11 +11,9 @@ public class US_015_StepDefinitions {
 
     US_015_Page us_015_page = new US_015_Page();
 
-
     @Then("User cliks My Accounts")
     public void user_cliks_my_accounts() {
-
-        us_015_page.Myaccounts.click();
+         us_015_page.Myaccounts.click();
     }
 
         @Then("User clicks View Transfer")
@@ -23,13 +21,11 @@ public class US_015_StepDefinitions {
             us_015_page.ViewTransfer.click();
         }
 
-
         @And("User verifies that Transfer transactions are displayed")
         public void userVerifiesThatTransferTransactionsAreDisplayed () {
-
             Assert.assertTrue(us_015_page.transferislemi.isDisplayed());
-
         }
+
 
 
         @Then("User verifies account id")
@@ -51,6 +47,8 @@ public class US_015_StepDefinitions {
         }
 
     }
+
+
 
 
 
