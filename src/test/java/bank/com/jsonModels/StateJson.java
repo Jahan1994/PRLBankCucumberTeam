@@ -1,12 +1,4 @@
-
-
-
-//package gmibank.jsonModels;
-
-
-
 package bank.com.jsonModels;
-
 
 public class StateJson {
 

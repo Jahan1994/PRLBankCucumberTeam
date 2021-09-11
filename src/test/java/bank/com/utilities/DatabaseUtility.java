@@ -140,6 +140,23 @@ public class DatabaseUtility {
         }
         return rowList;
     }
+    public static List<Object> getColumnDataSibel(String query) {
+        executeQuery(query);
+        List<Object> rowList = new ArrayList<>();
+        ResultSetMetaData rsmd;
+        try {
+            rsmd = resultSet.getMetaData();
+            while (resultSet.next()) {
+
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return rowList;
+    }
+
+
     /**
      *
      * @param query
@@ -262,7 +279,12 @@ public class DatabaseUtility {
 
         List<Object> list =getColumnData(query,"name");
         System.out.println(list);
+
+
+//        closeConnection();
+
         closeConnection();
+
 
 //        System.out.println(list);
 //        System.out.println(getQueryResultList(query));

@@ -21,12 +21,11 @@ Feature: US_017_TC01701-04 System should allow the Admin to manage users
 
     Examples:
       | userName   |
-      | sibel      |
-      | testadmin5 |
-      | testadmin4 |
-      | testadmin3 |
-      | testadmin2 |
-      | testadmin1 |
+      | sibel1     |
+      | sibel12    |
+      | sibel123   |
+      | sibel1234  |
+      | sibel12345 |
 
 
   @TC01705-01708
@@ -68,9 +67,8 @@ Feature: US_017_TC01701-04 System should allow the Admin to manage users
 
     Examples:
       | userName   |
-      | sibel      |
-      | testadmin5 |
-      | testadmin4 |
-      | testadmin3 |
-      | testadmin2 |
-      | testadmin1 |
+      | sibel1     |
+      | sibel12    |
+      | sibel123   |
+      | sibel1234  |
+      | sibel12345 |
