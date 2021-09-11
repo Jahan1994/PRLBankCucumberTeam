@@ -1,11 +1,13 @@
-/*
+
 package bank.com.stepDefinitions;
 
-import bank.com.pojos.Country5;
+import bank.com.pojos.Country;
+import bank.com.pojos.Country;
+import bank.com.pojos.Customer;
 import bank.com.utilities.ReadTxt;
 import bank.com.utilities.WriteToTxt;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import bank.com.pojos.Customer5;
+import bank.com.pojos.Customer;
 import io.cucumber.java.en.Given;
 import bank.com.utilities.ConfigReader;
 import io.cucumber.java.en.Then;
@@ -20,7 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static bank.com.jsonModels.CountryJson.createCountry;
+//import static bank.com.jsonModels.CountryJson.createCountry;
+//import static gmibank.jsonModels.CountryJson.createCountry;
 import static io.restassured.RestAssured.given;
 
 
@@ -34,9 +37,9 @@ public class apiDersBank7 {
     public void read_all_customer_data_using_with_api_endpoint(String api_endpoint) {
 
         response = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty("token"),
-                        "Content-Type",
-                        ContentType.JSON, "Accept", ContentType.JSON)
+                "Bearer " + ConfigReader.getProperty("token"),
+                "Content-Type",
+                ContentType.JSON, "Accept", ContentType.JSON)
                 .when()
                 .get(api_endpoint)
                 .then()
@@ -45,6 +48,7 @@ public class apiDersBank7 {
                 .response();
 
         response.prettyPrint();
+
 
         System.out.println("===================================================================================");
 
@@ -55,7 +59,7 @@ public class apiDersBank7 {
     public void validate_customer_data() throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Customer5[] customer5 = objectMapper.readValue(response.asString(), Customer5[].class);
+        Customer[] customer5 = objectMapper.readValue(response.asString(), Customer[].class);
 
         // ilk musterinin ismi
         System.out.println(customer5[0].getFirstName());
@@ -81,6 +85,7 @@ public class apiDersBank7 {
 
         System.out.println("===================================================================================");
 
+        // Butun kullanicilarin (getuser) firstname'ini getir
         for (int i = 0; i < customer5.length; i++) {
             if (customer5[i].getUser() != null) {
                 System.out.println(customer5[i].getUser().getFirstName());
@@ -96,48 +101,48 @@ public class apiDersBank7 {
     @Then("read all countries and write country ids to txt using api endpoint {string}")
     public void read_all_countries_and_write_country_ids_to_txt_using_api_endpoint(String api_url) throws IOException {
 
-        response = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty("token"),
-                        "Content-Type",
-                        ContentType.JSON,
-                        "Accept", ContentType.JSON)
-                .when()
-                .get(api_url)
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .response();
-
-        response.prettyPrint();
-
-        // validate isleminde kullanmak icin tum ulke idlerini bir listin icine atalim
-
-        List<String> countryId = new ArrayList<>();
-
-        // objectmapper kullanarak deserilazition yapiyoruz
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        Country5[] country5 = objectMapper.readValue(response.asString(), Country5[].class);
-
-        // for dongusu ile tum country id lerini daha  once olusturdugumuz listin icine ekleyelim
-
-        for (int i = 0; i < country5.length; i++) {
-            countryId.add(String.valueOf(country5[i].getId()));
-        }
-
-        // ulke idlerini txt olarak yazdiralim
-
-        WriteToTxt.saveDataInFileWithCountry5Id("countryId2", country5);
-
-        // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
-
-        List<String> readId = ReadTxt.returnCountry5IdList("countryId2");
-
-        // validasyon
-
-        Assert.assertEquals("mot match", countryId, readId);
-        System.out.println("Validation is succesfull");
+//        response = given().headers("Authorization",
+//                "Bearer " + ConfigReader.getProperty("token"),
+//                "Content-Type",
+//                ContentType.JSON,
+//                "Accept", ContentType.JSON)
+//                .when()
+//                .get(api_url)
+//                .then()
+//                .contentType(ContentType.JSON)
+//                .extract()
+//                .response();
+//
+//        response.prettyPrint();
+//
+//        // validate isleminde kullanmak icin tum ulke idlerini bir listin icine atalim
+//
+//        List<String> countryId = new ArrayList<>();
+//
+//        // objectmapper kullanarak deserilazition yapiyoruz
+//
+//        ObjectMapper objectMapper = new ObjectMapper();
+//
+//        Country[] country5 = objectMapper.readValue(response.asString(), Country[].class);
+//
+//        // for dongusu ile tum country id lerini daha  once olusturdugumuz listin icine ekleyelim
+//
+//        for (int i = 0; i < country5.length; i++) {
+//            countryId.add(String.valueOf(country5[i].getId()));
+//        }
+//
+//        // ulke idlerini txt olarak yazdiralim
+//
+//        WriteToTxt.saveDataInFileWithCountry5Id("countryId2", country5);
+//
+//        // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
+//
+////        List<String> readId = ReadTxt.returnCountry5IdList("countryId2");
+//
+//        // validasyon
+//
+//        Assert.assertEquals("mot match", countryId, readId);
+//        System.out.println("Validation is succesfull");
 
 
     }
@@ -150,12 +155,12 @@ public class apiDersBank7 {
     public void create_country(String api_url) {
 
         response = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty("token"),
-                        "Content-Type",
-                        ContentType.JSON,
-                        "Accept", ContentType.JSON)
+                "Bearer " + ConfigReader.getProperty("token"),
+                "Content-Type",
+                ContentType.JSON,
+                "Accept", ContentType.JSON)
                 .when()
-                .body(createCountry)
+//                .body(createCountry)
                 .post(api_url)
                 .then()
                 .contentType(ContentType.JSON)
@@ -179,10 +184,10 @@ public class apiDersBank7 {
     public void validate_created_a_country() {
 
         response = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty("token"),
-                        "Content-Type",
-                        ContentType.JSON,
-                        "Accept", ContentType.JSON)
+                "Bearer " + ConfigReader.getProperty("token"),
+                "Content-Type",
+                ContentType.JSON,
+                "Accept", ContentType.JSON)
                 .when()
                 .get("https://www.gmibank.com/api/tp-countries")
                 .then()
@@ -215,10 +220,10 @@ public class apiDersBank7 {
 
 
         response = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty("token"),
-                        "Content-Type",
-                        ContentType.JSON,
-                        "Accept", ContentType.JSON)
+                "Bearer " + ConfigReader.getProperty("token"),
+                "Content-Type",
+                ContentType.JSON,
+                "Accept", ContentType.JSON)
                 .when()
                 .body(putCountry)
                 .put(api_url)
@@ -239,10 +244,10 @@ public class apiDersBank7 {
     public void delete_updated_a_country_using_endpoint_and_its_extension_and_validate(String api_url, String id) {
 
         response = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty("token"),
-                        "Content-Type",
-                        ContentType.JSON,
-                        "Accept", ContentType.JSON)
+                "Bearer " + ConfigReader.getProperty("token"),
+                "Content-Type",
+                ContentType.JSON,
+                "Accept", ContentType.JSON)
                 .when()
                 .delete(api_url + id)
                 .then()
@@ -250,10 +255,10 @@ public class apiDersBank7 {
                 .response();
 
         Response responseNew = given().headers("Authorization",
-                        "Bearer " + ConfigReader.getProperty("token"),
-                        "Content-Type",
-                        ContentType.JSON,
-                        "Accept", ContentType.JSON)
+                "Bearer " + ConfigReader.getProperty("token"),
+                "Content-Type",
+                ContentType.JSON,
+                "Accept", ContentType.JSON)
                 .when()
                 .get(api_url)
                 .then()
@@ -272,4 +277,3 @@ public class apiDersBank7 {
 
 
 }
- */

@@ -25,6 +25,15 @@ public class Country {
         this.name = name;
     }
 
+    public Country() {
+    }
+
+    public Country(int id, String name, String state) {
+        this.id = id;
+        this.name = name;
+        this.state = state;
+    }
+
     public String getState() {
         return state;
     }
@@ -32,9 +41,5 @@ public class Country {
     public void setState(String state) {
         this.state = state;
     }
-
-
-
-
 
 }

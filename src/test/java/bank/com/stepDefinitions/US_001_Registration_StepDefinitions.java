@@ -155,12 +155,15 @@ public class    US_001_Registration_StepDefinitions {
 
     @And("User navigates to registration page")
     public void userNavigatesToRegistrationPage() {
+
         homePage.homePageRegister.click();
     }
 
     @Then("User provides a valid SSN")
     public void userProvidesAValidSSN() {
-        registrationPage.ssnTextBox.sendKeys(ConfigReader.getProperty("valid_ssn"));
+
+        registrationPage.
+                ssnTextBox.sendKeys(ConfigReader.getProperty("valid_ssn"));
     }
 
     @Then("User provides a valid Firstname")
