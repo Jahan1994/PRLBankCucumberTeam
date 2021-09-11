@@ -37,7 +37,7 @@ public class WriteAndReadText {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
-          //  int i = 0;
+           // int i = 0;
             while (line != null) {
                 Customer customer = new Customer();
                 customer.setId(line.split(",")[0].trim()); 

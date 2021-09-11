@@ -1,29 +1,18 @@
 package bank.com.stepDefinitions;
 
-import bank.com.pojos.Accounts;
-import bank.com.pojos.Country;
 import bank.com.pojos.Customer;
-import bank.com.pojos.User;
 import bank.com.utilities.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.junit.Assert;
-
 import java.io.*;
-import java.net.URI;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static bank.com.utilities.DatabaseUtility.createConnection;
-import static bank.com.utilities.DatabaseUtility.getColumnData;
 import static io.restassured.RestAssured.given;
 
 public class US_020_StepDefinitions {
@@ -77,14 +66,11 @@ public class US_020_StepDefinitions {
     public void deserializeUsingObjectMapper() throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        Customer[] customer = objectMapper.readValue(response.asString(), Customer[].class);
+        customer = objectMapper.readValue(response.asString(), Customer[].class);
+
     }
     @Then("validate customer data")
-    public void validate_customer_data () throws IOException {
-//       List <String> allCustomer = new ArrayList<>();
-//       for (int i = 0; i< customer.length; i++){
-//           allCustomer.add(String.valueOf(customer[i]));
-//  }
+    public void validate_customer_data ()  {
 
         File file = new File("src\\test\\resources\\test_data\\customerFromAPI");
         if (file != null) {
@@ -166,7 +152,7 @@ public class US_020_StepDefinitions {
                     Assert.assertTrue(each.getState().contains(expectedList.get(j).getState()));
                     //   Assert.assertTrue(each.getUser().contains(expectedList.get(0).getUser()));
                     Assert.assertTrue(each.getAccounts().contains(expectedList.get(j).getAccounts()));
-
+                    System.out.println("test pass");
                     System.out.println(expectedList);
                 }
             }
@@ -186,11 +172,11 @@ public class US_020_StepDefinitions {
                 .extract()
                 .response();
 
-        response.prettyPrint();
+     //   response.prettyPrint();
     }
 
     @Then("validate customer by id")
-    public void validateCustomerById() throws IOException {
+    public void validateCustomerById()  {
 
         JsonPath json=response.jsonPath();
 
@@ -211,7 +197,7 @@ public class US_020_StepDefinitions {
         Assert.assertTrue(json.getString("state").contains(""));
 //        Assert.assertTrue(json.getString("user").contains("null"));
 //        Assert.assertTrue(json.getString("accounts").contains("null"));
-        System.out.println("test pass");
+        System.out.println("test2 pass");
     }
 }
 
