@@ -1,7 +1,7 @@
 package bank.com.stepDefinitions;
 
 import bank.com.pages.US_010_011Page;
-import bank.com.utilities.ConfigReader;
+import bank.com.utilities.ConfigurationReader;
 import bank.com.utilities.DateUtil;
 import bank.com.utilities.Driver;
 import bank.com.utilities.ReusableMethods;
@@ -9,11 +9,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-
-import java.util.List;
 
 
 public class US_010_011_StepDefinition {
@@ -26,38 +23,38 @@ public class US_010_011_StepDefinition {
 
     @And("User enter MI {string}")
     public void userEnterMI(String mid) {
-        us_009Page.middle.sendKeys(ConfigReader.getProperty(mid));
+        us_009Page.middle.sendKeys(ConfigurationReader.getProperty(mid));
         ReusableMethods.waitFor(3);
     }
 
     @And("User enter MP {string}")
     public void userEnterMP(String mob) {
-        us_009Page.mobile.sendKeys(ConfigReader.getProperty(mob));
+        us_009Page.mobile.sendKeys(ConfigurationReader.getProperty(mob));
         //   ReusableMethods.waitFor(5);
     }
 
     @And("User enter PH {string}")
     public void userEnterPH(String ph) {
-        us_009Page.phone.sendKeys(ConfigReader.getProperty(ph));
+        us_009Page.phone.sendKeys(ConfigurationReader.getProperty(ph));
         //   ReusableMethods.waitFor(5);
     }
 
     @And("User enter ZC {string}")
     public void userEnterZC(String zip) {
-        us_009Page.zipcode.sendKeys(ConfigReader.getProperty(zip));
+        us_009Page.zipcode.sendKeys(ConfigurationReader.getProperty(zip));
         //   ReusableMethods.waitFor(5);
     }
 
     @And("User enter Adress {string}")
     public void userEnterAdress(String adr) {
         us_009Page.adress.clear();
-        us_009Page.adress.sendKeys(ConfigReader.getProperty(adr));
+        us_009Page.adress.sendKeys(ConfigurationReader.getProperty(adr));
         //   ReusableMethods.waitFor(5);
     }
 
     @And("User enter City {string}")
     public void userEnterCity(String city) {
-        us_009Page.city.sendKeys(ConfigReader.getProperty(city));
+        us_009Page.city.sendKeys(ConfigurationReader.getProperty(city));
         //   ReusableMethods.waitFor(5);
     }
 
@@ -71,7 +68,7 @@ public class US_010_011_StepDefinition {
 
     @And("User enter State{string}")
     public void userEnterState(String state) {
-        us_009Page.state.sendKeys(ConfigReader.getProperty(state));
+        us_009Page.state.sendKeys(ConfigurationReader.getProperty(state));
         //    ReusableMethods.waitFor(5);
     }
 

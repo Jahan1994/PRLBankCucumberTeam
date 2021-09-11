@@ -7,7 +7,7 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import bank.com.pages.RegistrationPage;
-import bank.com.utilities.ConfigReader;
+import bank.com.utilities.ConfigurationReader;
 
 public class US_002_Registration_Negatif_StepDefinitions {
 
@@ -101,7 +101,7 @@ public class US_002_Registration_Negatif_StepDefinitions {
     public void userValidatesThatHeRegisteredSuccesfullyWithASuccessMessageAs(String succesMesssage) {
         String expectedFailedMessage = registrationPage.wrongSuccesRegisterMessage.getText();
         System.out.println(expectedFailedMessage);
-        String actualFailedMessage= ConfigReader.getProperty("registration_failed_message");
+        String actualFailedMessage= ConfigurationReader.getProperty("registration_failed_message");
         // Assert.assertEquals(expectedSuccesMessage,actualSuccessMessage);
         Assert.assertTrue(expectedFailedMessage.contains(actualFailedMessage));
 

@@ -1,8 +1,5 @@
 package bank.com.utilities;
 
-import bank.com.pojos.Country;
-import bank.com.pojos.Customer;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,8 +19,8 @@ public class DatabaseUtility {
 
 
     public static void createConnection() {
-        String url = ConfigReader.getProperty("database_url");
-        String user = ConfigReader.getProperty("database_user");
+        String url = ConfigurationReader.getProperty("database_url");
+        String user = ConfigurationReader.getProperty("database_user");
         String password = "Techpro_@126";
         try {
             connection = DriverManager.getConnection(url, user, password);

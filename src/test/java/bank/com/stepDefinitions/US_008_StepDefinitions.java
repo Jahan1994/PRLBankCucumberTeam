@@ -3,7 +3,7 @@ package bank.com.stepDefinitions;
 import bank.com.pages.HomePage;
 import bank.com.pages.LoginPage;
 import bank.com.pages.US_008_PasswordPage;
-import bank.com.utilities.ConfigReader;
+import bank.com.utilities.ConfigurationReader;
 import bank.com.utilities.Driver;
 import bank.com.utilities.ReusableMethods;
 import io.cucumber.java.en.Given;
@@ -18,7 +18,7 @@ public class US_008_StepDefinitions {
 
     @Given("User go to Url {string}")
     public void user_go_to_url(String pageUrl) {
-        Driver.getDriver().get(ConfigReader.getProperty(pageUrl));
+        Driver.getDriver().get(ConfigurationReader.getProperty(pageUrl));
 
     }
 
@@ -35,14 +35,14 @@ public class US_008_StepDefinitions {
 
     @Then("User enter a valid Username")
     public void user_enter_a_valid_username() {
-        loginPage.loginPageUsernameTextBox.sendKeys(ConfigReader.getProperty("bekir_current_username"));
+        loginPage.loginPageUsernameTextBox.sendKeys(ConfigurationReader.getProperty("bekir_current_username"));
         ReusableMethods.waitFor(2);
     }
 
     @Then("User enter a valid Password")
     public void user_enter_a_valid_password() throws InterruptedException {
         loginPage.loginPagePasswordTextBox.click();
-        loginPage.loginPagePasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_current_password"));
+        loginPage.loginPagePasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_current_password"));
         Thread.sleep(2000);
     }
 
@@ -78,21 +78,21 @@ public class US_008_StepDefinitions {
 
 
 
-        us_008_password_homePage.currentPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_current_password"));
+        us_008_password_homePage.currentPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_current_password"));
         ReusableMethods.waitFor(2);
     }
 
     @Then("User enter old password as a new password")
     public void userEnterOldPassword() {
 
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_old_password"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_old_password"));
         us_008_password_homePage.confirmPasswordTextBox.click();
         ReusableMethods.waitFor(2);
     }
 
     @Then("User enter new old password for confirmation")
     public void userClickNewPasswordConfirmation() {
-        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_old_password"));
+        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_old_password"));
         ReusableMethods.waitFor(2);
     }
 
@@ -115,13 +115,13 @@ public class US_008_StepDefinitions {
 
 
         us_008_password_homePage.currentPasswordTextBox.clear();
-        us_008_password_homePage.currentPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_old_password"));
+        us_008_password_homePage.currentPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_old_password"));
         ReusableMethods.waitFor(2);
         us_008_password_homePage.newPasswordTextBox.clear();
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_current_password"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_current_password"));
         ReusableMethods.waitFor(2);
         us_008_password_homePage.confirmPasswordTextBox.clear();
-        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_current_password"));
+        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_current_password"));
         ReusableMethods.waitFor(2);
         us_008_password_homePage.saveButton.click();
         System.out.println("if this method works, there is a defect here!!!");
@@ -132,7 +132,7 @@ public class US_008_StepDefinitions {
     @Given("User enter new password at least one lower_case")
     public void userEnterNewPasswordAtLeastOneLower_case() {
 
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("lower_case"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("lower_case"));
         ReusableMethods.waitFor(2);
 
     }
@@ -147,7 +147,7 @@ public class US_008_StepDefinitions {
 
     @Given("User enter new password at least one upper_case")
     public void userEnterNewPasswordAtLeastOneUpper_case() {
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("upper_case"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("upper_case"));
         ReusableMethods.waitFor(2);
     }
 
@@ -162,7 +162,7 @@ public class US_008_StepDefinitions {
     @Given("User enter new password at least one digit")
     public void userEnterNewPasswordAtLeastOneDigit() {
 
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("digit_case"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("digit_case"));
         ReusableMethods.waitFor(2);
 
     }
@@ -183,7 +183,7 @@ public class US_008_StepDefinitions {
     @Given("User enter new password at least one special char")
     public void userEnterNewPasswordAtLeastOneSpecialChar() {
 
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("special_char"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("special_char"));
         ReusableMethods.waitFor(2);
 
     }
@@ -198,7 +198,7 @@ public class US_008_StepDefinitions {
     @Given("User enter new password at least seven char")
     public void userEnterNewPasswordAtLeastSevenChar() {
 
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("power_pass"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("power_pass"));
 
         ReusableMethods.waitFor(2);
     }
@@ -215,7 +215,7 @@ public class US_008_StepDefinitions {
     @Given("User enter new password to change")
     public void userEnterNewPasswordToChange() {
 
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_new_password"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_new_password"));
         ReusableMethods.waitFor(2);
     }
 
@@ -223,7 +223,7 @@ public class US_008_StepDefinitions {
     @Then("User enter new password confirmation")
     public void userEnterNewPasswordConfirmation() {
 
-        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_new_password"));
+        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_new_password"));
         ReusableMethods.waitFor(2);
     }
 
@@ -237,13 +237,13 @@ public class US_008_StepDefinitions {
         System.out.println("user see new password confirmation message");
 
         us_008_password_homePage.currentPasswordTextBox.clear();
-        us_008_password_homePage.currentPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_new_password"));
+        us_008_password_homePage.currentPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_new_password"));
         ReusableMethods.waitFor(1);
         us_008_password_homePage.newPasswordTextBox.clear();
-        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_current_password"));
+        us_008_password_homePage.newPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_current_password"));
         ReusableMethods.waitFor(2);
         us_008_password_homePage.confirmPasswordTextBox.clear();
-        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigReader.getProperty("bekir_current_password"));
+        us_008_password_homePage.confirmPasswordTextBox.sendKeys(ConfigurationReader.getProperty("bekir_current_password"));
         ReusableMethods.waitFor(1);
         us_008_password_homePage.saveButton.click();
 

@@ -2,14 +2,12 @@ package bank.com.stepDefinitions;
 
 import bank.com.pages.LoginPage;
 import bank.com.pages.US_017_Pages;
-import bank.com.pojos.Customer;
 import bank.com.utilities.*;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
@@ -26,12 +24,12 @@ public class US_017_StepDefinitions {
 
     @Then("enters valid <{string}> as admin")
     public void entersValidAsAdmin(String username) {
-        loginPage.loginPageUsernameTextBox.sendKeys(ConfigReader.getProperty(username));
+        loginPage.loginPageUsernameTextBox.sendKeys(ConfigurationReader.getProperty(username));
     }
 
     @Then("enters a valid <{string}>  as admin")
     public void entersAValidAsAdmin(String password) {
-        loginPage.loginPagePasswordTextBox.sendKeys(ConfigReader.getProperty(password));
+        loginPage.loginPagePasswordTextBox.sendKeys(ConfigurationReader.getProperty(password));
     }
 
     @Then("clicks the sing in button")

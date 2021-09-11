@@ -44,7 +44,8 @@ import org.junit.runner.RunWith;
 
 
 
-        tags="@demo",
+        tags="@Statedeletion",
+
 
         //tags="@istediginiz tag", TEstNG de gordugumuz group gibi calisir
         //tags="@smoke or miniregression" => boyle yapabiliriz. Or dersek veya

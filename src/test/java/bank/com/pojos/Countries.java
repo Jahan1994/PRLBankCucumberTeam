@@ -2,7 +2,7 @@ package bank.com.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)//=>aşağıda bulamadığı veriler için programı durdurmayıp devam ettiriyor
 public class Countries {
 
     private int id;

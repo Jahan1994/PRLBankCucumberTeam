@@ -2,7 +2,7 @@ package bank.com.stepDefinitions;
 
 
 import bank.com.pages.US_16_Page;
-import bank.com.utilities.ConfigReader;
+import bank.com.utilities.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.Select;
@@ -113,13 +113,13 @@ public class US_016_StepDefinitions {
     @And("User enters {string} in the balance text box")
     public void  userEntersInTheBalanceTextBox(String amountus15) {
 
-        us_16_page.balancetextbox.sendKeys(ConfigReader.getProperty(amountus15));
+        us_16_page.balancetextbox.sendKeys(ConfigurationReader.getProperty(amountus15));
     }
 
     @And("User enters {string} in the description text box")
     public void userEntersInTheDescriptionTextBox(String descriptionus15) {
 
-        us_16_page.descriptiontextbox.sendKeys(ConfigReader.getProperty(descriptionus15));
+        us_16_page.descriptiontextbox.sendKeys(ConfigurationReader.getProperty(descriptionus15));
     }
 
     @And("User do not enter amount in balance text box")

@@ -9,17 +9,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import bank.com.pages.HomePage;
 import bank.com.pages.LoginPage;
 import bank.com.pages.RegistrationPage;
 import bank.com.pages.ManageAccountsPage;
-
-import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -31,7 +27,7 @@ public class US_019_Admin_Create_New_Account_StepDefinitions {
 
     RegistrationPage registrationPage= new RegistrationPage();
     ManageAccountsPage manageAccountsPage=new ManageAccountsPage();
-    String fileName= ConfigReader.getProperty("fileNameOfCustomer");
+    String fileName= ConfigurationReader.getProperty("fileNameOfCustomer");
     Customer customer= new Customer();
 
 

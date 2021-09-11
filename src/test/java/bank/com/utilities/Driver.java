@@ -40,7 +40,7 @@ public class Driver {
         //Bunu ayni sayfada  acilmaya devam etsin, tekrar tekrar yeni sekme acmasin diye
         if(driver==null){
 
-            switch (ConfigReader.getProperty("browser")){
+            switch (ConfigurationReader.getProperty("browser")){
 
                 case "chrome":
                     //Ayarlari yaptik

@@ -1,9 +1,6 @@
 package bank.com.utilities;
 
 import bank.com.pojos.User;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -59,7 +56,7 @@ public class WriteToExcel {
     public static List<User> getCustomers() {
         List<User> customers =
 
-                ReadTxt.returnAWholeUser(ConfigReader.getProperty("fileNameOfCustomer"));
+                ReadTxt.returnAWholeUser(ConfigurationReader.getProperty("fileNameOfCustomer"));
         return customers;
     }
 

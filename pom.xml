@@ -25,7 +25,6 @@
         </dependency>
 
 
-
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -47,14 +46,6 @@
             <artifactId>testng</artifactId>
             <version>7.1.0</version>
             <scope>test</scope>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>3.8.1</version>
         </dependency>
 
 
@@ -88,33 +79,19 @@
         </dependency>
 
 
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <!-- DATABASE  -->
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>6.9.1</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.18</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>6.9.0</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
-            <groupId>com.apple</groupId>
-            <artifactId>AppleJavaExtensions</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <!--        DATABASE TEST icin -->
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>8.2.2.jre8</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.8</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
@@ -142,7 +119,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>4.3.3</version>
+            <version>4.4.0</version>
             <scope>test</scope>
         </dependency>
         <!--        DE-SERILIZATION icin-->
@@ -165,17 +142,7 @@
             <artifactId>json</artifactId>
             <version>20190722</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.8</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.4.0</version>
-            <scope>test</scope>
-        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
         <!--                 <dependency>-->
@@ -184,12 +151,6 @@
         <!--                     <version>1.9.12</version>-->
         <!--                 </dependency>-->
 
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.8</version>
-        </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
         <dependency>
@@ -197,18 +158,6 @@
             <artifactId>itextpdf</artifactId>
             <version>5.4.2</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-
 
 
     </dependencies>
@@ -273,10 +222,11 @@
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
                                 <param>**/json-reports/*.json</param>
-                            </jsonFiles><classificationFiles>->
-                            <param>sample.properties</param>
-                            <param>other.properties</param>
-                        </classificationFiles>
+                            </jsonFiles>
+                            <classificationFiles>->
+                                <param>sample.properties</param>
+                                <param>other.properties</param>
+                            </classificationFiles>
                         </configuration>
                     </execution>
                 </executions>
@@ -287,4 +237,3 @@
 
 
 </project>
-

@@ -3,7 +3,7 @@ package bank.com.stepDefinitions;
 import bank.com.pages.HomePage;
 import bank.com.pages.LoginPage;
 import bank.com.pages.RegistrationPage;
-import bank.com.utilities.ConfigReader;
+import bank.com.utilities.ConfigurationReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -28,12 +28,12 @@ public class LoginPageStepDefinitions {
 
   @Then("User provides a valid username for pozitive login")
   public void userProvidesAValidUsernameForPozitiveLogin() {
-    registrationPage.usernameTextBox.sendKeys(ConfigReader.getProperty("user_usernamee"));
+    registrationPage.usernameTextBox.sendKeys(ConfigurationReader.getProperty("user_usernamee"));
   }
 
   @Then("User provides a valid passWord for pozitive login")
   public void userProvidesAValidPassWordForPozitiveLogin() {
-    registrationPage.passWord.sendKeys(ConfigReader.getProperty("user_passwordd"));
+    registrationPage.passWord.sendKeys(ConfigurationReader.getProperty("user_passwordd"));
   }
 
 

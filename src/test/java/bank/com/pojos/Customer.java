@@ -2,9 +2,44 @@ package bank.com.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)//=>aşağıda bulamadığı veriler için programı durdurmayıp devam ettiriyor
 public class Customer {
-
+    /*
+       {
+            "id": 75047,
+            "firstName": "Maria",
+            "lastName": "Maria",
+            "middleInitial": "M",
+            "email": "customer55@gmail.com",
+            "mobilePhoneNumber": "123-456-7890",
+            "phoneNumber": "123-456-7896",
+            "zipCode": "0300",
+            "address": "free world street",
+            "city": "Sacramento",
+            "ssn": "027-31-2727",
+            "createDate": "2021-02-21T21:00:00Z",
+            "zelleEnrolled": false,
+            "country": {
+                "id": 3,
+                "name": "USA",
+                "states": null
+            },
+            "state": "California",
+            "user": {
+                "id": 75194,
+                "login": "customer55",
+                "firstName": "Maria",
+                "lastName": "Clark",
+                "email": "customer55@gmail.com",
+                "activated": true,
+                "langKey": "en",
+                "imageUrl": null,
+                "resetDate": null
+            },
+            "accounts": null
+        },
+         */
+    //başkaları tarafından kullanılmamasını istiyorsak private yapmalıyız
     private int id;
     private String firstName;
     private String lastName;
@@ -18,9 +53,9 @@ public class Customer {
     private String ssn;
     private String createDate;
     private boolean zelleEnrolled;
-    private Country country;
+    private Country country;//contryinin içeriği olduğu için gidip class oluştrup gelip burdan o clası ekleyebiliriz
     private String state;
-    private User user;
+    private User user;//user ın içeriği olduğu için gidip class oluştrup gelip burdan o clası ekleyebiliriz
 
 
     //bunlar burda aslinda YOK!

@@ -4,7 +4,7 @@ import bank.com.pages.HomePage;
 import bank.com.pages.LoginPage;
 import bank.com.pages.ManageAccountsPage;
 import bank.com.pages.RegistrationPage;
-import bank.com.utilities.ConfigReader;
+import bank.com.utilities.ConfigurationReader;
 import bank.com.utilities.DateUtil;
 import bank.com.utilities.Driver;
 import bank.com.utilities.ReusableMethods;
@@ -32,7 +32,7 @@ public class US_013_Employee_Create_New_Account_StepDefinitions {
 
     @Given("Employee on the home page {string}")
     public void employeeOnTheHomePage(String pageUrl) {
-        Driver.getDriver().get(ConfigReader.getProperty(pageUrl));
+        Driver.getDriver().get(ConfigurationReader.getProperty(pageUrl));
     }
 
     @Then("Employee clicks menu icon")

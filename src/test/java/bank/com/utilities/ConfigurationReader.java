@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfigReader {
+public class ConfigurationReader {
     //tercuman class bu. ara klas.configuration classindan degerleri almak gorevi
 
     //1.Properties objesi olusturmak

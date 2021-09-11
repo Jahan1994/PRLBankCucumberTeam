@@ -4,9 +4,7 @@ import bank.com.pages.LoginPage;
 import bank.com.pojos.User;
 import bank.com.utilities.*;
 import com.github.javafaker.Faker;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 import org.junit.Assert;
@@ -27,7 +25,7 @@ public class    US_001_Registration_StepDefinitions {
     Customer customer=new Customer();
     Customer customer1=new Customer();
     User user =new User();
-    String fileName= ConfigReader.getProperty("fileNameOfCustomer");
+    String fileName= ConfigurationReader.getProperty("fileNameOfCustomer");
     String firstName;
     String lastName;
     String firstPassword;
@@ -74,7 +72,7 @@ public class    US_001_Registration_StepDefinitions {
     @Then("User provides a valid Mobile Phone Number with javafaker as {string}")
     public void userProvidesAValidMobilePhoneNumberWithJavafakerAs(String mobilenumber) {
         //mobilenumber=faker.phoneNumber().cellPhone();
-        mobilenumber= ConfigReader.getProperty("valid_mobile_phone_number");
+        mobilenumber= ConfigurationReader.getProperty("valid_mobile_phone_number");
         registrationPage.mobilePhoneNumberTextBox.sendKeys(mobilenumber);
         customer.setPhoneNumber(mobilenumber);
     }
@@ -147,7 +145,7 @@ public class    US_001_Registration_StepDefinitions {
     public void userValidatesThatHeRegisteredSuccesfullySuccessMessageAs(String expectedSuccesMessage) {
         String actualSuccessMessage = registrationPage.successfulRegisterMessage.getText();
         System.out.println(actualSuccessMessage);
-        expectedSuccesMessage= ConfigReader.getProperty("registration_success_message");
+        expectedSuccesMessage= ConfigurationReader.getProperty("registration_success_message");
         // Assert.assertEquals(expectedSuccesMessage,actualSuccessMessage);
         Assert.assertTrue("Success mesaji gorulmedi", actualSuccessMessage.contains(expectedSuccesMessage));
     }
@@ -160,49 +158,49 @@ public class    US_001_Registration_StepDefinitions {
 
     @Then("User provides a valid SSN")
     public void userProvidesAValidSSN() {
-        registrationPage.ssnTextBox.sendKeys(ConfigReader.getProperty("valid_ssn"));
+        registrationPage.ssnTextBox.sendKeys(ConfigurationReader.getProperty("valid_ssn"));
     }
 
     @Then("User provides a valid Firstname")
     public void userProvidesAValidFirstname() {
-        registrationPage.firstNameTextBox.sendKeys(ConfigReader.getProperty("valid_firstname"));
+        registrationPage.firstNameTextBox.sendKeys(ConfigurationReader.getProperty("valid_firstname"));
 
     }
 
     @Then("User provides a valid Lastname")
     public void userProvidesAValidLastname() {
-        registrationPage.lastNameTextBox.sendKeys(ConfigReader.getProperty("valid_lastname"));
+        registrationPage.lastNameTextBox.sendKeys(ConfigurationReader.getProperty("valid_lastname"));
     }
 
     @Then("User provides a valid Address")
     public void userProvidesAValidAddress() {
-        registrationPage.addressTextBox.sendKeys(ConfigReader.getProperty("valid_address"));
+        registrationPage.addressTextBox.sendKeys(ConfigurationReader.getProperty("valid_address"));
     }
 
     @Then("User provides a valid Mobile Phone Number")
     public void userProvidesAValidMobilePhoneNumber() {
-        registrationPage.mobilePhoneNumberTextBox.sendKeys(ConfigReader.getProperty("valid_mobile_phone_number"));
+        registrationPage.mobilePhoneNumberTextBox.sendKeys(ConfigurationReader.getProperty("valid_mobile_phone_number"));
     }
 
     @Then("User provides a valid Username")
     public void userProvidesAValidUsername() {
-        registrationPage.usernameTextBox.sendKeys(ConfigReader.getProperty("valid_username"));
+        registrationPage.usernameTextBox.sendKeys(ConfigurationReader.getProperty("valid_username"));
     }
 
     @Then("User provides a valid Email")
     public void userProvidesAValidEmail() {
-        registrationPage.emailTextBox.sendKeys(ConfigReader.getProperty("valid_email"));
+        registrationPage.emailTextBox.sendKeys(ConfigurationReader.getProperty("valid_email"));
 
     }
 
     @Then("User provides a valid Password")
     public void userProvidesAValidPassword() {
-        registrationPage.firstPasswordTextBox.sendKeys(ConfigReader.getProperty("valid_password"));
+        registrationPage.firstPasswordTextBox.sendKeys(ConfigurationReader.getProperty("valid_password"));
     }
 
     @Then("User provides a valid Password to Password confirmation textbox")
     public void userProvidesAValidPasswordToPasswordConfirmationTextbox() {
-        registrationPage.secondPasswordTextBox.sendKeys(ConfigReader.getProperty("valid_password_confirm"));
+        registrationPage.secondPasswordTextBox.sendKeys(ConfigurationReader.getProperty("valid_password_confirm"));
     }
 
     @Then("User clicks on Register button")
@@ -214,7 +212,7 @@ public class    US_001_Registration_StepDefinitions {
     public void userValidatesThatHeRegisteredSuccesfully() {
         String actualSuccessMessage = registrationPage.successfulRegisterMessage.getText();
         System.out.println(actualSuccessMessage);
-        String expectedSuccesMessage= ConfigReader.getProperty("registration_success_message");
+        String expectedSuccesMessage= ConfigurationReader.getProperty("registration_success_message");
         // Assert.assertEquals(expectedSuccesMessage,actualSuccessMessage);
         Assert.assertTrue(actualSuccessMessage.contains(expectedSuccesMessage));
     }
@@ -281,9 +279,6 @@ public class    US_001_Registration_StepDefinitions {
     public void userValidatesThatTheRegisteredSuccesfullyForPassword() {
         ReusableMethods.waitForVisibility(registerPage.successfulRegisterMessage, 5);
     }
-
-
-
     @And("User enter a valid username and a valid password for customer")
     public void userEnterAValidUsernameAndAValidPasswordForCustomer() {
         List<Customer> list2= ReadTxt.returnAWholeCostumer(fileName);
