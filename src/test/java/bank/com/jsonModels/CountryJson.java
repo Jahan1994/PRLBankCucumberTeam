@@ -1,8 +1,11 @@
 package bank.com.jsonModels;
-<<<<<<< HEAD
+
+
+
 //package gmibank.jsonModels;
-=======
->>>>>>> main
+
+
+
 
 public class CountryJson {
 
