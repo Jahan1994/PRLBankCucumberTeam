@@ -1,8 +1,17 @@
 package bank.com.stepDefinitions;
 
+
+
+import javax.sound.midi.Soundbank;
+import java.sql.SQLOutput;
+import java.util.HashMap;
+
+import static io.restassured.RestAssured.given;
+
 import bank.com.pages.US_009Page;
 import bank.com.pojos.Country;
 
+import static bank.com.utilities.ApiUtility.*;
 import bank.com.utilities.ReadTxt;
 import bank.com.utilities.WriteToTxt;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +22,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -25,6 +35,7 @@ import static bank.com.jsonModels.CountryJson.createCountry;
 import static bank.com.utilities.DatabaseUtility.createConnection;
 import static bank.com.utilities.DatabaseUtility.getColumnData;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 
 public class US_026_API_Update_CountryStepDefinitions {
 
@@ -46,39 +57,21 @@ public class US_026_API_Update_CountryStepDefinitions {
     //Bu method ile otomatik olarak token aliniyor. Guzel bir method
     @Given("user should first get a bearer token with end point {string}")
     public void userShouldFirstGetABearerTokenWithEndPoint(String tokenEndPoint) {
-        String credentials = "{\n" +
-                "    \"username\" : \"team53employee\",\n" +
-                "    \"password\" : \"Team53employee.\",\n" +
-                "    \"rememberMe\" : false\n" +
-                "}";
+        String username = "team53employee";
+        String password = "Team53employee.";
+        takeToken(username, password, tokenEndPoint);
 
-        token = given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
-                .when()
-                .body(credentials)
-                .post(tokenEndPoint)
-                .then()
-                .extract()
-                .path("id_token");
-        System.out.println("token: " + token);
     }
 
 
     @Given("user reads all countries and write country ids to txt using api endpoint {string}")
     public void userReadsAllCountriesAndWriteCountryIdsToTxtUsingApiEndpoint(String api_url) throws IOException {
 
-        response = given().headers("Authorization",
-                "Bearer " + token,
-                "Content-Type",
-                ContentType.JSON,
-                "Accept", ContentType.JSON)
-                .when()
-                .get(api_url)
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .response();
+        //ApiUtility icerisinde static kod olusturup ordan cagirdim
+        response = getWithApiEndPoint(api_url);
+      response.prettyPrint();
 
-    //    response.prettyPrint();
+
         // validate isleminde kullanmak icin tum ulke idlerini bir listin icine atalim
          List<String> countryId = new ArrayList<>();
 
@@ -92,18 +85,18 @@ public class US_026_API_Update_CountryStepDefinitions {
         }
 
         //Eger dosya bos degilse silmek icin
-         File file = new File("src\\test\\resources\\test_data\\countryNameAndIdFromAPI");
+         File file = new File("src\\test\\resources\\test_data\\countryNameAndIdFromAPI.txt");
         if (file != null) {
             file.delete();
         }
         // ulke idlerini txt olarak yazdiralim
-        WriteToTxt.saveDataInFileWithCountry5Id("src\\test\\resources\\test_data\\countryIdFromAPI", country5);
+        WriteToTxt.saveDataInFileWithCountry5Id("src\\test\\resources\\test_data\\countryIdFromAPI.txt", country5);
 
         //id ve name ile write
-        WriteToTxt.saveDataInFileWithCountryIdAndName("src\\test\\resources\\test_data\\countryIdANDNameFromAPI", country5);
+        WriteToTxt.saveDataInFileWithCountryIdAndName("src\\test\\resources\\test_data\\countryIdANDNameFromAPI.txt", country5);
 
         // txt olarak yazdirdigimiz idleri readtxt uzerinden okutalim
-       List<String> readId = ReadTxt.returnCountry5IdList("src\\test\\resources\\test_data\\countryIdFromAPI");
+       List<String> readId = ReadTxt.returnCountry5IdList("src\\test\\resources\\test_data\\countryIdFromAPI.txt");
 
         // validasyon
        Assert.assertEquals("mot match", countryId, readId);
@@ -115,20 +108,7 @@ public class US_026_API_Update_CountryStepDefinitions {
 
     @And("user creates an country {string}")
     public void userCreatesAnCountry(String api_url) {
-
-        response = given().headers("Authorization",
-                "Bearer " + token,
-                "Content-Type",
-                ContentType.JSON,
-                "Accept", ContentType.JSON)
-                .when()
-                .body(createCountry)
-                .post(api_url)
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .response();
-
+        response = createWithApiEndPoint(createCountry, api_url);
         response.prettyPrint();
 
         //olusturulan country id
@@ -143,20 +123,13 @@ public class US_026_API_Update_CountryStepDefinitions {
     @Then("user validates this created new country")
     public void userValidatesThisCreatedNewCountry() {
 
-        response = given().headers("Authorization",
-                "Bearer " + token,
-                "Content-Type",
-                ContentType.JSON,
-                "Accept", ContentType.JSON)
-                .when()
-                .get("https://www.gmibank.com/api/tp-countries")
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .response();
+        System.out.println(createdCountryId);
+        String api_url= "https://gmibank-qa-environment.com/api/tp-countries";
+        response = getWithApiEndPoint(api_url);
 
         JsonPath jsonPath = response.jsonPath();
         String stringIds = jsonPath.getString("id");
+        System.out.println(stringIds);
 
         String stringCreatedCountryId = String.valueOf(createdCountryId);
 
@@ -172,65 +145,58 @@ public class US_026_API_Update_CountryStepDefinitions {
 
         //map olusturduk
         Map<String, Object> putCountry = new HashMap<>();
-        putCountry.put("id", id);
+       putCountry.put("id", id);
         putCountry.put("name",name);
         putCountry.put("states", null);
 
-        response = given().headers("Authorization",
-                "Bearer " + token,
-                "Content-Type",
-                ContentType.JSON,
-                "Accept", ContentType.JSON)
-                //  .param("size", 2000) ==> burada param icerisinde size belirliyoruz en fazla 2000 kisi getirecek
-                .when()
-                .body(putCountry)
-                .put(api_url)
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .response();
+        responseNew = updateWithApiEndPoint(api_url,putCountry);
+        responseNew.prettyPrint();
 
-      //  response.prettyPrint();
-
-//        JsonPath jsonPath = response.jsonPath();
+//        JsonPath jsonPath = responseNew.jsonPath();
 //        String stringNames = jsonPath.getString("name");
-       this.updatedCountryName= name;
-       this.createdCountryId= Integer.parseInt(id);
-//
+////        id = String.valueOf(createdCountryId);
+//       updatedCountryName=name;
 //        Assert.assertTrue("not contain", stringNames.contains(name));
 //        System.out.println("Validation is succesfull voor id " + id + " with " + name);
 
+//        //3.Way: By using body()
+//        responseNew.
+//                then().
+//                assertThat().
+//                statusCode(200).
+//                body("id", equalTo("21183"),
+//                        "name", equalTo(name));
     }
     @And("user validates this updated country with Api end point {string} {string} and its extension {string}")
     public void userValidatesThisUpdatedCountryWithApiEndPointAndItsExtension(String api_url, String name, String id) throws IOException {
-        responseNew = given().headers("Authorization",
-                "Bearer " + token,
-                "Content-Type",
-                ContentType.JSON,
-                "Accept", ContentType.JSON)
-                .when()
-                .get(api_url)
-                .then()
-                .contentType(ContentType.JSON)
-                .extract()
-                .response();
+        responseNew= getWithApiEndPoint(api_url);
+        responseNew.prettyPrint();
 
         //Json path ile dogrulama
        JsonPath jsonPath = responseNew.jsonPath();
-        String stringNames = jsonPath.getString("name");
+       String stringNames = jsonPath.getString("name");
+       System.out.println(stringNames);
+       String idNames = jsonPath.getString("id");
+       updatedCountryName=name;
+       createdCountryId= Integer.parseInt(id);
        // this.updatedCountryName= name;
        Assert.assertTrue("not contain", stringNames.contains(updatedCountryName));
-        System.out.println("Validation is succesfull voor id " + createdCountryId + " with " + updatedCountryName);
+         System.out.println("Validation is succesfull voor id " + createdCountryId + " with " + updatedCountryName);
+        //En son calisani yazdirir.
+        Assert.assertTrue("not contain", stringNames.contains(jsonPath.getString("name[-1]")));
+        Assert.assertEquals("not contain", jsonPath.getString("name[-1]"), updatedCountryName);
+        System.out.println(jsonPath.getString("name[-1]"));
 
         //================================================================
-        /*
+        ObjectMapper objectMapper = new ObjectMapper();
+        Country[] country5 = objectMapper.readValue(responseNew.asString(), Country[].class);
 
        //    response.prettyPrint();
         // validate isleminde kullanmak icin tum ulke idlerini bir listin icine atalim
         List<String> countryId = new ArrayList<>();
-        // objectmapper kullanarak deserilazition yapiyoruz
-        ObjectMapper objectMapper = new ObjectMapper();
-        Country[] country5 = objectMapper.readValue(responseNew.asString(), Country[].class);
+        // objectmapper kullanarak deserilazition yapiyoruz. bBurada GSON da kullanilabilirdi.
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        Country[] country5 = objectMapper.readValue(response.asString(), Country[].class);
 
         // for dongusu ile tum country id lerini daha  once olusturdugumuz listin icine ekleyelim
         for (int i = 0; i < country5.length; i++) {
@@ -238,49 +204,46 @@ public class US_026_API_Update_CountryStepDefinitions {
         }
 
         //Eger dosya bos degilse silmek icin
-        File file = new File("src\\test\\resources\\test_data\\countryNameAndIdFromAPI");
+        File file = new File("src\\test\\resources\\test_data\\countryNameAndIdFromAPI.txt");
         if (file != null) {
             file.delete();
         }
         //id ve name ile write
-        WriteToTxt.saveDataInFileWithCountryIdAndName("src\\test\\resources\\test_data\\countryIdANDNameFromAPI", country5);
+        WriteToTxt.saveDataInFileWithCountryIdAndName("src\\test\\resources\\test_data\\countryIdANDNameFromAPI.txt", country5);
 
  //==============================================================================
 
          //===BURAYA CALIS====
        //map yapmaya calistim ama olmadi Integer hatasi veriyor.=>NumberFormatException: For input string: "22347 "
         //Cozuldu
-        Map<String, Object> sonMap= new HashMap<>();
-        List<String> list1 = ReadTxt.returnCountryIdNameList("src\\test\\resources\\test_data\\countryIdANDNameFromAPI");
+        Map<String, Object> expectedDataMap= new HashMap<>();
+        List<String> list1 = ReadTxt.returnCountryIdNameList("src\\test\\resources\\test_data\\countryIdANDNameFromAPI.txt");
         //Map list kullanarak ekleme yaptim
        //sonMap.put(list1.get(0), list1.get(1));
         for (int i = 1; i < list1.size()-1 ; i++) {
             if(i%2 ==1) {
-                 sonMap.put(list1.get(i-1), list1.get(i));
+                expectedDataMap.put(list1.get(i-1), list1.get(i));
             }
         }
 
         //Map tum elemanlari okuma ==> for each ile
-        for (Map.Entry<String, Object> entry : sonMap.entrySet()) {
+        for (Map.Entry<String, Object> entry : expectedDataMap.entrySet()) {
           System.out.println(entry.getKey() + ":" + entry.getValue().toString());
         }
-
-        System.out.println(sonMap.containsValue("Updated ULKE")); //true
-
-        System.out.println(sonMap.get("21156"));
+       // System.out.println(expectedDataMap.containsValue("Updated ULKE")); //true
+      //  System.out.println(expectedDataMap.get("21156"));
 
 
-    // Assert.assertEquals("not equal", sonMap.get(createdCountryId), updatedCountryName);
-        Assert.assertEquals("not equal", sonMap.get("21156"), updatedCountryName);
+        Assert.assertEquals("not equal", expectedDataMap.get("21184"), updatedCountryName);
+        System.out.println("succesfully");
+//        Assert.assertEquals("not equal", expectedDataMap.get("21156"), actualDataMap.get("21156"));
 
 
 //        //liste olusturduk ==> burada name ve id yazdrimistim name cagirip bakacam
-//        List<Country5> countryIdandName = ReadTxt.returnCountryIdNameList("src\\test\\resources\\test_data\\countryIdANDNameFromAPI");
+//        List<Country5> countryIdandName = ReadTxt.returnCountryIdNameList("src\\test\\resources\\test_data\\countryIdANDNameFromAPI.txt");
 //        System.out.println(countryIdandName.get(countryIdandName.size()-1).getName());
 //        String updatedCountry = countryIdandName.get(countryIdandName.size()-1).getName();
 //        Assert.assertEquals("not equal", updatedCountry, updatedCountryName);
-
-         */
 
     }
 

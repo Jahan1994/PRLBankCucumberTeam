@@ -280,7 +280,11 @@ public class DatabaseUtility {
         List<Object> list =getColumnData(query,"name");
         System.out.println(list);
 
+
 //        closeConnection();
+
+        closeConnection();
+
 
 //        System.out.println(list);
 //        System.out.println(getQueryResultList(query));

@@ -10,7 +10,7 @@ Feature:
 
   @create_country
   Scenario: Create a country
-    And user creates an country "https://www.gmibank.com/api/tp-countries"
+    And user creates an country "https://gmibank-qa-environment.com/api/tp-countries"
 
   @@validate_country
   Scenario: Validate created country
@@ -19,14 +19,15 @@ Feature:
   @update_country
   Scenario Outline:  Update country
     Given user update a country using api end point "https://gmibank-qa-environment.com/api/tp-countries"  "<name>" and its extension "<id>"
-    And user validates this updated country with Api end point "https://gmibank-qa-environment.com/api/tp-countries" "<name>" and its extension "<id>"
-    Examples: Update country
+        Examples: Update country
       |name|id|
-      |Updated ULKE|21156|
-#      |Update with Api2|18872|
-#      |Update with Api3|18873|
-#      |Update with Api4|18874|
-#      |Update with Api5|18875|
+      |Update2|21184|
+
+    Scenario Outline:  validation of updated country
+      And user validates this updated country with Api end point "https://gmibank-qa-environment.com/api/tp-countries" "<name>" and its extension "<id>"
+      Examples: Update country
+        |name|id|
+        |Update2|21184|
 
 
 
