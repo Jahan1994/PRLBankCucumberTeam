@@ -21,7 +21,11 @@ public class Hooks {
     //Cucumberda normlade test fail olursa sonraki testler calismaz execution direkt durur.
     //Sayfa kapatmada yoktu. Hooks ile Eger sayfa fail verirse screenhot alacak. ve sayfayi dda kapatacak.
     //diger bir husus SeleniumGrid run edecegimiz zaman HOOKS kapatilmali.
-    @After
+
+
+
+   @After
+
     public void tearDown(Scenario scenario){
 //        final byte[] screenshot=((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
 //        if (scenario.isFailed()) {

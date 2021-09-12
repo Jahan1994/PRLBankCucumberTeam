@@ -65,10 +65,17 @@ public class Driver {
                     WebDriverManager.edgedriver().setup();
                     driver= new EdgeDriver();
                     break;
+
+//                case "chrome-headless":
+//                    WebDriverManager.chromedriver().setup();
+//                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+//                    break;
+
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                     break;
+
             }
         }
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
