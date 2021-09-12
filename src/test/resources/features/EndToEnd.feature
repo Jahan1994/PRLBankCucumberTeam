@@ -102,7 +102,8 @@ Feature:
     And User sees correct order date
     And User choose valid account
     And User click zelle enrolled check box
-    Then User click save button to create customer
+    Then User click save button for customer create
+         #User click save button to create customer
 
 
   @login_as_a_customer_to_send_money_between_two_created_accounts

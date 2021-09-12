@@ -1,9 +1,8 @@
 package bank.com.utilities;
-<<<<<<< HEAD
-=======
+
+
 
 import bank.com.pojos.Country;
->>>>>>> main
 import bank.com.pojos.Customer;
 import bank.com.pojos.States;
 import bank.com.pojos.User;
@@ -100,11 +99,9 @@ public class ReadTxt {
             int i = 0;
             while (line != null) {
                 States state = new States();
-<<<<<<< HEAD
-                String [] allLine = line.split(",");
-=======
+
                 String[] allLine = line.split(",");
->>>>>>> main
+
 
                 int id = Integer.parseInt(allLine[1].trim());
                 state.setId(id);
@@ -179,11 +176,11 @@ public class ReadTxt {
             int i = 0;
             while (line != null) {
                 String temp = "";
-<<<<<<< HEAD
+
                 temp =line.split(",")[0].trim();
-=======
+
                 temp = line.split(",")[0].trim();
->>>>>>> main
+
 
                 sb.append(System.lineSeparator());
                 line = br.readLine();
