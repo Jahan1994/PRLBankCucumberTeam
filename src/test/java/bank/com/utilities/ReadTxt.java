@@ -1,7 +1,13 @@
 package bank.com.utilities;
 
 
+
+
 import bank.com.pojos.Country;
+
+
+import bank.com.pojos.Country;
+
 
 import bank.com.pojos.Customer;
 import bank.com.pojos.States;
@@ -100,7 +106,10 @@ public class ReadTxt {
             while (line != null) {
                 States state = new States();
 
+
+
                 String [] allLine = line.split(",");
+
 
 
 

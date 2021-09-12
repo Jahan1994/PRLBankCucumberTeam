@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import static bank.com.jsonModels.StateJson.CREATE_STATE;
-import static bank.com.jsonModels.StateJson.CREATE_STATE6;
+import static bank.com.jsonModels.StateJson.CREATE_STATE16;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -31,8 +31,8 @@ public class US_022_StepDefination {
     Faker faker = new Faker();
 
 
-    @Given("User first should get a token by using API {string}")
-    public void userFirstShouldGetATokenByUsingAPI(String tokenEndPoint) {
+    @Given("User first should get a token by using Api_ {string}")
+    public void userFirstShouldGetATokenByUsingAPIs(String tokenEndPoint) {
         String credentials = "{\n" +
                 "    \"username\" : \"team18_customer\",\n" +
                 "    \"password\" : \"Team18customer\",\n" +

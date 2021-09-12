@@ -1,5 +1,10 @@
 package bank.com.jsonModels;
 
+
+
+
+
+
 public class StateJson {
 
 
@@ -8,6 +13,9 @@ public class StateJson {
     final public static  String CREATE_STATE3 = "{\"countryId\": 1,\"name\": \"OHIO\"}";
     final public static  String CREATE_STATE4 = "{\"countryId\": 18903,\"name\": \"FRANKFURT\"}";
     final public static  String CREATE_STATE5 = "{\"countryId\": 18901,\"name\": \"LYON\"}";
+
+    final public static  String CREATE_STATE16 = "{\"countryId\": 18901,\"name\": \"BAKU\"}";
+
 
 
     final public static  String CREATE_STATE6 = "{\"countryId\": 1,\"name\": \"New Mexico\"}";
@@ -18,5 +26,6 @@ public class StateJson {
 
     final public static  String CREATE_STATE9= "{\"countryId\": 1,\"name\": \"Glasgow\"}";
     final public static  String CREATE_STATE10= "{\"countryId\": 1,\"name\": \"Casablanca\"}";
+
 
 }

@@ -2,7 +2,7 @@ Feature: System should allow to read states using api end point
   "https://www.gmibank.com/api/tp-states"
 
   Background:
-    Given User first should get a token by using API "https://gmibank-qa-environment.com/api/authenticate"
+    Given User first should get a token by using Api_ "https://gmibank-qa-environment.com/api/authenticate"
 
 
 
