@@ -3,7 +3,7 @@ Feature: "System should allow to read all countries info using api end point
 
 
   Background:
-  Given User first should get a token by using API "https://gmibank-qa-environment.com/api/authenticate"
+  Given User first should get a token by using APII "https://gmibank-qa-environment.com/api/authenticate"
 
 
 

@@ -1,7 +1,8 @@
 package bank.com.utilities;
 
 
-import org.apache.maven.surefire.shade.common.org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
+//import org.apache.maven.surefire.shade.common.org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;

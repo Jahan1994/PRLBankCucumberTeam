@@ -79,8 +79,8 @@ public class US_024_Create_State_stepDefinitions {
 
     }
 
-    @Then("User reads all states from end point {string}")
-    public void usUserReadsAllStatesFromEndPoint(String string) {
+    @Then("User reads all states from end pointt {string}")
+    public void usUserReadsAllStatesFromEndPointt(String string) {
 
 
         responseAll=given().headers(
