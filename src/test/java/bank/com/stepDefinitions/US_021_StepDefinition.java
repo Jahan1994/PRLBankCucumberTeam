@@ -31,8 +31,8 @@ public class US_021_StepDefinition {
 
 
 
-    @Given("User first should get a token by using API {string}")
-    public void userFirstShouldGetATokenByUsingAPI(String tokenEndPoint) {
+    @Given("User first should get a token by using APII {string}")
+    public void userFirstShouldGetATokenByUsingAPII(String tokenEndPoint) {
         String credentials = "{\n" +
                 "    \"username\" : \"team18_customer\",\n" +
                 "    \"password\" : \"Team18customer\",\n" +
@@ -50,6 +50,8 @@ public class US_021_StepDefinition {
         System.out.println("token: " + token);
 
     }
+
+
 
     @Then("User should read all country by using API  {string}")
     public void userShouldReadAllCountryByUsingAPI(String countryEndPoint) {
