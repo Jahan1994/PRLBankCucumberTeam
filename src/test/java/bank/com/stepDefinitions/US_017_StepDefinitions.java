@@ -26,12 +26,15 @@ public class US_017_StepDefinitions {
 
     @Then("enters valid <{string}> as admin")
     public void entersValidAsAdmin(String username) {
-        loginPage.loginPageUsernameTextBox.sendKeys(ConfigReader.getProperty(username));
+        //loginPage.loginPageUsernameTextBox.sendKeys(ConfigReader.getProperty(username));
+        loginPage.loginPageUsernameTextBox.sendKeys("team11admin");
     }
 
     @Then("enters a valid <{string}>  as admin")
     public void entersAValidAsAdmin(String password) {
-        loginPage.loginPagePasswordTextBox.sendKeys(ConfigReader.getProperty(password));
+        //loginPage.loginPagePasswordTextBox.sendKeys(ConfigReader.getProperty(password));
+        loginPage.loginPagePasswordTextBox.sendKeys("Team11admin");
+
     }
 
     @Then("clicks the sing in button")

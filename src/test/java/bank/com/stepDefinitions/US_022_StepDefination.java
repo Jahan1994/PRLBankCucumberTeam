@@ -31,25 +31,25 @@ public class US_022_StepDefination {
     Faker faker = new Faker();
 
 
-    @Given("User first should get a token by using API {string}")
-    public void userFirstShouldGetATokenByUsingAPI(String tokenEndPoint) {
-        String credentials = "{\n" +
-                "    \"username\" : \"team18_customer\",\n" +
-                "    \"password\" : \"Team18customer\",\n" +
-                "    \"rememberMe\" : false\n" +
-                "}";
-
-        token = RestAssured.given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
-                .when()
-                .body(credentials)
-                .post(tokenEndPoint)
-                .then()
-                .extract()
-                .path("id_token");
-
-        System.out.println("token: " + token);
-
-    }
+//    @Given("User first should get a token by using API {string}")
+//    public void userFirstShouldGetATokenByUsingAPI(String tokenEndPoint) {
+//        String credentials = "{\n" +
+//                "    \"username\" : \"team18_customer\",\n" +
+//                "    \"password\" : \"Team18customer\",\n" +
+//                "    \"rememberMe\" : false\n" +
+//                "}";
+//
+//        token = RestAssured.given().headers("Content-Type", ContentType.JSON, "Accept", ContentType.JSON)
+//                .when()
+//                .body(credentials)
+//                .post(tokenEndPoint)
+//                .then()
+//                .extract()
+//                .path("id_token");
+//
+//        System.out.println("token: " + token);
+//
+//    }
 
     @Then("User should read all states by using API  {string}")
     public void userShouldReadAllStatesByUsungAPI(String stateEndPoint) {

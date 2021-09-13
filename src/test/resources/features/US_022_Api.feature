@@ -5,7 +5,6 @@ Feature: System should allow to read states using api end point
     Given User first should get a token by using API "https://gmibank-qa-environment.com/api/authenticate"
 
 
-
   Scenario: Read all states you created and validate them from your data set
    # Given User first should get a token by using API "https://gmibank-qa-environment.com/api/authenticate"
     Then User should read all states by using API  "https://gmibank-qa-environment.com/api/tp-states"

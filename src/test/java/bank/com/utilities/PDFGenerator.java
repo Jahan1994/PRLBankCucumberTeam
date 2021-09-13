@@ -63,9 +63,7 @@ public class PDFGenerator {
             e.printStackTrace();
         }
 
-
     }
-
 
     public static void pdfGeneratorRowsAndCells(String header, String fileName) {
 
@@ -151,8 +149,6 @@ public class PDFGenerator {
 
 
     }
-
-
     public static void pdfGeneratorRowsAndCellsWithList(String title, List<Customer> list, String fileName) {
 
         Document document = new Document();
@@ -160,11 +156,11 @@ public class PDFGenerator {
         String pdf_title = title;
         String logo_path = "/Users/ibrahimkalin/Downloads/Techproed.jpg";
         List<String> headers = new ArrayList<String>();
-        headers.add("Applicants");
-        headers.add("SSNs");
-        headers.add("Countries");
-        headers.add("States");
-        headers.add("Zip codes");
+        headers.add("FIRSTNAME");
+        headers.add("LASTNAME");
+        headers.add("ROLE");
+//        headers.add("States");
+//        headers.add("Zip codes");
 
 
         try {
@@ -175,11 +171,11 @@ public class PDFGenerator {
 
             document.add(new Paragraph("                                     " + pdf_title));
 
-            PdfPTable table = new PdfPTable(5);
+            PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(110);
             table.setSpacingBefore(25);
             table.setSpacingAfter(25);
-            float[] colWidth = {2, 2, 2, 2, 2};
+            float[] colWidth = {2, 2, 2};
             table.setWidths(colWidth);
 
 
@@ -195,10 +191,14 @@ public class PDFGenerator {
             for (int i = 0; i < list.size(); i++) {
 
                 table.addCell(list.get(i).getFirstName());
-                table.addCell(list.get(i).getSsn());
-                table.addCell(list.get(i).getCountry().getName());
-                table.addCell(list.get(i).getState());
-                table.addCell(list.get(i).getZipCode());
+                table.addCell(list.get(i).getLastName());
+                table.addCell(list.get(i).getRole());
+//               table.addCell(list.get(i).getCountry().getName());
+//                table.addCell(list.get(i).getState());
+//                table.addCell(list.get(i).getZipCode());
+//                table.addCell(list.get(i).getLastName());
+//                table.addCell(list.get(i).getFirstPassword());
+//                table.addCell(list.get(i).getUserName());
 
             }
             document.add(table);
@@ -211,9 +211,134 @@ public class PDFGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public static void pdfGeneratorRowsAndCellsWithListLast20(String header, List <Customer> list, String fileName){
+
+        Document document = new Document();
+        String pdf_path = fileName;
+        String pdf_title = header;
+
+        List<String> headers = new ArrayList<String>();
+        headers.add("FIRSTNAME");
+        headers.add("LASTNAME");
+        headers.add("ROLE");
+//        headers.add("Email");
+//        headers.add("City");
+//        headers.add("SSN Number");
+
+
+
+        try{
+
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdf_path));
+
+            document.open();
+
+            document.add(new Paragraph("                                     "+pdf_title));
+
+            PdfPTable table = new PdfPTable(3);
+            table.setWidthPercentage(110);
+            table.setSpacingBefore(25);
+            table.setSpacingAfter(25);
+            float [] colWidth = {2,2,2};
+            table.setWidths(colWidth);
+
+
+
+            for(int i=0;i<headers.size();i++) {
+
+                PdfPCell cell1 = new PdfPCell(new Phrase(headers.get(i)));
+                table.addCell(cell1);
+
+            }
+
+            table.setHeaderRows(list.size());
+
+            for(int i=0;i<list.size();i++ ) {
+
+                table.addCell(list.get(i).getFirstName());
+                table.addCell(list.get(i).getLastName());
+                table.addCell(list.get(i).getRole());
+//                table.addCell(list.get(i).getEmail());
+//                table.addCell(list.get(i).getSsn());
+
+            }
+            document.add(table);
+
+            document.close();
+
+            writer.close();
+
+        }
+
+        catch(Exception e){
+            e.printStackTrace();
+        }
 
 
     }
+
+//    public static void pdfGeneratorRowsAndCellsWithList(String title, List<Customer> list, String fileName) {
+//
+//        Document document = new Document();
+//        String pdf_path = fileName;
+//        String pdf_title = title;
+//        String logo_path = "/Users/ibrahimkalin/Downloads/Techproed.jpg";
+//        List<String> headers = new ArrayList<String>();
+//        headers.add("Applicants");
+//        headers.add("SSNs");
+//        headers.add("Countries");
+//        headers.add("States");
+//        headers.add("Zip codes");
+//
+//
+//        try {
+//
+//            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(pdf_path));
+//
+//            document.open();
+//
+//            document.add(new Paragraph("                                     " + pdf_title));
+//
+//            PdfPTable table = new PdfPTable(5);
+//            table.setWidthPercentage(110);
+//            table.setSpacingBefore(25);
+//            table.setSpacingAfter(25);
+//            float[] colWidth = {2, 2, 2, 2, 2};
+//            table.setWidths(colWidth);
+//
+//
+//            for (int i = 0; i < headers.size(); i++) {
+//
+//                PdfPCell cell1 = new PdfPCell(new Phrase(headers.get(i)));
+//                table.addCell(cell1);
+//
+//            }
+//
+//            table.setHeaderRows(list.size());
+//
+//            for (int i = 0; i < list.size(); i++) {
+//
+//                table.addCell(list.get(i).getFirstName());
+//                table.addCell(list.get(i).getSsn());
+//                table.addCell(list.get(i).getCountry().getName());
+//                table.addCell(list.get(i).getState());
+//                table.addCell(list.get(i).getZipCode());
+//
+//            }
+//            document.add(table);
+//
+////            document.add(Image.getInstance(logo_path));
+//            document.close();
+//
+//            writer.close();
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//    }
 
     public static void main(String[] args) {
 
@@ -252,9 +377,7 @@ public class PDFGenerator {
 
         customers.add(customer);
         customers.add(customer2);
-
         pdfGeneratorRowsAndCellsWithList(title,customers,fileName);
-
 
     }
 

@@ -30,7 +30,8 @@ Feature:
     Then User navigates to Login page
     Then enters valid <"admin_username"> as admin
     Then enters a valid <"admin_password">  as admin
-    Then clicks the sing in button
+    Then user logs in
+#    Then clicks the sing in button
     Then clicks on the Administration link from the active page
     Then clicks on the User Management link from the dropdown menu
     Then user clicks on the date

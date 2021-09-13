@@ -2,10 +2,11 @@ package bank.com.pojos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+
+@JsonIgnoreProperties(ignoreUnknown = true)//unutulan bir sey varsa onu gormezden gel, hata verme demek
 public class Customer {
 
-    private int id;
+    private String id;
     private String firstName;
     private String lastName;
     private String middleInitial;
@@ -21,25 +22,21 @@ public class Customer {
     private Country country;
     private String state;
     private User user;
-
+    private String accounts;
 
     //bunlar burda aslinda YOK!
     private String userName;
     private String firstPassword;
+    private String description;
 
-    public String getUserName() {   return userName;    }
+    //Role u 30. user story icin olusturduk.PDF create icin kullanacagiz.
+    private String role;
 
-    public void setUserName(String userName) {  this.userName = userName;    }
-
-    public String getFirstPassword() {        return firstPassword;    }
-
-    public void setFirstPassword(String firstPassword) {        this.firstPassword = firstPassword;    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -163,17 +160,97 @@ public class Customer {
         this.user = user;
     }
 
-    public Accounts getAccounts() {
+    public String getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Accounts accounts) {
+    public void setAccounts(String accounts) {
         this.accounts = accounts;
     }
 
-    private Accounts accounts;
+    public String getUserName() {
+        return userName;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
+    public String getFirstPassword() {
+        return firstPassword;
+    }
+
+    public void setFirstPassword(String firstPassword) {
+        this.firstPassword = firstPassword;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Customer(String id, String firstName, String lastName, String middleInitial, String email, String mobilePhoneNumber, String phoneNumber, String zipCode, String address, String city, String ssn, String createDate, boolean zelleEnrolled, Country country, String state, User user, String accounts, String userName, String firstPassword, String description, String role) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleInitial = middleInitial;
+        this.email = email;
+        this.mobilePhoneNumber = mobilePhoneNumber;
+        this.phoneNumber = phoneNumber;
+        this.zipCode = zipCode;
+        this.address = address;
+        this.city = city;
+        this.ssn = ssn;
+        this.createDate = createDate;
+        this.zelleEnrolled = zelleEnrolled;
+        this.country = country;
+        this.state = state;
+        this.user = user;
+        this.accounts = accounts;
+        this.userName = userName;
+        this.firstPassword = firstPassword;
+        this.description = description;
+        this.role = role;
+    }
+
+    public Customer() {
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleInitial='" + middleInitial + '\'' +
+                ", email='" + email + '\'' +
+                ", mobilePhoneNumber='" + mobilePhoneNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", ssn='" + ssn + '\'' +
+                ", createDate='" + createDate + '\'' +
+                ", zelleEnrolled=" + zelleEnrolled +
+                ", country=" + country +
+                ", state='" + state + '\'' +
+                ", user=" + user +
+                ", accounts='" + accounts + '\'' +
+                ", userName='" + userName + '\'' +
+                ", firstPassword='" + firstPassword + '\'' +
+                ", description='" + description + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }
-
-

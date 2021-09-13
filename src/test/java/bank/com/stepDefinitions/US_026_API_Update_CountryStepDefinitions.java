@@ -1,7 +1,5 @@
 package bank.com.stepDefinitions;
 
-
-
 import javax.sound.midi.Soundbank;
 import java.sql.SQLOutput;
 import java.util.HashMap;
@@ -12,6 +10,8 @@ import bank.com.pages.US_009Page;
 import bank.com.pojos.Country;
 
 import static bank.com.utilities.ApiUtility.*;
+
+import bank.com.utilities.ConfigReader;
 import bank.com.utilities.ReadTxt;
 import bank.com.utilities.WriteToTxt;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -269,6 +269,26 @@ public class US_026_API_Update_CountryStepDefinitions {
         System.out.println(updatedCountryName);
         System.out.println(allCountriesFromUI.get(allCountriesFromUI.size()-1).getText());
         Assert.assertEquals("country name doesnt exist",countryName, allCountriesFromUI.get(allCountriesFromUI.size()-1).getText());
+
+    }
+
+    // ============================  delete and validate created country =================================
+
+
+    @Given("delete updated a country using endpoint {string} and its extension {string} and validate")
+    public void delete_updated_a_country_using_endpoint_and_its_extension_and_validate(String api_url, String id) {
+        response= deleteWithApiEndPoint(api_url,id);
+        response.prettyPrint();
+
+        responseNew= getWithApiEndPoint(api_url);
+        responseNew.prettyPrint();
+       
+        JsonPath jsonPath = responseNew.jsonPath();
+        String ids = jsonPath.getString("id");
+
+        Assert.assertFalse("not delete", ids.contains(id));
+        System.out.println("Validation is succesfull");
+
 
     }
 

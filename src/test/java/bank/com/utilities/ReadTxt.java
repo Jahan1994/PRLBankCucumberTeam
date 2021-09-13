@@ -16,6 +16,48 @@ import java.util.List;
 
 public class ReadTxt {
 
+    public static List<Customer> returnAWholeRole(String filePath){
+        List<Customer>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            int i = 0;
+            while (line != null) {
+                Customer customer = new Customer();
+                customer.setFirstName(line.split(",")[0].trim());
+                customer.setLastName(line.split(",")[1].trim());
+                customer.setRole(line.split(",")[2].trim());
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                all.add(customer);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return all;
+    }
+
+//    public static List<Customer> returnAWholeRoleFromUI(String filePath){
+//        List<Customer>all = new ArrayList<>();
+//        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+//            StringBuilder sb = new StringBuilder();
+//            String line = br.readLine();
+//            int i = 0;
+//            while (line != null) {
+//                Customer customer = new Customer();
+//                customer.setId(Integer.parseInt(line.split(",")[0].trim()));
+//                customer.setEmail(line.split(",")[1].trim());
+//                customer.setRole(line.split(",")[2].trim());
+//                sb.append(System.lineSeparator());
+//                line = br.readLine();
+//                all.add(customer);
+//            }
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return all;
+//    }
+
 
     public static List<Customer> returnCustomer(String filePath) {
         List<Customer> all = new ArrayList<>();
@@ -101,10 +143,6 @@ public class ReadTxt {
                 States state = new States();
 
                 String [] allLine = line.split(",");
-
-                String[] allLine = line.split(",");
-
-
                 int id = Integer.parseInt(allLine[1].trim());
                 state.setId(id);
                 state.setName(allLine[0]);
