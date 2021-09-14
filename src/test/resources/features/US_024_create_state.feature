@@ -20,7 +20,7 @@ Feature: System should allow to create states info using api end point
 
     Examples: create state
       | idJson | nameJson |
-      | 20843  | Edinburg |
+      | 24382  | Edinburg |
 
 
 

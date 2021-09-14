@@ -1,9 +1,7 @@
 
 package bank.com.utilities;
-import bank.com.pojos.Country;
-import bank.com.pojos.Customer;
-import bank.com.pojos.Registration;
-import bank.com.pojos.States;
+import bank.com.pojos.*;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,6 +10,31 @@ import java.util.Map;
 
 public class WriteToTxt {
 
+
+    public static void saveAllCustomerRole(String fileName, CustomerRole customer) {
+        try {
+            //   String name ="C:\\Users\\sam\\IdeaProjects\\GMIBank\\src\\test\\resources\\test_data\\CustomerInfo.txt";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            //writer.append("Ibrahim");
+//            writer.append(password + "," +username+","+ customer.getFirstName() + ",");
+            writer.append(customer.getFirstName() + ",");
+            writer.append(customer.getLastName() + "," + customer.getRole() + "\n");
+            writer.close();
+        } catch (Exception e) {
+        }
+    }
+
+    public static void saveAllCustomerRoleFromUi(String fileName, CustomerRole customer) {
+        try {
+            //   String name ="C:\\Users\\sam\\IdeaProjects\\GMIBank\\src\\test\\resources\\test_data\\CustomerInfo.txt";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            //writer.append("Ibrahim");
+//            writer.append(password + "," +username+","+ customer.getFirstName() + ",");
+            writer.append(customer.getId() + "," + customer.getEmail() + "," + customer.getRole() + "\n");
+            writer.close();
+        } catch (Exception e) {
+        }
+    }
 
 //    public static void saveDataInFileWithSSN(String fileName, Customer[] customers)  {
 //        try {
