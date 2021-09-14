@@ -41,21 +41,6 @@ public class US_30_PDF_Creation_StepDefinitions {
 //        JSUtils.clickElementByJS(lastCreatedCostumer);
 //        Thread.sleep(5000);
 
-            String url = "jdbc:postgresql://157.230.48.97:5432/gmibank_db";
-            String user = "techprodb_user";
-            String password = "Techpro_@126";
-            createConnection(url, user, password);
-
-            //Database den gelen veriler kullanilacak, veriler MAP icine atiliyor. Key=Email
-            List<List<Object>> listQueryResult1 = getQueryResultList("Select * from tpaccount_registration");
-            Map<String, Object> databaseCustomerMap = new HashMap<>();
-            for (int i = listQueryResult1.size() - 1; i > 0; i--) {
-                //listQueryResult1.get(i).get(8).toString() ==> database email kismi
-                databaseCustomerMap.put(listQueryResult1.get(i).get(8).toString(), listQueryResult1.get(i));
-                // databaseCustomerMap.put(listQueryResult1.get(i).get(8).toString(), listQueryResult1.get(i).get(3).toString());
-                System.out.println(databaseCustomerMap.get(listQueryResult1.get(i).get(8).toString()));
-            }
-
             //UI dan geleb veriler kullanilacak
             Map<String, Object> mapFromUI= new HashMap<>();
             String email;
@@ -79,20 +64,39 @@ public class US_30_PDF_Creation_StepDefinitions {
                 WriteToTxt.saveAllCustomerRoleFromUi(fileNameFromUi,customer2);
             }
 
+            //Database baglanti
+            String url = "jdbc:postgresql://157.230.48.97:5432/gmibank_db";
+            String user = "techprodb_user";
+            String password = "Techpro_@126";
+            createConnection(url, user, password);
+
+            //Database den gelen veriler kullanilacak, veriler MAP icine atiliyor. Key=Email
+            List<List<Object>> listQueryResult1 = getQueryResultList("Select * from tpaccount_registration");
+            Map<String, Object> databaseCustomerMap = new HashMap<>();
+            for (int i = listQueryResult1.size() - 1; i > 0; i--) {
+                //listQueryResult1.get(i).get(8).toString() ==> database email kismi
+                databaseCustomerMap.put(listQueryResult1.get(i).get(8).toString(), listQueryResult1.get(i));
+                // databaseCustomerMap.put(listQueryResult1.get(i).get(8).toString(), listQueryResult1.get(i).get(3).toString());
+                System.out.println(databaseCustomerMap.get(listQueryResult1.get(i).get(8).toString()));
+            }
+
+
             //PDF YAZDRIMA
             List<CustomerRole> listOfCustomers = new ArrayList<>();
-            List<CustomerRole> customers3 = ReadTxt.returnAWholeRole(fileNameFromUi);
-            for (int i = 1; i < 20; i++) {
+            List<CustomerRole> customers3 = ReadTxt.returnAWholeRoleFromUI(fileNameFromUi);
+            for (int i = 0; i < 20; i++) {
                 CustomerRole customer1 = new CustomerRole();
-                // System.out.println(listQueryResult.get(i).get(1));
-                customer1.setFirstName(((List)databaseCustomerMap.get(listQueryResult1.get(listQueryResult1.size()-i).get(8))).get(2).toString());
-                customer1.setLastName(((List)databaseCustomerMap.get(listQueryResult1.get(listQueryResult1.size()-i).get(8))).get(3).toString());
+                String query1="Select user_id, first_name, last_name from tpaccount_registration WHERE user_id="+ customers3.get(i).getId() +"";
+
+                //System.out.println( customers3.get(i).);
+                List<List<Object>> listQueryResult2 = getQueryResultList(query1);
+                System.out.println(listQueryResult2.get(0));
+
+                System.out.println(listQueryResult2.get(0).get(1));
+                customer1.setFirstName(listQueryResult2.get(0).get(1).toString());
+                customer1.setLastName(listQueryResult2.get(0).get(2).toString());
                 customer1.setRole(customers3.get(i).getRole());
-                //Yukarida MAP yapmistik, ama MAP icine listQueryResult1.get(i).get(8).toString()) kabul etmedi,
-                // oNdan dolayi CUSTOMER kullandik
-                //customer1.setRole(String.valueOf(mapFromUI.get(listQueryResult1.get(i).get(8).toString())));
-                //Veriler yazdirildi
-                WriteToTxt.saveAllCustomerRole(fileNameRoleCostumer,customer1);
+
                 listOfCustomers.add(customer1);
             }
             for (int i = 0; i < listOfCustomers.size()-1; i++) {
