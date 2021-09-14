@@ -1,18 +1,7 @@
 package bank.com.utilities;
 
-
-
-
+import bank.com.pojos.*;
 import bank.com.pojos.Country;
-
-
-import bank.com.pojos.Country;
-
-
-import bank.com.pojos.Customer;
-import bank.com.pojos.States;
-import bank.com.pojos.User;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -21,6 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadTxt {
+
+    public static List<CustomerRole> returnAWholeRole(String filePath){
+        List<CustomerRole>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            int i = 0;
+            while (line != null) {
+                CustomerRole customer = new CustomerRole();
+                customer.setFirstName(line.split(",")[0].trim());
+                customer.setLastName(line.split(",")[1].trim());
+                customer.setRole(line.split(",")[2].trim());
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                all.add(customer);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return all;
+    }
 
 
     public static List<Customer> returnCustomer(String filePath) {

@@ -2,6 +2,7 @@ package bank.com.utilities;
 
 import bank.com.pojos.Country;
 import bank.com.pojos.Customer;
+import bank.com.pojos.CustomerRole;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
@@ -153,7 +154,7 @@ public class PDFGenerator {
     }
 
 
-    public static void pdfGeneratorRowsAndCellsWithList(String title, List<Customer> list, String fileName) {
+    public static void pdfGeneratorRowsAndCellsWithList(String title, List<CustomerRole> list, String fileName) {
 
         Document document = new Document();
         String pdf_path = fileName;
@@ -227,9 +228,9 @@ public class PDFGenerator {
                 table.addCell(list.get(i).getState());
                 table.addCell(list.get(i).getZipCode());
          */
-        List<Customer> customers = new ArrayList<>();
+        List<CustomerRole> customers = new ArrayList<>();
 
-        Customer customer = new Customer();
+        CustomerRole customer = new CustomerRole();
         customer.setFirstName("Yorkinjon");
         customer.setSsn("123-34-4567");
         customer.setState("Missouri");
@@ -239,7 +240,7 @@ public class PDFGenerator {
         country.setName("Poland");
         customer.setCountry(country);
 
-        Customer customer2 = new Customer();
+        CustomerRole customer2 = new CustomerRole();
 
         customer2.setFirstName("Selim");
         customer2.setSsn("635-34-8374");
@@ -606,7 +607,7 @@ public class PDFGenerator {
     }
 */
 
-    public static void pdfGeneratorRowsAndCellsWithListFirstTo53(String header, List <Customer> list, String fileName){
+    public static void pdfGeneratorRowsAndCellsWithListLast20(String header, List <CustomerRole> list, String fileName){
 
         Document document = new Document();
         String pdf_path = fileName;
@@ -652,7 +653,7 @@ public class PDFGenerator {
 
                 table.addCell(list.get(i).getFirstName());
                 table.addCell(list.get(i).getLastName());
-                table.addCell(list.get(i).getMiddleInitial());
+                table.addCell(list.get(i).getRole());
 //                table.addCell(list.get(i).getEmail());
 //                table.addCell(list.get(i).getSsn());
 

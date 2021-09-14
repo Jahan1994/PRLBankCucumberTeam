@@ -1,6 +1,7 @@
 package bank.com.stepDefinitions;
 
 import bank.com.pojos.Customer;
+import bank.com.pojos.CustomerRole;
 import io.cucumber.java.en.Given;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +22,13 @@ public class US_030_PDFGeneratorStepDefinition {
         @Given("pdf user provides the query {string}")
         public void pdf_user_provides_the_query(String query) {
 
-            List<Customer> customerList = new ArrayList<>();
+            List<CustomerRole> customerList = new ArrayList<>();
 
             List<List<Object>> lists = getQueryResultList(query);
 
             for (int i = 0 ; i <= 33 ; i++){
 
-                Customer customer = new Customer();
+                CustomerRole customer = new CustomerRole();
 
                 customer.setFirstName(lists.get(i).get(1).toString());
                 customer.setLastName(lists.get(i).get(2).toString());
@@ -38,7 +39,7 @@ public class US_030_PDFGeneratorStepDefinition {
                 customerList.add(customer);
             }
 
-            pdfGeneratorRowsAndCellsWithListFirstTo53("                        **** TEAM 53 ****   \n                          " +
+            pdfGeneratorRowsAndCellsWithListLast20("                        **** TEAM 53 ****   \n                          " +
                             "           ==== First 53 Users' info As Name, Last name And Role ====                " ,
                     customerList , "TEAM53.pdf"         );
 
