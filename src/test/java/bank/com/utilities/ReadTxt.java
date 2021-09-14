@@ -32,6 +32,26 @@ public class ReadTxt {
         return all;
     }
 
+    public static List<CustomerRole> returnAWholeRoleFromUI(String filePath){
+        List<CustomerRole>all = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            int i = 0;
+            while (line != null) {
+                CustomerRole customer = new CustomerRole();
+                customer.setId(Integer.parseInt(line.split(",")[0].trim()));
+                customer.setEmail(line.split(",")[1].trim());
+                customer.setRole(line.split(",")[2].trim());
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                all.add(customer);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return all;
+    }
 
     public static List<Customer> returnCustomer(String filePath) {
         List<Customer> all = new ArrayList<>();
