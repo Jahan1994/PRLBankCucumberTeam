@@ -6,13 +6,16 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ConfigReader {
+    //static block kullaniyoruz. Herseyden once calisir. Mainden bile once calisir
+
+
     //tercuman class bu. ara klas.configuration classindan degerleri almak gorevi
 
     //1.Properties objesi olusturmak
     //class ismiyle projenin her yerinden cagrilsin diye static
     //bu objeye class disindan mudahale edilmesin diye private(opsiyonel)
 
-    static private Properties properties;
+    static private Properties properties;//bu objeyi oluşturup 32. satırda assign ettik
 
     //static block kullaniyoruz. Herseyden once calisir. Mainden bile once calisir
     static {
@@ -24,7 +27,7 @@ public class ConfigReader {
         try {
             //dosyayi okumak icin
 
-            FileInputStream fileInputStream = new FileInputStream(path);
+            FileInputStream fileInputStream = new FileInputStream(path);//Configer file olduğu için FileStream ile kullanılmalı
             //propertis deger atamasi yapiyoruz
             properties = new Properties();
 

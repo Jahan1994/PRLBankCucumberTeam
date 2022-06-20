@@ -33,7 +33,7 @@ public class Driver {
 
     //private => baska classlardan korumak icin
     //static => class ismiyle ulasabilmek icin
-    static private WebDriver driver;
+    static private WebDriver driver;//sadece kullanmak için static yaptık, ismin değiştirilmesini engellemiş olduk
 
     //WebDriver donmeli
     public static WebDriver getDriver(){
@@ -71,7 +71,7 @@ public class Driver {
 //                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
 //                    break;
 
-                case "chrome-headless":
+                case "chrome-headless"://arka planda cloud da calıştırmak için
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                     break;

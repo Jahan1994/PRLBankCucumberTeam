@@ -10,7 +10,9 @@ public class HomePage {
     //1. contructor olustur
     public HomePage(){
         //2.
-        PageFactory.initElements(Driver.getDriver(), this);
+        PageFactory.initElements(Driver.getDriver(), this);//Parantez içerisindeki;
+        // Driver utilities deki Driver clasımıza gider
+
     }
 
     @FindBy(id = "account-menu")

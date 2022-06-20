@@ -3,6 +3,7 @@ Feature:
 
   @registrationwithjavafakervalues
   Scenario Outline: TC_002 Success registration with valid credentials with java faker
+    #burada user valid credentionlarla registration yapıyor
     Given User on the home page "homepage_url"
     Then User clicks menu icon
     And  User navigates to registration page
@@ -25,6 +26,7 @@ Feature:
 
   @login_as_admin_to_active_an_user
   Scenario Outline: Active a new user as admin
+    #yukarda kayıt olan şahıs aktive edilecek bu adımda by admin tarafından
     Given User on the home page "homepage_url"
     And User clicks menu icon
     Then User navigates to Login page
@@ -47,6 +49,7 @@ Feature:
 
   @login_as_manager_and_account_create
   Scenario Outline: Create a new acount as manager
+    #bu ksımda manager bu kısımda 2 tane account oluşturuyor. 1. save-2. checking account
     Given User on the home page "homepage_url"
     Then User clicks menu icon
     Then User navigates to Login page
@@ -84,6 +87,7 @@ Feature:
 
   @login_as_an_employee_to_assign_account_to_a_customer
   Scenario:
+    #buraay employee giriş yapıyor ve oluşturduumuz accountları costumer assign ediyor 2 hesabı (save ve check account hesapları)
     Given User on the home page "homepage_url"
     Then  User clicks menu icon
     And  User navigates to Login page
@@ -112,6 +116,8 @@ Feature:
 
   @login_as_a_customer_to_send_money_between_two_created_accounts
   Scenario Outline: Navigate login page
+    #oluşturduğumuz ve admin tarafından aktive edilen customer, manager tarafından oluşturulan ve employee tarafından kendisine assign edilen
+    #hesasplar arasında para transferi yapıyor
     Given User on the home page "homepage_url"
     Then User clicks menu icon
     Then User navigates to Login page

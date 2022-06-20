@@ -40,6 +40,7 @@ public class LoginPageStepDefinitions {
   @Then("User clicks Sign in")
   public void userClicksSignIn() {
     registrationPage.signIn.click();
+
   }
 
 
